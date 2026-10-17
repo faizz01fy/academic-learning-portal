@@ -75,8 +75,18 @@ function esc(value) {
   });
 }
 
+let lastQuestionOrder = '';
+
 function render() {
-  questions = shuffle(bank);
+  let nextQuestions;
+  let orderKey;
+  do {
+    nextQuestions = shuffle(bank);
+    orderKey = nextQuestions.map(function(q) { return q.id; }).join(',');
+  } while (bank.length > 1 && orderKey === lastQuestionOrder);
+  lastQuestionOrder = orderKey;
+  questions = nextQuestions;
+
   const form = document.getElementById('quiz');
   const result = document.getElementById('result');
 
@@ -92,13 +102,17 @@ function render() {
     box.dataset.index = i;
 
     const opts = shuffle(q.opts);
+    const letters = ['A', 'B', 'C', 'D'];
+    q.correctLetter = letters[opts.findIndex(function(o) { return o[0] === q.answer; })];
+
     box.innerHTML =
       '<div class="qtext">' + (i + 1) + '. ' + esc(q.q) + '</div>' +
       '<div class="options">' +
-      opts.map(function(o) {
-        return '<label class="option" data-letter="' + esc(o[0]) + '">' +
-          '<input type="radio" name="q' + i + '" value="' + esc(o[0]) + '">' +
-          '<span class="label">' + esc(o[0]) + '.</span>' +
+      opts.map(function(o, optionIndex) {
+        const letter = letters[optionIndex];
+        return '<label class="option" data-letter="' + letter + '">' +
+          '<input type="radio" name="q' + i + '" value="' + letter + '">' +
+          '<span class="label">' + letter + '.</span>' +
           '<span>' + esc(o[1]) + '</span>' +
           '</label>';
       }).join('') +
@@ -108,7 +122,6 @@ function render() {
     form.appendChild(box);
   });
 }
-
 function submitTest() {
   let score = 0;
 
@@ -118,7 +131,7 @@ function submitTest() {
 
     box.querySelectorAll('.option').forEach(function(opt) {
       opt.classList.remove('correct', 'wrong');
-      if (opt.dataset.letter === q.answer) {
+      if (opt.dataset.letter === q.correctLetter) {
         opt.classList.add('correct');
       }
     });
@@ -126,15 +139,15 @@ function submitTest() {
     const feedback = box.querySelector('.feedback');
 
     if (selected) {
-      if (selected.value === q.answer) {
+      if (selected.value === q.correctLetter) {
         score++;
         feedback.textContent = '✓ Correct';
       } else {
         box.querySelector('.option[data-letter="' + selected.value + '"]').classList.add('wrong');
-        feedback.textContent = 'Correct answer: ' + q.answer;
+        feedback.textContent = 'Correct answer: ' + q.correctLetter;
       }
     } else {
-      feedback.textContent = 'Not answered. Correct answer: ' + q.answer;
+      feedback.textContent = 'Not answered. Correct answer: ' + q.correctLetter;
     }
 
     feedback.style.display = 'block';
