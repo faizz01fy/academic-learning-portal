@@ -3,125 +3,288 @@
 
 <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>English LMS PDF</title>
+<title>English LMS PDF</title>
 
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
-  <style>
+<style>
 
-    body{
-      background:#f3f4f6;
-      font-family:Arial, sans-serif;
-      padding:30px;
-    }
+body{
+  background:#f3f4f6;
+  font-family:Arial,sans-serif;
+  padding:30px;
+}
 
-    .page-box{
+.page-box{
+  max-width:950px;
+  margin:auto;
+  background:white;
+  padding:35px;
+  border-radius:25px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  text-align:center;
+}
 
-      max-width:700px;
-      margin:auto;
-      background:white;
-      padding:35px;
-      border-radius:25px;
-      box-shadow:0 10px 25px rgba(0,0,0,0.1);
+h1{
+  color:#2563eb;
+  margin-bottom:10px;
+}
 
-    }
+.subtitle{
+  color:#64748b;
+  margin-bottom:30px;
+  font-size:15px;
+}
 
-    h1{
+.module-title{
+  color:#1e3a8a;
+  text-align:left;
+  font-size:18px;
+  font-weight:bold;
+  margin:25px 10px 10px 10px;
+  padding-bottom:6px;
+  border-bottom:2px solid #e2e8f0;
+}
 
-      text-align:center;
-      color:#2563eb;
-      margin-bottom:30px;
+.pdf-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(210px, 1fr));
+  gap:12px;
+  margin-bottom:20px;
+}
 
-    }
+.pdf-btn{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-height:75px;
+  padding:12px 14px;
+  border:none;
+  border-radius:18px;
+  background:linear-gradient(135deg,#3b82f6,#06b6d4);
+  color:white;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+  text-align:center;
+  line-height:1.35;
+}
 
-    .pdf-btn{
+.pdf-btn:hover{
+  transform:scale(1.03);
+  box-shadow:0 6px 16px rgba(59,130,246,0.35);
+}
 
-      display:block;
-      margin-bottom:18px;
-      padding:18px;
-      text-decoration:none;
-      font-size:18px;
-      font-weight:bold;
-      text-align:center;
-      border-radius:18px;
-      background:linear-gradient(135deg,#3b82f6,#06b6d4);
-      color:white;
-      transition:0.3s;
+.pdf-btn span{
+  font-size:11px;
+  font-weight:normal;
+  opacity:0.9;
+  margin-top:4px;
+}
 
-    }
+.modal{
+  display:none;
+  position:fixed;
+  z-index:1000;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+}
 
-    .pdf-btn:hover{
+.modal-content{
+  background:#111827;
+  color:white;
+  width:360px;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  margin:12% auto;
+  position:relative;
+}
 
-      transform:scale(1.03);
-      box-shadow:0 10px 20px rgba(0,0,0,0.15);
+.close-btn{
+  position:absolute;
+  top:10px;
+  right:18px;
+  font-size:28px;
+  cursor:pointer;
+}
 
-    }
+.modal-btn{
+  display:block;
+  margin-top:16px;
+  padding:14px;
+  border-radius:12px;
+  background:#2563eb;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.2s;
+}
 
-    .back-btn{
+.modal-btn:hover{
+  background:#1d4ed8;
+}
 
-      display:block;
-      margin-top:35px;
-      text-align:center;
-      background:#111827;
-      color:white;
-      padding:15px;
-      border-radius:16px;
-      text-decoration:none;
-      font-weight:bold;
+.download-link{
+  background:#374151;
+}
 
-    }
+.download-link:hover{
+  background:#4b5563;
+}
 
-  </style>
+.nav-buttons{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin-top:35px;
+}
+
+.back-btn{
+  display:inline-block;
+  background:#111827;
+  color:white;
+  padding:14px 24px;
+  border-radius:16px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.2s;
+}
+
+.back-btn:hover{
+  background:#1f2937;
+}
+
+.mal-btn{
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+}
+
+</style>
 
 </head>
 
 <body>
 
-  <div class="page-box">
+<div class="page-box">
 
-    <h1>English LMS PDF</h1>
+<h1>English LMS PDF</h1>
+<div class="subtitle">Calicut University (CDOE) · English Language Skills for Humanities (ENG1FA101(1B))</div>
 
-    <a
-      class="pdf-btn"
-      href="./English/LMS_PDF/Ch1-Ihaveadream.pdf"
-      target="_blank"
-    >
-      Chapter 1
-    </a>
+<div class="module-title">Module 1: Listening Skills</div>
+<div class="pdf-grid">
+  <button class="pdf-btn" onclick="openModal('Chapter 1: I Have a Dream (MLK Jr.)', 'English/LMS_PDF/Ch1-Ihaveadream.pdf')">
+    Chapter 1
+    <span>I Have a Dream — Martin Luther King Jr.</span>
+  </button>
+  <button class="pdf-btn" onclick="openModal('Chapter 2: Anthem (Leonard Cohen)', 'English/LMS_PDF/Ch2-Anthem.pdf')">
+    Chapter 2
+    <span>Anthem — Leonard Cohen</span>
+  </button>
+  <button class="pdf-btn" onclick="openModal('Chapter 3: Art as Social Work', 'English/LMS_PDF/Ch3-ArtasSocialWork.pdf')">
+    Chapter 3
+    <span>Art as Social Work — Amy Morales Lara</span>
+  </button>
+</div>
 
-    <a
-      class="pdf-btn"
-      href="#"
-    >
-      Chapter 2
-    </a>
+<div class="module-title">Module 2: Speaking Skills</div>
+<div class="pdf-grid">
+  <button class="pdf-btn" onclick="openModal('Chapter 1: Soft Language (George Carlin)', 'English/LMS_PDF/Ch4-SoftLanguage-Carlin.pdf')">
+    Chapter 1
+    <span>Soft Language — George Carlin</span>
+  </button>
+  <button class="pdf-btn" onclick="openModal('Chapter 2: Death of a Salesman (Arthur Miller)', 'English/LMS_PDF/Ch5-DeathofaSalesman.pdf')">
+    Chapter 2
+    <span>Death of a Salesman — Arthur Miller</span>
+  </button>
+  <button class="pdf-btn" onclick="openModal('Chapter 3: Rip It Out (Dead Poets Society)', 'English/LMS_PDF/Ch6-RipitOut.pdf')">
+    Chapter 3
+    <span>Rip It Out — Peter Weir / Keating</span>
+  </button>
+</div>
 
-    <a
-      class="pdf-btn"
-      href="#"
-    >
-      Chapter 3
-    </a>
+<div class="module-title">Module 3: Reading Skills</div>
+<div class="pdf-grid">
+  <button class="pdf-btn" onclick="openModal('Chapter 1: Reading Skills Introduction', 'English/LMS_PDF/Ch7-ReadingSkillsIntro.pdf')">
+    Chapter 1
+    <span>Introduction to Reading Skills (SQ3R)</span>
+  </button>
+  <button class="pdf-btn" onclick="openModal('Chapter 2: The Second Coming (W.B. Yeats)', 'English/LMS_PDF/Ch8-TheSecondComing-Yeats.pdf')">
+    Chapter 2
+    <span>The Second Coming — W.B. Yeats</span>
+  </button>
+  <button class="pdf-btn" onclick="openModal('Chapter 3: The Frog Prince (James Finn Garner)', 'English/LMS_PDF/Ch9-TheFrogPrince.pdf')">
+    Chapter 3
+    <span>The Frog Prince — James Finn Garner</span>
+  </button>
+  <button class="pdf-btn" onclick="openModal('Chapter 4: Optimism: An Essay (Helen Keller)', 'English/LMS_PDF/Ch10-Optimism-HelenKeller.pdf')">
+    Chapter 4
+    <span>Optimism: An Essay — Helen Keller</span>
+  </button>
+</div>
 
-    <a
-      class="pdf-btn"
-      href="#"
-    >
-      Chapter 4
-    </a>
+<div class="module-title">Module 4: Writing Skills</div>
+<div class="pdf-grid">
+  <button class="pdf-btn" onclick="openModal('Chapter 1: Writing Skills Introduction', 'English/LMS_PDF/Ch11-WritingSkillsIntro.pdf')">
+    Chapter 1
+    <span>Introduction to Writing Skills</span>
+  </button>
+  <button class="pdf-btn" onclick="openModal('Chapter 2: Dr. B.R. Ambedkar 1936 Speech', 'English/LMS_PDF/Ch12-AmbedkarSpeech.pdf')">
+    Chapter 2
+    <span>1936 Speech — Dr. B.R. Ambedkar</span>
+  </button>
+  <button class="pdf-btn" onclick="openModal('Chapter 3: The World-Renowned Nose (Basheer)', 'English/LMS_PDF/Ch13-Basheer-WorldRenownedNose.pdf')">
+    Chapter 3
+    <span>The World-Renowned Nose — Basheer</span>
+  </button>
+  <button class="pdf-btn" onclick="openModal('Chapter 4: Cinema Paradiso Review', 'English/LMS_PDF/Ch14-CinemaParadisoReview.pdf')">
+    Chapter 4
+    <span>Film Review — Cinema Paradiso</span>
+  </button>
+</div>
 
-    <a
-      class="back-btn"
-      href="index.html"
-    >
-      ← Back Home
-    </a>
-
+<div id="pdfModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <h3 id="modalTitle" style="margin-bottom:15px; color:#60a5fa; font-size:16px;"></h3>
+    <a id="viewBtn" class="modal-btn" target="_blank">View PDF</a>
+    <a id="downloadBtn" class="modal-btn download-link" download>Download PDF</a>
   </div>
+</div>
+
+<div class="nav-buttons">
+  <a class="back-btn mal-btn" href="eng-reading.html">📖 Go to Malayalam Reading →</a>
+  <a class="back-btn" href="index.html">← Back Home</a>
+</div>
+
+</div>
+
+<script>
+function openModal(title, pdf){
+  document.getElementById("pdfModal").style.display = "block";
+  document.getElementById("modalTitle").innerText = title;
+  document.getElementById("viewBtn").href = pdf;
+  document.getElementById("downloadBtn").href = pdf;
+}
+
+function closeModal(){
+  document.getElementById("pdfModal").style.display = "none";
+}
+
+window.onclick = function(event) {
+  var modal = document.getElementById("pdfModal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 
 </body>
-
 </html>
