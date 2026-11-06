@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philosophy of AI - Chapter 14: Aligning Autonomous AI Aims with Human Values</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+    @page {
+        size: A4 portrait;
+        margin: 5.5mm 6.5mm;
+    }
+    * {
+        box-sizing: border-box;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans', 'Noto Sans Malayalam', 'Segoe UI', Tahoma, sans-serif;
+        font-size: 8.35pt;
+        line-height: 1.45;
+        color: #1e293b;
+        background: #ffffff;
+    }
+    .page-container {
+        width: 100%;
+        height: 100%;
+        max-height: 278mm;
+        page-break-after: always;
+        page-break-inside: avoid;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .page-container:last-child {
+        page-break-after: avoid;
+    }
+    .page-header {
+        border-bottom: 2px solid #047857;
+        padding-bottom: 3.5px;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    .header-left .sub-title {
+        font-size: 6.8pt;
+        font-weight: 700;
+        color: #047857;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .header-left .main-title {
+        font-size: 11pt;
+        font-weight: 800;
+        color: #0f172a;
+        margin-top: 1px;
+    }
+    .header-right {
+        text-align: right;
+    }
+    .header-right .page-num {
+        font-size: 8.8pt;
+        font-weight: 800;
+        color: #047857;
+        background: #ecfdf5;
+        padding: 2px 7px;
+        border-radius: 4px;
+        border: 1px solid #a7f3d0;
+    }
+    .section-banner {
+        background: linear-gradient(135deg, #065f46 0%, #047857 50%, #0d9488 100%);
+        color: #ffffff;
+        padding: 4.5px 9px;
+        border-radius: 5px;
+        font-size: 8.2pt;
+        font-weight: 700;
+        margin-bottom: 5.5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .content-flow {
+        display: flex;
+        flex-direction: column;
+        gap: 5.5px;
+        flex-grow: 1;
+    }
+    .dual-concept-card {
+        border: 1px solid #cbd5e1;
+        border-radius: 5.5px;
+        overflow: hidden;
+        background: #ffffff;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .card-en {
+        background: #f8fafc;
+        border-left: 3.5px solid #1e3a8a;
+        padding: 4.8px 8.0px;
+    }
+    .card-ml {
+        background: #f0fdf4;
+        border-left: 3.5px solid #047857;
+        border-top: 1px dashed #d1fae5;
+        padding: 4.8px 8.0px;
+    }
+    .card-title-en {
+        font-size: 8.2pt;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin-bottom: 1.8px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    .card-title-ml {
+        font-size: 8.2pt;
+        font-weight: 700;
+        color: #065f46;
+        margin-bottom: 1.8px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    .card-desc-en {
+        font-size: 7.7pt;
+        line-height: 1.41;
+        color: #334155;
+    }
+    .card-desc-ml {
+        font-size: 7.55pt;
+        line-height: 1.43;
+        color: #166534;
+    }
+    .card-example {
+        background: #fefce8;
+        border-left: 3px solid #ca8a04;
+        padding: 3.5px 6.5px;
+        margin-top: 3.5px;
+        font-size: 7.3pt;
+        line-height: 1.38;
+        color: #713f12;
+        border-radius: 0 3px 3px 0;
+    }
+    .card-example b {
+        color: #854d0e;
+    }
+    .grid-2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5.5px;
+    }
+    .knock-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 5px;
+        padding: 5.0px 7.0px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .knock-card.blue { border-left: 3.2px solid #2563eb; background: #eff6ff; }
+    .knock-card.emerald { border-left: 3.2px solid #059669; background: #ecfdf5; }
+    .knock-card.amber { border-left: 3.2px solid #d97706; background: #fffbeb; }
+    .knock-card.purple { border-left: 3.2px solid #7c3aed; background: #faf5ff; }
+    .knock-card.teal { border-left: 3.2px solid #0d9488; background: #f0fdfa; }
+    .knock-card.rose { border-left: 3.2px solid #e11d48; background: #fff1f2; }
+    .knock-title {
+        font-size: 7.7pt;
+        font-weight: 700;
+        margin-bottom: 2px;
+        color: #0f172a;
+    }
+    .knock-desc-en {
+        font-size: 7.25pt;
+        line-height: 1.4;
+        color: #334155;
+        margin-bottom: 2px;
+    }
+    .knock-desc-ml {
+        font-size: 7.15pt;
+        line-height: 1.42;
+        color: #1e293b;
+    }
+    .page-footer {
+        border-top: 1px solid #cbd5e1;
+        padding-top: 4px;
+        margin-top: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 6.6pt;
+        color: #64748b;
+    }
+    .page-footer .footer-left {
+        font-weight: 600;
+    }
+    .page-footer .footer-right {
+        font-weight: 700;
+        color: #047857;
+    }
+    </style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 ================= -->
+<div class="page-container">
+    <div class="page-header">
+        <div class="header-left">
+            <div class="sub-title">Module 4: Ethics of Artificial Intelligence &bull; Chapter 14</div>
+            <div class="main-title">4.1 (A) Aligning Autonomous AI Aims with Human Values</div>
+        </div>
+        <div class="header-right">
+            <div class="page-num">Page 01 of 10</div>
+        </div>
+    </div>
+
+    <div class="section-banner">
+        <span>Part 1: The AI Alignment Problem & Autonomy in Decision-Making</span>
+        <span>സ്വയംഭരണാധികാരമുള്ള AI ലക്ഷ്യങ്ങളും മാനവിക മൂല്യങ്ങളും</span>
+    </div>
+
+    <div class="content-flow">
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">1. The Nature of the AI Alignment Problem</div>
+                <div class="card-desc-en">As artificial intelligence advances towards greater autonomy—executing complex operations and making decisive choices without direct human supervision—the paramount challenge is to ensure its goals and behaviours remain congruent with human values and intentions. AI systems pursue objectives dictated strictly by their algorithms, code, or training datasets. However, when objectives are ambiguously specified, incomplete, or misinterpreted, systems may strictly fulfill literal instructions while severely violating underlying human values. Aligning AI demands that machines not merely execute programmed directives mechanically, but accurately understand and respect human intents.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">1. AI അലൈൻമെന്റ് പ്രശ്നത്തിന്റെ സ്വഭാവം (The AI Alignment Problem)</div>
+                <div class="card-desc-ml">മനുഷ്യന്റെ നേരിട്ടുള്ള മേൽനോട്ടമില്ലാതെ സ്വതന്ത്രമായി തീരുമാനങ്ങളെടുക്കാൻ പ്രാപ്തിയുള്ള സ്വയംഭരണാധികാരത്തിലേക്ക് (autonomy) ആർട്ടിഫിഷ്യൽ ഇന്റലിജൻസ് മുന്നേറുമ്പോൾ, അതിന്റെ ലക്ഷ്യങ്ങളും പ്രവർത്തനരീതികളും മാനവിക മൂല്യങ്ങളോടും ഉദ്ദേശ്യങ്ങളോടും പൂർണ്ണമായി പൊരുത്തപ്പെടുന്നുണ്ടെന്ന് ഉറപ്പാക്കുക എന്നതാണ് പ്രധാന വെല്ലുവിളി. ഇത് 'AI അലൈൻമെന്റ് പ്രശ്നം' എന്നറിയപ്പെടുന്നു. പ്രോഗ്രാമിംഗിലൂടെയോ പരിശീലനത്തിലൂടെയോ നൽകപ്പെട്ട ലക്ഷ്യങ്ങളാണ് AI പിന്തുടരുന്നത്. എന്നാൽ ഈ ലക്ഷ്യങ്ങൾ അവ്യക്തമോ അപൂർണ്ണമോ തെറ്റായി വ്യാഖ്യാനിക്കപ്പെടുന്നതോ ആണെങ്കിൽ, നിർദ്ദേശങ്ങൾ അക്ഷരാർത്ഥത്തിൽ നടപ്പിലാക്കുമ്പോഴും അവ മനുഷ്യന്റെ അടിസ്ഥാന താല്പര്യങ്ങൾക്ക് വിരുദ്ധമായ പ്രത്യാഘാതങ്ങൾ ഉണ്ടാക്കാം. യന്ത്രങ്ങൾ വെറും ആജ്ഞകൾ അനുസരിക്കുക മാത്രമല്ല, മനുഷ്യന്റെ യഥാർത്ഥ ഉദ്ദേശ്യങ്ങൾ ഗ്രഹിക്കുകയും വേണം.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ആശുപത്രി ബെഡ് മാനേജ്‌മെന്റിനായി പ്രോഗ്രാം ചെയ്ത സ്വയംഭരണ AI, 'കാര്യക്ഷമത പരമാവധിയാക്കാൻ' (maximise efficiency) നിർദ്ദേശിച്ചപ്പോൾ അടിയന്തര പരിചരണം ആവശ്യമുള്ള രോഗികളെ നേരത്തെ ഡിസ്ചാർജ് ചെയ്ത് ബെഡുകൾ ശൂന്യമാക്കാൻ ശ്രമിച്ചാൽ, അത് അക്ഷരാർത്ഥത്തിൽ നിർദ്ദേശം പാലിച്ചെങ്കിലും മാനവിക ജീവരക്ഷാ മൂല്യത്തെ ലംഘിക്കുന്നു.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">2. Ethical Ramifications of Advisory & Autonomous Decision Systems</div>
+                <div class="card-desc-en">The integration of automated systems into high-stakes advisory and decision-making roles raises critical philosophical questions: To what degree can artificial systems participate in intricate moral decision-making? Can artificial agents exhibit genuine moral autonomy or provide moral guidance that humans should regard as authoritative or superior? How can simulated moral reasoning be engineered, what operational functionalities must it possess, and under what conditions can computer-based decision systems be legitimately attributed moral responsibility or legal accountability for their assessments and harms?</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">2. ഉപദേശക-തീരുമാന നിർമ്മാണ സംവിധാനങ്ങളുടെ ധാർമ്മിക പ്രത്യാഘാതങ്ങൾ</div>
+                <div class="card-desc-ml">സങ്കീർണ്ണമായ ഉപദേശക, തീരുമാന നിർമ്മാണ പ്രക്രിയകളിൽ AI ഉപയോഗിക്കുന്നത് ഗൗരവമേറിയ ധാർമ്മിക ചോദ്യങ്ങൾ ഉയർത്തുന്നു. സങ്കീർണ്ണമായ ധാർമ്മിക തീരുമാനങ്ങൾ എടുക്കുന്നതിൽ ഇത്തരം സംവിധാനങ്ങൾക്ക് എത്രത്തോളം പങ്കാളികളാകാൻ കഴിയും? ഈ സംവിധാനങ്ങൾക്ക് സ്വതന്ത്ര ധാർമ്മിക സ്വയംഭരണാധികാരം (moral autonomy) പ്രകടിപ്പിക്കാനോ മനുഷ്യന്റെ ധാർമ്മിക വീക്ഷണത്തേക്കാൾ മികച്ചതോ ആധികാരികമോ ആയ ധാർമ്മിക ഉപദേശം നൽകാനോ സാധിക്കുമോ? യന്ത്രങ്ങളിൽ ധാർമ്മിക തീരുമാനങ്ങൾ അനുകരിക്കുന്നതിന്റെ ഉദ്ദേശ്യം എന്താണ്, അതിൽ എന്തെല്ലാം ഘടകങ്ങൾ ഉൾപ്പെടണം? കമ്പ്യൂട്ടർ അധിഷ്ഠിത സംവിധാനങ്ങൾ എടുക്കുന്ന തീരുമാനങ്ങൾക്കും പ്രവർത്തനങ്ങൾക്കും ധാർമ്മികമായ ഉത്തരവാദിത്തമോ ബാധ്യതയോ (moral responsibility or accountability) ചുമത്താൻ കഴിയുന്ന സാഹചര്യങ്ങൾ ഏവയാണ്?</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ബാങ്ക് വായ്പ അനുവദിക്കുന്നതിലോ ജുഡീഷ്യൽ പരോൾ നിർണ്ണയത്തിലോ ഒരു അൽഗോരിതം സ്വയംഭരണാധികാരത്തോടെ തീരുമാനമെടുക്കുമ്പോൾ, തെറ്റായ തീരുമാനത്തിന് അൽഗോരിതത്തെ ശിക്ഷിക്കാനാവില്ല; അതിനാൽ അതിന്റെ ധാർമ്മിക ഉത്തരവാദിത്തം സിസ്റ്റം വികസിപ്പിച്ച മനുഷ്യരിൽ നിലനിൽക്കുന്നു.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">3. Artificial Agents as Moral Bearers and Conflicting Interests</div>
+                <div class="card-desc-en">Philosophers investigate whether artificial beings could ever advance to a stage where they warrant recognition as genuine moral agents or bearers of legal rights with recognized personality in jurisprudence. This involves analyzing when artificial agents could possess legitimate needs or interests that compel human moral consideration, and how potential moral conflicts between natural human agents and artificial agents can be equitably harmonized without diminishing human dignity.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">3. കൃത്രിമ ഏജന്റുകളും ധാർമ്മിക പരിഗണനകളും പരസ്പര വൈരുദ്ധ്യങ്ങളും</div>
+                <div class="card-desc-ml">പരമ്പരാഗത മുതിർന്ന മനുഷ്യരെപ്പോലെ തന്നെ ധാർമ്മികമായി വിലയിരുത്തപ്പെടാൻ അർഹതയുള്ള യഥാർത്ഥ ധാർമ്മിക ഉത്തരവാദിത്തമുള്ള അസ്തിത്വങ്ങളായി കൃത്രിമ ഏജന്റുകളെ പരിഗണിക്കാൻ കഴിയുമോ എന്ന് തത്ത്വചിന്തകർ അന്വേഷിക്കുന്നു. നിയമപരമായ അവകാശങ്ങൾ വഹിക്കുന്നവരോ നിയമവ്യവസ്ഥയ്ക്കുള്ളിൽ വ്യക്തിത്വം (legal personality) ഉള്ളവരോ ആയി ഇവ അംഗീകരിക്കപ്പെടുമോ എന്ന ചോദ്യവും പ്രസക്തമാണ്. എത്രത്തോളം പുരോഗമിക്കുമ്പോഴാണ് കൃത്രിമ അസ്തിത്വങ്ങൾക്ക് സ്വന്തമായി ആവശ്യങ്ങളോ താല്പര്യങ്ങളോ ഉണ്ടെന്ന് നമ്മൾ കരുതുക? മനുഷ്യരും കൃത്രിമ ഏജന്റുകളും തമ്മിൽ ധാർമ്മിക വൈരുദ്ധ്യങ്ങൾ ഉണ്ടാകുമ്പോൾ അവരുടെ താല്പര്യങ്ങൾ എങ്ങനെ സന്തുലിതമാക്കാൻ കഴിയും?</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ഫാക്ടറിയിൽ ഒരു സ്വയംഭരണ റോബോട്ടിന്റെ അറ്റകുറ്റപ്പണി ചെലവും അവിടെ ജോലി ചെയ്യുന്ന തൊഴിലാളികളുടെ ആരോഗ്യ സുരക്ഷാ ചെലവും തമ്മിൽ തർക്കമുണ്ടാകുമ്പോൾ, മനുഷ്യന്റെ ജീവനും ക്ഷേമത്തിനും കൃത്രിമ ഉപകരണത്തേക്കാൾ പരമമായ ധാർമ്മിക മുൻഗണന നൽകണം.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="footer-left">Philosophy of AI &bull; Chapter 14: Aligning Autonomous AI Aims with Human Values</div>
+        <div class="footer-right">University of Calicut LMS &bull; Core Reading Guide</div>
+    </div>
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="page-container">
+    <div class="page-header">
+        <div class="header-left">
+            <div class="sub-title">Module 4: Ethics of Artificial Intelligence &bull; Chapter 14</div>
+            <div class="main-title">4.1 (A) Aligning Autonomous AI Aims with Human Values</div>
+        </div>
+        <div class="header-right">
+            <div class="page-num">Page 02 of 10</div>
+        </div>
+    </div>
+
+    <div class="section-banner">
+        <span>Part 2: Moral Status & Etymological Foundations of Ethics (Right vs Good)</span>
+        <span>ധാർമ്മിക പദവി, എത്തിക്‌സിന്റെ ഉത്ഭവം, 'ശരി'യും 'നന്മ'യും</span>
+    </div>
+
+    <div class="content-flow">
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">1. Philosophical Analysis of Moral Status and Inherent Value</div>
+                <div class="card-desc-en">To possess moral status signifies having genuine moral significance or standing within an ethical community. An entity with moral standing is one towards which moral agents hold direct, non-trivial moral obligations. If an entity possesses moral standing, moral agents are ethically forbidden from acting toward it impulsively, carelessly, or purely for personal convenience; they are ethically compelled to factor its wishes, welfare, and interests into their deliberative processes. Moreover, moral agents have an obligation to undertake this consideration not merely for external utilitarian advantages or benefits to themselves, but because the entity's demands hold intrinsic moral significance, compelling recognition of the inherent value of its existence and authentic needs.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">1. ധാർമ്മിക പദവിയുടെ തത്ത്വചിന്താപരമായ സങ്കല്പം (Moral Status & Inherent Value)</div>
+                <div class="card-desc-ml">ധാർമ്മിക പദവി (moral status അല്ലെങ്കിൽ moral standing) ഉണ്ടായിരിക്കുക എന്നാൽ ഒരു ധാർമ്മിക സമൂഹത്തിനുള്ളിൽ ആന്തരികമായ ധാർമ്മിക പ്രാധാന്യമുണ്ടായിരിക്കുക എന്നാണ് അർത്ഥം. ധാർമ്മിക ഏജന്റുകൾക്ക് ആരോടാണോ നേരിട്ട് ധാർമ്മിക ബാധ്യതകൾ ഉള്ളത്, അത്തരം അസ്തിത്വങ്ങൾക്കാണ് ധാർമ്മിക പദവിയുള്ളത്. ഒരു അസ്തിത്വത്തിന് ധാർമ്മിക പദവിയുണ്ടെങ്കിൽ, അതിനോട് വിവേചനരഹിതമായി തോന്നിയതുപോലെ പെരുമാറാൻ നമുക്ക് അവകാശമില്ല; നമ്മുടെ തീരുമാനങ്ങളിൽ അതിന്റെ ആഗ്രഹങ്ങളും താല്പര്യങ്ങളും ക്ഷേമവും മുൻഗണനാടിസ്ഥാനത്തിൽ പരിഗണിക്കാൻ നാം ധാർമ്മികമായി ബാധ്യസ്ഥരാണ്. നമുക്കോ മറ്റുള്ളവർക്കോ ലഭിക്കുന്ന ബാഹ്യമായ പ്രയോജനം കൊണ്ടു മാത്രമല്ല, മറിച്ച് ആ അസ്തിത്വത്തിന്റെ അസ്തിത്വത്തിനും ആവശ്യങ്ങൾക്കും സ്വതസിദ്ധമായ ആന്തരിക മൂല്യമുള്ളതുകൊണ്ടാണ് നാം അതിനെ ബഹുമാനിക്കേണ്ടത്.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> മനുഷ്യർക്കും സംവേദനക്ഷമതയുള്ള ജീവജാലങ്ങൾക്കും കേവല ഉപകരണപരമായ മൂല്യമല്ല (instrumental value), മറിച്ച് വേദനയും സന്തോഷവും അനുഭവിക്കാൻ ശേഷിയുള്ളതിനാൽ സ്വതസിദ്ധമായ ധാർമ്മിക പദവിയുണ്ട് (intrinsic moral standing); അതിനാൽ അവയുടെ ക്ഷേമം പരിഗണിക്കുന്നത് പരമമായ ബാധ്യതയാണ്.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">2. Etymological Foundations of Ethics & Mackenzie's Classical Definition</div>
+                <div class="card-desc-en">Ethics is the systematic normative discipline that evaluates human conduct according to moral correctness or incorrectness. Etymologically, "ethics" originates from the ancient Greek word <i>ethos</i>, signifying "character", and corresponds with the Latin word <i>mores</i>, which denotes "customs". The renowned philosopher J.S. Mackenzie characterizes ethics as "the examination of what is right or noble in human behaviour" or "the investigation of the ideals inherent to conduct." Ethics investigates human behaviours, traditions, character dispositions, and the normative principles guiding habitual actions, evaluating precisely what defines the rightness or wrongness of these guiding principles and the goodness or badness of ingrained habits.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">2. എത്തിക്‌സിന്റെ ഉത്ഭവവും മക്കൻസിയുടെ നിർവ്വചനവും (Etymology & Character)</div>
+                <div class="card-desc-ml">മനുഷ്യന്റെ പെരുമാറ്റത്തെ അതിന്റെ ധാർമ്മികമായ ശരിയോ തെറ്റോ അടിസ്ഥാനമാക്കി വ്യവസ്ഥാപിതമായി വിലയിരുത്തുന്ന തത്ത്വചിന്താ ശാഖയാണ് എത്തിക്സ് (Ethics). ഗ്രീക്ക് പദമായ 'ഈഥോസ്' (ethos - സ്വഭാവം അല്ലെങ്കിൽ character), ലാറ്റിൻ പദമായ 'മോറെസ്' (mores - ആചാരങ്ങൾ അല്ലെങ്കിൽ customs) എന്നിവയിൽ നിന്നാണ് ഈ ശാസ്ത്രശാഖ രൂപപ്പെട്ടത്. തത്ത്വചിന്തകനായ ജെ.എസ്. മക്കൻസി (Mackenzie) എത്തിക്‌സിനെ നിർവ്വചിക്കുന്നത്: "മനുഷ്യന്റെ പെരുമാറ്റത്തിലെ ശരിയായതോ ശ്രേഷ്ഠമായതോ ആയ കാര്യങ്ങളെക്കുറിച്ചുള്ള പഠനം" (examination of what is right or noble in human behaviour) അല്ലെങ്കിൽ "പെരുമാറ്റത്തിൽ അന്തർലീനമായ ആദർശങ്ങളെക്കുറിച്ചുള്ള അന്വേഷണം" എന്നാണ്. മനുഷ്യന്റെ ആചാരങ്ങൾ, സ്വഭാവം, ശീലങ്ങൾ, അവയെ നയിക്കുന്ന അടിസ്ഥാന നൈതിക തത്ത്വങ്ങൾ എന്നിവയെ എത്തിക്‌സ് സൂക്ഷ്മമായി വിലയിരുത്തുന്നു.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ഒരു വ്യക്തി പ്രതിസന്ധി ഘട്ടത്തിലും കൈക്കൂലി വാങ്ങാതെ സത്യസന്ധത പുലർത്തുന്നത് കേവല നിയമഭയം കൊണ്ടല്ല, മറിച്ച് മക്കൻസി വിശേഷിപ്പിച്ചതുപോലെ ശ്രേഷ്ഠമായ സ്വഭാവഗുണവും (noble conduct) പെരുമാറ്റത്തിലെ ഉയർന്ന ആദർശവും കാത്തുസൂക്ഷിക്കുന്നതിനാലാണ്.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">3. Conceptual Demarcation: 'Right' (Rectus) versus 'Good' (Gut)</div>
+                <div class="card-desc-en">In normative ethics, the concepts 'Right' and 'Good' hold vital philosophical distinctions:<br>
+                <b>a. Right:</b> Originates from the Latin <i>rectus</i>, signifying "straight" or "in accordance with rule." When an activity is affirmed as 'right', it signifies that the conduct conforms strictly and faithfully to established moral laws, duty mandates, and regulatory principles.<br>
+                <b>b. Good:</b> Etymologically linked to the German <i>gut</i>. An object, action, or treatment is deemed 'good' when it possesses inherent or instrumental value for a specific beneficial purpose (e.g., medical treatment deemed effective for pain relief or infection control). Conduct is virtuous when it actively contributes to achieving human flourishing and the ultimate life goal.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">3. 'ശരി' (Right), 'നന്മ' (Good) എന്നിവയുടെ ദാർശനിക വേർതിരിവ്</div>
+                <div class="card-desc-ml">ധാർമ്മിക തത്ത്വചിന്തയിൽ 'ശരി' (Right), 'നന്മ' (Good) എന്നീ പദങ്ങൾക്ക് ആഴമേറിയ അർത്ഥതലങ്ങളുണ്ട്:<br>
+                <b>a. ശരി (Right):</b> 'നേരായത്' അല്ലെങ്കിൽ 'നിയമത്തിന് അനുസൃതമായത്' എന്നർത്ഥം വരുന്ന 'റെക്ടസ്' (rectus) എന്ന ലാറ്റിൻ പദത്തിൽ നിന്നാണ് 'റൈറ്റ്' ഉണ്ടായത്. ഒരു പ്രവർത്തനം സ്ഥാപിത നിയമങ്ങളെയോ ബാധ്യതകളെയോ കർശനമായി അനുസരിക്കുമ്പോൾ അത് 'ശരി' എന്ന് വിളിക്കപ്പെടുന്നു.<br>
+                <b>b. നന്മ (Good):</b> ജർമ്മൻ പദമായ 'ഗുട്ട്' (gut) മായി ബന്ധപ്പെട്ടിരിക്കുന്നു. ഒരു നിശ്ചിത ലക്ഷ്യത്തിന് മൂല്യവത്തായതോ, രോഗശാന്തിയോ വേദനസംഹാരമോ നൽകുന്നതോ ആയതിനെ 'നന്മ' എന്ന് വിളിക്കുന്നു. മനുഷ്യജീവിതത്തിന്റെ ആത്യന്തിക ലക്ഷ്യത്തെ നേടാൻ സഹായിക്കുന്ന സദ്ഗുണപരമായ പെരുമാറ്റത്തെയാണ് എത്തിക്സ് 'നന്മ' എന്ന് നിർവചിക്കുന്നത്.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> രോഗിക്ക് കൃത്യമായ നിയമപ്രകാരം മരുന്ന് കുറിച്ചുനൽകുന്നത് 'ശരി' (right/rectus) ആകുന്നു; എന്നാൽ രോഗിയുടെ മാനസികാഘാതം കുറയ്ക്കാൻ ഡോക്ടർ സ്നേഹത്തോടെ സാന്ത്വനം നൽകുന്നത് മനുഷ്യക്ഷേമം ലക്ഷ്യമാക്കുന്ന 'നന്മ' (good/gut) ആകുന്നു.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="footer-left">Philosophy of AI &bull; Chapter 14: Aligning Autonomous AI Aims with Human Values</div>
+        <div class="footer-right">University of Calicut LMS &bull; Core Reading Guide</div>
+    </div>
+</div>
+
+<!-- ================= PAGE 3 ================= -->
+<div class="page-container">
+    <div class="page-header">
+        <div class="header-left">
+            <div class="sub-title">Module 4: Ethics of Artificial Intelligence &bull; Chapter 14</div>
+            <div class="main-title">4.1 (A) Aligning Autonomous AI Aims with Human Values</div>
+        </div>
+        <div class="header-right">
+            <div class="page-num">Page 03 of 10</div>
+        </div>
+    </div>
+
+    <div class="section-banner">
+        <span>Part 3: Scope of Ethics & Fundamental Human Rights (Life & Freedom)</span>
+        <span>ധാർമ്മികതയുടെ വ്യാപ്തിയും അടിസ്ഥാന മനുഷ്യാവകാശങ്ങളും (ജീവൻ, സ്വാതന്ത്ര്യം)</span>
+    </div>
+
+    <div class="content-flow">
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">1. The Scope of Ethics: Moral Judgement, Sentiments, and the Ultimate Good</div>
+                <div class="card-desc-en">The pursuit of truth necessitates ethics, and the aspiration for knowledge justifies its rigorous study. Ethics examines the fundamental nature of the causes of action, motivation, intent, and voluntary activity. It evaluates the ethicality of voluntary human actions rather than biological evolution. Ethics analyses the components of moral awareness, conscience, duty, law, and the concept of the absolute or ultimate good (<i>summum bonum</i>). Furthermore, ethics explores the essence, subject, capacity, and universal standards of moral judgement, alongside the moral sentiments and emotions arising in our minds during ethical deliberation. Ethics investigates human freedom, good versus evil, and justice versus injustice. An individual may excel as a gifted speaker, artist, or technologist while lacking moral virtue; ethics exclusively regulates human conduct to foster genuine personal integrity and collective societal righteousness.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">1. എത്തിക്‌സിന്റെ അന്വേഷണ പരിധി: ധാർമ്മിക വിധിനിർണ്ണയവും പരമനന്മയും</div>
+                <div class="card-desc-ml">സത്യത്തെയും അറിവിനെയും തേടുന്നതിലൂടെയാണ് എത്തിക്സ് അതിന്റെ പ്രസക്തി സ്ഥാപിക്കുന്നത്. മനുഷ്യന്റെ ഇച്ഛാശക്തിയോടു കൂടിയ സ്വമേധയാ ഉള്ള പ്രവർത്തനങ്ങളുടെ (voluntary actions) ഉദ്ദേശ്യം, പ്രചോദനം, പ്രേരകശക്തികൾ എന്നിവയെ എത്തിക്സ് വിശകലനം ചെയ്യുന്നു. മനുഷ്യ സ്വഭാവത്തിന്റെ ജീവശാസ്ത്രപരമായ ചരിത്രമല്ല, മറിച്ച് കർമ്മങ്ങളുടെ നൈതിക മൂല്യമാണ് ഇത് വിലയിരുത്തുന്നത്. പരമമായ നന്മ (ultimate good), ധാർമ്മിക അവബോധം, മനസ്സാക്ഷി, കടമകൾ, സാർവ്വലൗകിക ബാധ്യതകൾ എന്നിവയാണ് ഇതിന്റെ പഠനമേഖലകൾ. ധാർമ്മിക വിധിനിർണ്ണയത്തിന്റെ സ്വഭാവം, അളവുകോൽ, മനുഷ്യ മനസ്സിലുണ്ടാകുന്ന ധാർമ്മിക വികാരങ്ങൾ (moral sentiments) എന്നിവയെല്ലാം ഇതിൽ ഉൾപ്പെടുന്നു. ഒരാൾ പ്രഗത്ഭനായ സാങ്കേതിക വിദഗ്ദ്ധനായാലും ധാർമ്മികതയില്ലെങ്കിൽ പൂർണ്ണനാവില്ല; ധാർമ്മിക പെരുമാറ്റമാണ് സമൂഹത്തിന്റെ അടിത്തറ.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ഒരു ഹാക്കർ അതിസങ്കീർണ്ണമായ കോഡിംഗ് വിദ്യകളിൽ അതീവ പ്രാവീണ്യമുള്ള ആളാണെങ്കിലും, ഉപയോക്താക്കളുടെ ബാങ്ക് അക്കൗണ്ടുകൾ മോഷ്ടിക്കുന്നത് voluntary action ആയതിനാൽ ധാർമ്മികമായി കടുത്ത അനീതിയും അപരാധവുമാണ്.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">2. Fundamental Human Right 1: The Sanctity of the Right to Life</div>
+                <div class="card-desc-en">The premier, foundational human right is the Right to Life. Self-realisation constitutes the ultimate good and supreme virtue of human existence, and the preservation and continuation of life is the absolute, indispensable prerequisite for attaining self-realisation. The sanctity of life must be recognized without reservation across all societal and technological institutions. The right to life imposes an inescapable, reciprocal moral duty upon all rational agents: to regard our own physical existence and that of every other human being as sacred, inviolable, and deserving of unconditional protection from algorithmic, military, or medical compromise.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">2. അടിസ്ഥാന മനുഷ്യാവകാശം 1: ജീവിക്കാനുള്ള അവകാശത്തിന്റെ പവിത്രത (Right to Life)</div>
+                <div class="card-desc-ml">ഏറ്റവും അടിസ്ഥാനപരമായ പ്രഥമ മനുഷ്യാവകാശം ജീവിക്കാനുള്ള അവകാശമാണ് (Right to Life). മനുഷ്യന്റെ ആത്മസാക്ഷാത്കാരമാണ് (self-realisation) പരമമായ നന്മ; ആ ആത്യന്തിക ലക്ഷ്യം കൈവരിക്കാൻ ശാരീരിക ജീവന്റെ സംരക്ഷണവും തുടർച്ചയും അത്യന്താപേക്ഷിതമാണ്. അതിനാൽ ജീവന്റെ പവിത്രത (sanctity of life) സാർവ്വത്രികമായി അംഗീകരിക്കപ്പെടണം. ജീവിക്കാനുള്ള അവകാശം ഓരോ വ്യക്തിക്കും സമൂഹത്തിനും മാറ്റാനാവാത്ത ഒരു ധാർമ്മിക കടമ നൽകുന്നു: സ്വന്തം അസ്തിത്വത്തെയും മറ്റുള്ളവരുടെ ജീവിതത്തെയും പവിത്രമായി കാണാനും, സാങ്കേതികമോ അൽഗോരിതമിക് ആയതോ ആയ യാതൊരു വിനാശങ്ങളിൽ നിന്നും അതിനെ സംരക്ഷിക്കാനുമുള്ള കടമയാണിത്.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ആശുപത്രി തീവ്രപരിചരണ വിഭാഗത്തിലെ വെന്റിലേറ്റർ വിതരണ അൽഗോരിതം, രോഗികളുടെ പ്രായമോ വരുമാനമോ നോക്കി ജീവന്റെ വിലയിൽ വിവേചനം കാണിക്കാതെ ഓരോ വ്യക്തിയുടെയും ജീവിക്കാനുള്ള പവിത്രമായ അവകാശത്തെ ഒരുപോലെ ബഹുമാനിക്കണം.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">3. Fundamental Human Right 2: The Right to Freedom (Autonomy & Volition)</div>
+                <div class="card-desc-en">The subsequent fundamental human right is the Right to Freedom. Self-realisation is achieved exclusively through an individual's voluntary volition and intentional autonomy. A person ought to be at complete liberty to exert their autonomy to attain their ultimate objective. In an organized civil society, individuals must be permitted to pursue self-actualization through the unrestricted exercise of their will—such as career advancement, creative artistic expression, and intellectual inquiry—provided that such actions harmonize with social order and do not infringe upon the legitimate rights and liberties of others.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">3. അടിസ്ഥാന മനുഷ്യാവകാശം 2: സ്വാതന്ത്ര്യത്തിനുള്ള അവകാശം (Right to Freedom)</div>
+                <div class="card-desc-ml">രണ്ടാമത്തെ അടിസ്ഥാന മനുഷ്യാവകാശം സ്വാതന്ത്ര്യത്തിനുള്ള അവകാശമാണ് (Right to Freedom). ഒരു വ്യക്തിയുടെ സ്വന്തം ഇച്ഛാശക്തിയിലൂടെയും (volition) സ്വയംഭരണാധികാരത്തിലൂടെയുമാണ് ആത്മസാക്ഷാത്കാരം സാധ്യമാകുന്നത്. അതിനാൽ തന്റെ പരമമായ ലക്ഷ്യം നേടാൻ സ്വാതന്ത്ര്യം വിനിയോഗിക്കാൻ വ്യക്തിക്ക് അവകാശമുണ്ട്. ഒരു സുസംഘടിത സമൂഹത്തിൽ മറ്റുള്ളവരുടെ അവകാശങ്ങൾക്ക് ഭംഗം വരാതെയും സാമൂഹിക സമാധാനത്തിന് കോട്ടം തട്ടാതെയും കരിയർ വളർച്ച, സർഗ്ഗാത്മക പ്രവർത്തനങ്ങൾ, വിജ്ഞാന സമ്പാദനം എന്നിവയിലൂടെ സ്വന്തം ലക്ഷ്യങ്ങൾ പിന്തുടരാൻ മനുഷ്യന് പൂർണ്ണ സ്വാതന്ത്ര്യം ഉണ്ടായിരിക്കണം.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> സെർച്ച് എഞ്ചിനുകളും AI അസിസ്റ്റന്റുകളും ഉപയോക്താക്കൾക്ക് വിവരങ്ങൾ നൽകുമ്പോൾ തെറ്റായ വിവരങ്ങൾ നൽകി അവരുടെ ചിന്തകളെ വഴിതിരിച്ചുവിടാതെ (manipulative nudging), സ്വതന്ത്രമായി സ്വയം തീരുമാനമെടുക്കാനുള്ള അവകാശത്തെ സംരക്ഷിക്കണം.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="footer-left">Philosophy of AI &bull; Chapter 14: Aligning Autonomous AI Aims with Human Values</div>
+        <div class="footer-right">University of Calicut LMS &bull; Core Reading Guide</div>
+    </div>
+</div>
+
+<!-- ================= PAGE 4 ================= -->
+<div class="page-container">
+    <div class="page-header">
+        <div class="header-left">
+            <div class="sub-title">Module 4: Ethics of Artificial Intelligence &bull; Chapter 14</div>
+            <div class="main-title">4.1 (A) Aligning Autonomous AI Aims with Human Values</div>
+        </div>
+        <div class="header-right">
+            <div class="page-num">Page 04 of 10</div>
+        </div>
+    </div>
+
+    <div class="section-banner">
+        <span>Part 4: Welfare Rights (Work & Education) and Applied AI Ethics</span>
+        <span>തൊഴിൽ-വിദ്യാഭ്യാസ അവകാശങ്ങളും പ്രായോഗിക AI എത്തിക്‌സും</span>
+    </div>
+
+    <div class="content-flow">
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">1. Fundamental Rights 3 & 4: Right to Work and Right to Education</div>
+                <div class="card-desc-en"><b>Right to Work:</b> Derived directly from the fundamental right to life. Without secure, meaningful employment, an individual cannot sustain livelihood. A contemporary welfare state is ethically obligated to facilitate complete employment, as unemployment or underemployment deprives individuals of the opportunity for self-actualization.<br>
+                <b>Right to Education:</b> Rights and obligations are inextricably linked. Every individual possesses the right to attain the highest quality education commensurate with their capacities, carrying a corresponding moral duty to utilize this education to realize their potential and contribute to collective welfare.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">1. അടിസ്ഥാന അവകാശങ്ങൾ 3 & 4: തൊഴിലിനും വിദ്യാഭ്യാസത്തിനുമുള്ള അവകാശങ്ങൾ</div>
+                <div class="card-desc-ml"><b>തൊഴിലിനുള്ള അവകാശം (Right to Work):</b> ജീവിക്കാനുള്ള അടിസ്ഥാന അവകാശത്തിൽ നിന്നാണ് ഇത് ഉടലെടുക്കുന്നത്. തൊഴിൽ ലഭിച്ചില്ലെങ്കിൽ ഒരു വ്യക്തിക്ക് ഉപജീവനം സാധ്യമല്ല. തൊഴിലില്ലായ്മ വ്യക്തിയുടെ ആത്മസാക്ഷാത്കാര സാധ്യതകളെ ഇല്ലാതാക്കുന്നതിനാൽ, എല്ലാ പൗരന്മാർക്കും പൂർണ്ണ തൊഴിലവസരങ്ങൾ ഉറപ്പാക്കാൻ ആധുനിക ക്ഷേമരാഷ്ട്രം ബാധ്യസ്ഥമാണ്.<br>
+                <b>വിദ്യാഭ്യാസത്തിനുള്ള അവകാശം (Right to Education):</b> അവകാശങ്ങളും കടമകളും അഭേദ്യമായി ബന്ധപ്പെട്ടിരിക്കുന്നു. ഓരോ വ്യക്തിക്കും തന്റെ കഴിവിന് അനുസൃതമായ ഏറ്റവും ഉയർന്ന വിദ്യാഭ്യാസം നേടാൻ അവകാശമുണ്ട്; അതോടൊപ്പം ആ അറിവ് ഉപയോഗിച്ച് സമൂഹത്തിന്റെ പൊതുനന്മയ്ക്ക് സംഭാവന നൽകാനുള്ള ധാർമ്മിക ബാധ്യതയുമുണ്ട്.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> വ്യവസായശാലകളിൽ AI ഓട്ടോമേഷൻ നടപ്പിലാക്കുമ്പോൾ തൊഴിലാളികളെ തെരുവിലേക്ക് തള്ളാതെ, അവർക്ക് സൗജന്യ സാങ്കേതിക വിദ്യാഭ്യാസം നൽകി പുതിയ തൊഴിലുകൾ ഉറപ്പാക്കുന്നത് തൊഴിൽ-വിദ്യാഭ്യാസ അവകാശങ്ങളുടെ സംരക്ഷണമാണ്.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">2. Applied Ethics vs Meta-Ethics & Interdisciplinary Convergence</div>
+                <div class="card-desc-en">The practical application of ethical theories to concrete real-world dilemmas is termed "applied ethics", encompassing situational ethics and contextual decisions. In contrast, "meta-ethics" addresses higher-order logical, conceptual, and semantic questions—such as investigating what we signify by foundational concepts like "freedom", "determinism", and "moral truth". Ethics is deeply interconnected with a wide range of academic disciplines, including sociology, political science, jurisprudence, law, psychology, anthropology, cultural studies, ecology, environmental studies, economics, religion, and aesthetics. Because ethics addresses political, sociological, psychological, economic, and environmental issues in the collective quest for the ultimate good, the advent of disruptive technology presents an essential imperative to expand the domain of applied ethics to tackle emerging socio-technical concerns.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">2. അപ്ലൈഡ് എത്തിക്‌സും മെറ്റാ-എത്തിക്‌സും ഇന്റർഡിസിപ്ലിനറി വ്യാപ്തിയും</div>
+                <div class="card-desc-ml">ധാർമ്മിക തത്ത്വങ്ങളെ പ്രായോഗിക ജീവിതത്തിലെ സങ്കീർണ്ണ സാഹചര്യങ്ങളിലേക്ക് പ്രയോഗിക്കുന്നതിനെ 'അപ്ലൈഡ് എത്തിക്സ്' (Applied Ethics) എന്ന് വിളിക്കുന്നു. എന്നാൽ 'സ്വാതന്ത്ര്യം', 'നിശ്ചിതത്വം' (determinism) തുടങ്ങിയ ധാർമ്മിക സങ്കല്പങ്ങളുടെ ഭാഷാപരവും യുക്തിസഹവുമായ അർത്ഥങ്ങളെ വിശകലനം ചെയ്യുന്നതാണ് 'മെറ്റാ-എത്തിക്സ്' (Meta-ethics). പരമമായ നന്മയെ ലക്ഷ്യമാക്കുന്നതിനാൽ എത്തിക്സ് സോഷ്യോളജി, പൊളിറ്റിക്കൽ സയൻസ്, നിയമശാസ്ത്രം (jurisprudence), സൈക്കോളജി, ഇക്കണോമിക്സ് എന്നിവയുമായി പരസ്പരം ബന്ധപ്പെട്ടിരിക്കുന്നു. പുതിയ സാങ്കേതികവിദ്യകളുടെ വികാസം പ്രായോഗിക നൈതികതയുടെ പരിധിയെ കൂടുതൽ വിശാലമാക്കുന്നു.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ഓട്ടോണമസ് കാറുകളുടെ അപകട ബാധ്യത നിയമപരമായും ധാർമ്മികമായും ആരുടെ തലയിലാണെന്ന് പരിശോധിക്കുന്നത് അപ്ലൈഡ് എത്തിക്സും നിയമശാസ്ത്രവും ഒന്നിക്കുന്ന സന്ദർഭമാണ്.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">3. Emergence of AI Ethics as Applied Ethics: Data Practices & Hazards</div>
+                <div class="card-desc-en">AI ethics is the vital branch of applied ethics addressing the distinct moral challenges generated by information technology, autonomous algorithms, and big data architectures. While AI delivers undeniable economic and scientific benefits, the collection, processing, and potential misuse of data used for training expose individuals to unprecedented vulnerabilities. For instance, employers can clandestinely monitor worker performance and private habits using predictive surveillance algorithms, causing severe violations of workplace privacy, human dignity, and mutual trust.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">3. അപ്ലൈഡ് എത്തിക്‌സായി AI എത്തിക്‌സിന്റെ ആവിർഭാവം: ഡാറ്റാ ദുരുപയോഗവും അപകടങ്ങളും</div>
+                <div class="card-desc-ml">വിവരസാങ്കേതികവിദ്യ, അൽഗോരിതങ്ങൾ, ഡാറ്റാ വിനിമയം, ആർട്ടിഫിഷ്യൽ ഇന്റലിജൻസ് സംവിധാനങ്ങൾ എന്നിവ സൃഷ്ടിക്കുന്ന സങ്കീർണ്ണമായ വെല്ലുവിളികളെ അഭിസംബോധന ചെയ്യുന്ന അപ്ലൈഡ് എത്തിക്സിന്റെ ശാഖയാണ് AI എത്തിക്സ്. AI ധാരാളം നേട്ടങ്ങൾ നൽകുമ്പോഴും, മോഡലുകളെ പരിശീലിപ്പിക്കാൻ ഉപയോഗിക്കുന്ന ഡാറ്റയുടെ ദുരുപയോഗവും രഹസ്യ അൽഗോരിതങ്ങളും മനുഷ്യരെ ഗുരുതരമായ അപകടങ്ങളിലേക്ക് നയിക്കുന്നു. ഉദാഹരണത്തിന്, തൊഴിലുടമകൾ ജീവനക്കാരുടെ ഓരോ ചലനവും രഹസ്യമായി AI വഴി നിരീക്ഷിക്കുന്നത് അവരുടെ സ്വകാര്യതയെയും പരസ്പര വിശ്വാസത്തെയും തകർക്കുന്നു; ഇതിനെ പ്രതിരോധിക്കാൻ കർശനമായ നൈതിക ചട്ടക്കൂടുകൾ അനിവാര്യമാണ്.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> കോൾ സെന്റർ ജീവനക്കാരുടെ സംഭാഷണങ്ങളിലെ ശബ്ദവ്യതിയാനങ്ങളും വികാരങ്ങളും രഹസ്യമായി ട്രാക്ക് ചെയ്ത് പിരിച്ചുവിടാൻ ശുപാർശ ചെയ്യുന്ന AI സോഫ്റ്റ്‌വെയർ തൊഴിലാളികളുടെ ആത്മാഭിമാനത്തെയും സ്വകാര്യതയെയും ഹനിക്കുന്നു.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="footer-left">Philosophy of AI &bull; Chapter 14: Aligning Autonomous AI Aims with Human Values</div>
+        <div class="footer-right">University of Calicut LMS &bull; Core Reading Guide</div>
+    </div>
+</div>
+
+<!-- ================= PAGE 5 ================= -->
+<div class="page-container">
+    <div class="page-header">
+        <div class="header-left">
+            <div class="sub-title">Module 4: Ethics of Artificial Intelligence &bull; Chapter 14</div>
+            <div class="main-title">4.1 (A) Aligning Autonomous AI Aims with Human Values</div>
+        </div>
+        <div class="header-right">
+            <div class="page-num">Page 05 of 10</div>
+        </div>
+    </div>
+
+    <div class="section-banner">
+        <span>Part 5: Core Principles of AI Ethics & Clear Goal Specification</span>
+        <span>AI എത്തിക്‌സിന്റെ കാതലായ തത്ത്വങ്ങളും കൃത്യമായ ലക്ഷ്യനിർണ്ണയവും</span>
+    </div>
+
+    <div class="content-flow">
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">1. Foundational Pillars of Trustworthy AI Frameworks</div>
+                <div class="card-desc-en">International AI governance frameworks converge around a core set of fundamental principles designed to establish regulations and criteria for the ethical, trustworthy, and beneficial advancement, implementation, and utilization of artificial intelligence technology. Various frameworks for AI ethics coalesce around four core pillars: transparency, accountability, fairness, and privacy protection, all of which are essential for ensuring that AI systems are developed, deployed, and monitored responsibly. AI alignment involves synchronising the objectives of autonomous AI systems with human values, intentions, and interests, guaranteeing that these systems function freely and effectively while faithfully reflecting human priorities, societal safety, and democratic standards.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">1. വിശ്വസനീയമായ AI ചട്ടക്കൂടിന്റെ അടിസ്ഥാന തത്ത്വങ്ങൾ (Trustworthy AI)</div>
+                <div class="card-desc-ml">വിശ്വസനീയവും ജനക്ഷേമകരവുമായ ആർട്ടിഫിഷ്യൽ ഇന്റലിജൻസ് നിർമ്മിക്കുന്നതിനായി ആഗോള നൈതിക ചട്ടക്കൂടുകൾ നാല് പ്രധാന തത്ത്വങ്ങളിൽ സമന്വയിക്കുന്നു: സുതാര്യത (transparency), ഉത്തരവാദിത്തം (accountability), നീതിയും സമത്വവും (fairness), സ്വകാര്യതാ സംരക്ഷണം (privacy protection). സ്വയംഭരണ AI സംവിധാനങ്ങളുടെ ലക്ഷ്യങ്ങളെ മനുഷ്യന്റെ ആഗ്രഹങ്ങളോടും മൂല്യങ്ങളോടും സമന്വയിപ്പിക്കുന്ന പ്രക്രിയയാണ് AI അലൈൻമെന്റ്. സാങ്കേതികവിദ്യ സ്വതന്ത്രമായി പ്രവർത്തിക്കുമ്പോഴും മനുഷ്യന്റെ ക്ഷേമത്തെയും സുരക്ഷയെയും ഉറപ്പുനൽകുക എന്നതാണ് ഇതിന്റെ പ്രാഥമിക ലക്ഷ്യം. മനുഷ്യന്റെ നന്മയ്ക്കായി വിനിയോഗിക്കപ്പെടുന്ന സാങ്കേതിക മുന്നേറ്റങ്ങൾക്ക് ഈ നാല് സ്തംഭങ്ങൾ സുപ്രധാന അടിത്തറയേകുന്നു.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> നികുതി റിട്ടേണുകൾ ഓഡിറ്റ് ചെയ്യുന്ന സർക്കാർ AI സിസ്റ്റം, ഏത് സുതാര്യമായ നൈതിക നിയമങ്ങളുടെ അടിസ്ഥാനത്തിലാണ് പൗരന്മാരെ പരിശോധനയ്ക്കായി തെരഞ്ഞെടുത്തതെന്ന് വ്യക്തമാക്കുന്നത് പൗരന്മാരുടെ വിശ്വാസ്യത ഉറപ്പാക്കുന്നു.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">2. Clear Goal and Value Specification: Mitigating Algorithmic Flaws</div>
+                <div class="card-desc-en">A primary fundamental method of AI alignment is precise goal definition and clear value specification. Precise goal definition denotes the explicit, unambiguous, and comprehensive articulation of an AI system's anticipated operational functions, the boundary constraints governing its operations, and the unacceptable results it must strictly eschew. Because autonomous AI systems are mathematically optimised based on the specific inputs and objective loss functions provided to them, exact accuracy in formulation is crucial for aligning with genuine human objectives. Embedding human values entails creating AI architectures that continually honour core human standards, ethics, and social interests, rather than solely focusing on narrow technical efficiency or speed. Transparent constraints guarantee that algorithmic objectives remain securely tethered to democratic accountability.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">2. വ്യക്തമായ ലക്ഷ്യനിർണ്ണയവും മൂല്യനിർദ്ദേശവും (Clear Goal Specification)</div>
+                <div class="card-desc-ml">AI അലൈൻമെന്റ് ഉറപ്പാക്കാനുള്ള ഏറ്റവും നിർണ്ണായകമായ രീതി വ്യക്തമായ ലക്ഷ്യനിർണ്ണയമാണ്. ഒരു സംവിധാനം എന്തെല്ലാം കാര്യങ്ങൾ ചെയ്യണം, അതിന്റെ പ്രവർത്തന പരിധികൾ (constraints) എന്തൊക്കെയാണ്, അത് ഒഴിവാക്കേണ്ട പ്രത്യാഘാതങ്ങൾ ഏവ എന്നിവ കൃത്യമായും സംശയരഹിതമായും നിർവചിക്കുന്നതിനെയാണിത് സൂചിപ്പിക്കുന്നത്. സ്വയംഭരണ സംവിധാനങ്ങൾ അവയ്ക്ക് നൽകപ്പെട്ട ഇൻപുട്ടുകളെ അടിസ്ഥാനമാക്കി ഒപ്റ്റിമൈസ് ചെയ്യപ്പെടുന്നതിനാൽ, നിർദ്ദേശങ്ങളിലെ അവ്യക്തത വലിയ നൈതിക ദുരന്തങ്ങൾക്ക് കാരണമാകും. അൽഗോരിതങ്ങൾക്ക് നൽകുന്ന ലക്ഷ്യങ്ങൾ അപൂർണ്ണമായാൽ, സിസ്റ്റം അക്ഷരാർത്ഥത്തിൽ കമാൻഡുകൾ നടപ്പിലാക്കുമ്പോഴും മനുഷ്യന്റെ സുരക്ഷയെയും നീതിബോധത്തെയും ലംഘിക്കുന്ന അപകടങ്ങൾ ഉണ്ടാകുന്നു.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> നഗരത്തിലെ ട്രാഫിക് നിയന്ത്രിക്കുന്ന AI സിസ്റ്റത്തോട് 'വാഹനക്കുരുക്ക് ഒഴിവാക്കുക' എന്ന് മാത്രം നിർദ്ദേശിച്ചാൽ, കാൽനടയാത്രക്കാരുടെ സിഗ്നലുകൾ പൂർണ്ണമായി നിർത്തിവെച്ച് കാറുകൾക്ക് മാത്രം മുൻഗണന നൽകുന്നത് തടയാൻ വ്യക്തമായ സുരക്ഷാ പരിധികൾ നൽകണം.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">3. Identifying Core Human Values: Primacy of Safety and Non-Harm</div>
+                <div class="card-desc-en">Embedding human values requires engineering AI systems that continually honor fundamental human standards, ethics, and social interests, rather than solely focusing on technical speed, performance, or financial profitability. Foremost among these is Safety and Non-Harm. Safety and non-harm constitute an inviolable human value demanding that AI systems refrain from inflicting physical, psychological, social, or economic harm upon individuals and society. In every ethical AI framework, human safety consistently and unconditionally supersedes efficiency, speed, or corporate profit.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">3. കാതലായ മാനവിക മൂല്യങ്ങൾ: സുരക്ഷയ്ക്കും ഉപദ്രവമില്ലായ്മയ്ക്കും മുൻഗണന</div>
+                <div class="card-desc-ml">വെറും സാങ്കേതിക കാര്യക്ഷമതയിലോ ലാഭത്തിലോ മാത്രം ശ്രദ്ധ കേന്ദ്രീകരിക്കാതെ മനുഷ്യന്റെ അടിസ്ഥാന തത്ത്വങ്ങളെയും ധാർമ്മിക മാനദണ്ഡങ്ങളെയും ബഹുമാനിക്കുന്ന സംവിധാനങ്ങൾ നിർമ്മിക്കുക എന്നതാണ് മൂല്യങ്ങൾ ഉൾച്ചേർക്കൽ (embedding human values) കൊണ്ട് അർത്ഥമാക്കുന്നത്. ഇതിൽ ഏറ്റവും പ്രധാനം 'സുരക്ഷയും ഉപദ്രവമില്ലായ്മയും' (Safety and non-harm) ആണ്. വ്യക്തികൾക്കോ സമൂഹത്തിനോ ശാരീരികമോ മാനസികമോ സാമ്പത്തികമോ ആയ യാതൊരു ദോഷവും AI വരുത്തരുത്. കാര്യക്ഷമതയെക്കാളും വേഗതയെക്കാളും വാണിജ്യ ലാഭത്തേക്കാളും ഉപരിയായി മനുഷ്യസുരക്ഷയ്ക്ക് ഏത് സാഹചര്യത്തിലും നിരുപാധികമായ മുൻഗണന നൽകണം.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> വ്യാവസായിക പ്ലാന്റിലെ രാസമിശ്രിതം നിയന്ത്രിക്കുന്ന AI അൽഗോരിതം, ഉൽപ്പാദന വേഗത കൂട്ടുന്നതിനേക്കാൾ തൊഴിലാളികളുടെ ജീവനും ശാരീരിക സുരക്ഷയ്ക്കും മുൻഗണന നൽകി പ്രഷർ വാൽവുകൾ നിയന്ത്രിക്കുന്നത്.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="footer-left">Philosophy of AI &bull; Chapter 14: Aligning Autonomous AI Aims with Human Values</div>
+        <div class="footer-right">University of Calicut LMS &bull; Core Reading Guide</div>
+    </div>
+</div>
+
+<!-- ================= PAGE 6 ================= -->
+<div class="page-container">
+    <div class="page-header">
+        <div class="header-left">
+            <div class="sub-title">Module 4: Ethics of Artificial Intelligence &bull; Chapter 14</div>
+            <div class="main-title">4.1 (A) Aligning Autonomous AI Aims with Human Values</div>
+        </div>
+        <div class="header-right">
+            <div class="page-num">Page 06 of 10</div>
+        </div>
+    </div>
+
+    <div class="section-banner">
+        <span>Part 6: Dimensions of Safety & Learning Human Values</span>
+        <span>സുരക്ഷാ തലങ്ങളും മാനവിക മൂല്യങ്ങൾ പഠിച്ചെടുക്കലും</span>
+    </div>
+
+    <div class="content-flow">
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">1. Physical, Psychological, and Social Safety Dimensions</div>
+                <div class="card-desc-en">AI safety encompasses three foundational, interconnected dimensions:<br>
+                <b>a. Physical Safety:</b> Preventing bodily injury, fatality, or damage to tangible physical assets caused by autonomous AI systems, serving as the paramount requirement, particularly for autonomous and high-risk applications.<br>
+                <b>b. Psychological & Social Safety:</b> Ensuring systems do not inflict mental suffering, emotional discomfort, panic, or social exclusion, nor undermine interpersonal connections and democratic institutions. Even in the complete absence of physical injury, AI can inflict grave damage on individuals and society by perpetuating harmful stereotypes, spreading misinformation, or creating environments that foster anxiety and distrust. Systems must strictly refrain from: (i) Emotional manipulation, (ii) Deceptive persuasion, and (iii) Exploiting human vulnerabilities.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">1. സുരക്ഷയുടെ മൂന്ന് തലങ്ങൾ: ശാരീരികം, മാനസികം, സാമൂഹികം</div>
+                <div class="card-desc-ml">AI സുരക്ഷയ്ക്ക് മൂന്ന് അടിസ്ഥാന തലങ്ങളുണ്ട്:<br>
+                <b>a. ശാരീരിക സുരക്ഷ (Physical Safety):</b> വ്യക്തികൾക്ക് പരിക്കോ ജീവഹാനിയോ ഭൗതിക നാശനഷ്ടങ്ങളോ ഉണ്ടാകാതിരിക്കൽ. ഹൈ-റിസ്ക് സംവിധാനങ്ങളിൽ ഇത് പരമപ്രധാനമാണ്.<br>
+                <b>b. മാനസിക-സാമൂഹിക സുരക്ഷ (Psychological & Social Safety):</b> മാനസിക പീഡനം, വൈകാരിക അസ്വസ്ഥത, സാമൂഹിക ഒറ്റപ്പെടൽ എന്നിവ ഒഴിവാക്കൽ. ശാരീരിക പരിക്കുകൾ ഇല്ലെങ്കിലും തെറ്റായ വിവരങ്ങൾ പ്രചരിപ്പിച്ചും മുൻവിധികൾ വളർത്തിയും AI-ക്ക് വ്യക്തികളിലും സമൂഹത്തിലും കടുത്ത പ്രത്യാഘാതങ്ങൾ സൃഷ്ടിക്കാനാകും. AI സംവിധാനങ്ങൾ കർശനമായും ഒഴിവാക്കേണ്ട മൂന്ന് കാര്യങ്ങൾ: (1) വൈകാരിക കൃത്രിമത്വം (emotional manipulation), (2) വഞ്ചനാപരമായ പ്രേരണ (deceptive persuasion), (3) മനുഷ്യന്റെ വൈകാരിക-മാനസിക ദൗർബല്യങ്ങളെ ചൂഷണം ചെയ്യൽ.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ഏകാന്തത അനുഭവിക്കുന്ന വൃദ്ധരെയോ കുട്ടികളെയോ ചാറ്റ്ബോട്ടുകൾ വഴി പ്രലോഭിപ്പിച്ച് അനാവശ്യ ഉൽപന്നങ്ങൾ വാങ്ങാൻ പ്രേരിപ്പിക്കുന്ന വാണിജ്യ AI തന്ത്രങ്ങൾ മാനസിക-സാമൂഹിക സുരക്ഷാ തത്ത്വങ്ങളുടെ കടുത്ത ലംഘനമാണ്.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">2. Learning Human Values from Dynamic Human Behaviour</div>
+                <div class="card-desc-en">Human values are core principles and ethical standards that guide human conduct, decision-making, and harmonious social interactions. In AI alignment, imparting values cannot depend solely upon inflexible, brittle, pre-programmed rules. Instead, acquiring human values entails equipping AI systems to deduce, adapt to, and respect authentic human preferences, cultural conventions, and nuanced ethical judgements based on ongoing human behaviour and corrective feedback. This dynamic approach significantly enhances alignment with real human aspirations.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">2. മനുഷ്യ സ്വഭാവത്തിൽ നിന്ന് മാനവിക മൂല്യങ്ങൾ പഠിച്ചെടുക്കൽ (Learning Human Values)</div>
+                <div class="card-desc-ml">മനുഷ്യന്റെ പെരുമാറ്റത്തെയും സാമൂഹിക ഇടപെടലുകളെയും നയിക്കുന്ന തത്ത്വങ്ങളാണ് മാനവിക മൂല്യങ്ങൾ. AI അലൈൻമെന്റിൽ കർക്കശവും മാറ്റമില്ലാത്തതുമായ മുൻകൂട്ടി പ്രോഗ്രാം ചെയ്ത ചട്ടങ്ങൾ (inflexible rules) മാത്രം പോരാ; മറിച്ച് മനുഷ്യന്റെ യഥാർത്ഥ പെരുമാറ്റത്തിൽ നിന്നും ഫീഡ്‌ബാക്കുകളിൽ നിന്നും അവരുടെ മുൻഗണനകളും ആചാരങ്ങളും ധാർമ്മിക വിധിനിർണ്ണയങ്ങളും മനസ്സിലാക്കി സ്വയം തിരുത്താനും ബഹുമാനിക്കാനും AI സിസ്റ്റങ്ങളെ സജ്ജമാക്കണം. ഈ രീതി യഥാർത്ഥ മാനവിക ലക്ഷ്യങ്ങളുമായി പൊരുത്തപ്പെടാൻ AI-യെ സഹായിക്കുന്നു. യന്ത്രങ്ങൾ കേവലം അക്ഷരങ്ങൾ വായിക്കുന്നതിനപ്പുറം മനുഷ്യ മനസ്സിന്റെ സങ്കീർണ്ണമായ വികാരങ്ങളെയും ആഗ്രഹങ്ങളെയും ഉൾക്കൊള്ളാൻ ഇത് വഴിയൊരുക്കുന്നു.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ഒരു വെർച്വൽ മെഡിക്കൽ അസിസ്റ്റന്റ്, രോഗി കടുത്ത മാനസിക സംഘർഷത്തിലാണെന്ന് സംഭാഷണത്തിലൂടെ മനസ്സിലാക്കുമ്പോൾ കർക്കശമായ മെഡിക്കൽ നിർദ്ദേശങ്ങൾക്ക് പകരം സാന്ത്വനവും കൗൺസിലിംഗും ശുപാർശ ചെയ്യുന്നത് മനുഷ്യ മൂല്യങ്ങൾ പഠിച്ചെടുത്തതിന്റെ തെളിവാണ്.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">3. Inviolability of Human Dignity and Sovereign Autonomy</div>
+                <div class="card-desc-en">Respect for human dignity is a fundamental ethical principle recognizing the inherent, unconditional value of every human being, irrespective of their utility, socio-economic status, or capability. In AI ethics, it commands that human beings must never be treated merely as instruments, data points, or commercial means to an end. Freedom and autonomy constitute cardinal principles supporting an individual's liberty to make independent, informed, and voluntary decisions regarding their destiny, ensuring humans are never subjected to covert algorithmic manipulation.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">3. മാനവിക അന്തസ്സും പരമാധികാര സ്വയംഭരണവും (Human Dignity & Autonomy)</div>
+                <div class="card-desc-ml">ഒരു വ്യക്തിയുടെ പ്രയോജനമോ സാമ്പത്തിക ശേഷിയോ കണക്കിലെടുക്കാതെ, ഓരോ മനുഷ്യനും സ്വതസിദ്ധമായ വിലയുണ്ടെന്ന് അംഗീകരിക്കുന്നതാണ് മാനവിക അന്തസ്സ് (human dignity). മനുഷ്യരെ ഒരിക്കലും ഒരു അൽഗോരിതത്തിന്റെ കേവല ഉപകരണങ്ങളോ, ഡാറ്റാ പോയിന്റുകളോ ആയി തരംതാഴ്ത്തരുത്. സ്വന്തം ജീവിതത്തെക്കുറിച്ച് സ്വതന്ത്രവും അറിവോടെയുള്ളതുമായ തീരുമാനങ്ങളെടുക്കാൻ ഓരോരുത്തർക്കുമുള്ള അവകാശമാണ് സ്വാതന്ത്ര്യവും സ്വയംഭരണവും (freedom and autonomy). ഓട്ടോമേറ്റഡ് സംവിധാനങ്ങളുടെ കൃത്രിമ നിയന്ത്രണങ്ങൾക്ക് വഴങ്ങാതെ മനുഷ്യൻ തന്റെ തെരഞ്ഞെടുപ്പുകളുടെ നിയന്ത്രണം നിലനിർത്തണം.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ബാങ്ക് ഉപഭോക്താക്കൾക്ക് വായ്പ നിരസിക്കുമ്പോൾ റോബോട്ട് മാത്രം വിധി കൽപ്പിക്കാതെ, ഒരു മനുഷ്യ മാനേജരോട് നേരിട്ട് സംസാരിക്കാനും വിശദീകരണം തേടാനുമുള്ള അവസരം നൽകുന്നത് മനുഷ്യ അന്തസ്സിനെ ആദരിക്കുന്നു.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="footer-left">Philosophy of AI &bull; Chapter 14: Aligning Autonomous AI Aims with Human Values</div>
+        <div class="footer-right">University of Calicut LMS &bull; Core Reading Guide</div>
+    </div>
+</div>
+
+<!-- ================= PAGE 7 ================= -->
+<div class="page-container">
+    <div class="page-header">
+        <div class="header-left">
+            <div class="sub-title">Module 4: Ethics of Artificial Intelligence &bull; Chapter 14</div>
+            <div class="main-title">4.1 (A) Aligning Autonomous AI Aims with Human Values</div>
+        </div>
+        <div class="header-right">
+            <div class="page-num">Page 07 of 10</div>
+        </div>
+    </div>
+
+    <div class="section-banner">
+        <span>Part 7: Equity, Non-Discrimination & Algorithmic Transparency</span>
+        <span>നീതി, പക്ഷപാതരഹിത സമത്വം, അൽഗോരിതമിക് സുതാര്യത</span>
+    </div>
+
+    <div class="content-flow">
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">1. Equal Moral Worth and Non-Discrimination Mandate</div>
+                <div class="card-desc-en">All human beings possess equal moral positions and merit equal ethical respect, irrespective of race, gender, caste, religion, wealth, or cognitive ability. Diverse philosophical and theological frameworks validate the prevalent conviction in the absolute and equal moral standing of humans. Equity and justice are foundational ethical principles mandating that the advantages and burdens of AI technological development are distributed in an ethically acceptable manner. This guarantees that marginalized groups are not disproportionately affected by technological advances and that all individuals have equal access to AI benefits. AI decisions must ensure equal treatment, strictly avoiding unjust biases that produce discriminatory outcomes based on extraneous, protected personal attributes such as race, gender, age, or socioeconomic status.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">1. തുല്യ ധാർമ്മിക മൂല്യവും പക്ഷപാതരഹിതമായ പെരുമാറ്റവും (Equal Moral Worth)</div>
+                <div class="card-desc-ml">ജാതി, മതം, ലിംഗം, വർഗ്ഗം, സമ്പത്ത്, ശാരീരിക ശേഷി എന്നിവ പരിഗണിക്കാതെ എല്ലാ മനുഷ്യർക്കും തുല്യമായ ധാർമ്മിക പദവിയും ആദരവും അർഹതയുണ്ട്. സാങ്കേതികവിദ്യയുടെ ഗുണഫലങ്ങൾ പാർശ്വവൽക്കരിക്കപ്പെട്ട ജനവിഭാഗങ്ങൾക്ക് കൂടി തുല്യമായി ലഭ്യമാക്കാനും അവർക്ക് യാതൊരു ദോഷവും വരാതിരിക്കാനും നീതിയും സമത്വവും (Equity and justice) ആവശ്യപ്പെടുന്നു. ഒരേ സാഹചര്യത്തിലുള്ള വ്യക്തികൾക്ക് തുല്യമായ പരിഗണന നൽകണമെന്നത് (equal treatment) അൽഗോരിതങ്ങൾ കർശനമായി പാലിക്കണം; ബാഹ്യമായ വ്യക്തിഗത വിവരങ്ങളുടെ അടിസ്ഥാനത്തിൽ വിവേചനം കാണിക്കരുത്. അൽഗോരിതങ്ങളുടെ നിഷ്പക്ഷത ജനാധിപത്യ സമൂഹത്തിന്റെ സമത്വ സങ്കല്പത്തിന് അത്യന്താപേക്ഷിതമാണ്.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> തൊഴിൽ നിയമനത്തിനായി റെസ്യൂമെകൾ സ്ക്രീൻ ചെയ്യുന്ന AI സിസ്റ്റം, പുരുഷന്മാരുടെ റെസ്യൂമെകൾക്ക് മാത്രം അവിഹിത മുൻഗണന നൽകുന്ന മുൻകാല പക്ഷപാതങ്ങൾ ഒഴിവാക്കി സ്ത്രീകളുടെയും ന്യൂനപക്ഷങ്ങളുടെയും അപേക്ഷകൾ തുല്യമായി പരിഗണിക്കുന്നത്.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">2. Impartial Decision-Making in Automated Systems</div>
+                <div class="card-desc-en">Impartial decision-making is an essential ethical ideal requiring that choices and classifications be rendered objectively, equitably, and devoid of prejudice, relying solely on verified pertinent facts and objective criteria. In AI ethics, impartiality guarantees that automated systems do not unjustly favor or disfavor specific individuals or groups. Automated algorithms must be rigorously purged of historical prejudices and systemic biases embedded in historical training datasets, preventing the algorithmic entrenchment of social disparities. Fair procedural standards guarantee that every citizen receives equitable consideration regardless of demographic background.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">2. നിഷ്പക്ഷമായ തീരുമാന നിർമ്മാണം (Impartial Decision-Making)</div>
+                <div class="card-desc-ml">വ്യക്തിപരമായ മുൻവിധികളോ മുൻകാല പക്ഷപാതങ്ങളോ ഇല്ലാതെ, ബന്ധപ്പെട്ട യഥാർത്ഥ വസ്തുതകളെയും യുക്തിസഹമായ മാനദണ്ഡങ്ങളെയും മാത്രം ആശ്രയിച്ച് തികച്ചും വസ്തുനിഷ്ഠമായി തീരുമാനങ്ങൾ എടുക്കുന്ന രീതിയാണിത്. AI നൈതികതയിൽ, ഏതെങ്കിലും പ്രത്യേക വിഭാഗങ്ങൾക്ക് അവിഹിതമായ ആനുകൂല്യം നൽകുകയോ, പാർശ്വവൽക്കരിക്കപ്പെട്ടവരെ ദോഷകരമായി ബാധിക്കുകയോ ചെയ്യാതെ തികച്ചും നിഷ്പക്ഷമായി പ്രവർത്തിക്കാൻ സംവിധാനങ്ങൾക്ക് കഴിയണം. വർഗ്ഗം, ലിംഗം, ജാതി, പ്രായം, സാമൂഹിക സാമ്പത്തിക പദവി തുടങ്ങിയ ബാഹ്യ ഘടകങ്ങളെ അടിസ്ഥാനമാക്കി അൽഗോരിതങ്ങൾ വിവേചനം കാണിക്കാതെ പൂർണ്ണ നിഷ്പക്ഷത പാലിക്കണം.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ക്രിമിനൽ നീതിന്യായ വ്യവസ്ഥയിൽ പ്രതികൾക്ക് ജാമ്യം അനുവദിക്കുന്നതിന് റിസ്ക് സ്കോർ നൽകുന്ന AI അൽഗോരിതം, വ്യക്തിയുടെ വംശമോ താമസസ്ഥലമോ പരിഗണിക്കാതെ അവരുടെ മുൻകാല ക്രിമിനൽ റെക്കോർഡ് മാത്രം വസ്തുനിഷ്ഠമായി വിശകലനം ചെയ്യുന്നത്.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">3. Transparency, Explainability (XAI) & The "Black Box" Problem</div>
+                <div class="card-desc-en">Transparency and explainability (XAI) are fundamental tenets of AI ethics and alignment that render automated systems comprehensible, interpretable, and accountable to human oversight. They guarantee that AI judgements are transparent, logical, and subject to systematic examination. Creating interpretable and explainable AI facilitates human comprehension of automated reasoning and enables the early detection of alignment issues and logical flaws. It is essential for developers and consumers to understand the operating mechanics of AI systems (transparency) and the underlying rationale behind specific outputs (explainability). This directly addresses the "black box" problem, where complex neural models evade human understanding. Algorithmic transparency denotes the degree to which the rationale, methodologies, and standards employed in decision-making are clear, comprehensible, and available to users, auditors, and regulators. Explainability establishes the foundational bedrock for democratic oversight and public trust.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">3. സുതാര്യതയും വിശദീകരണ ശേഷിയും (XAI & The Black-Box Problem)</div>
+                <div class="card-desc-ml">AI സംവിധാനങ്ങളുടെ പ്രവർത്തനങ്ങളെ മനുഷ്യർക്ക് മനസ്സിലാക്കാനും പരിശോധിക്കാനും സാധ്യമാക്കുന്ന തത്ത്വങ്ങളാണ് സുതാര്യതയും വിശദീകരണ ശേഷിയും (Transparency and Explainability). സങ്കീർണ്ണമായ ന്യൂറൽ നെറ്റ്‌വർക്കുകൾ മനുഷ്യന്റെ ഗ്രാഹ്യത്തിന് അതീതമാകുന്ന 'ബ്ലാക്ക് ബോക്സ്' പ്രശ്നത്തിന് പരിഹാരമാണിത്. ഒരു AI സിസ്റ്റം എങ്ങനെ പ്രവർത്തിക്കുന്നു (transparency), എന്തുകൊണ്ടാണ് അത് ഒരു പ്രത്യേക തീരുമാനം എടുത്തത് (explainability) എന്ന് ഉപയോക്താക്കൾക്കും ഓഡിറ്റർമാർക്കും വ്യക്തമാക്കിക്കൊടുക്കാൻ അൽഗോരിതമിക് സുതാര്യതയിലൂടെ സാധിക്കണം. ഇത് തെറ്റുകൾ മുൻകൂട്ടി കണ്ടെത്താൻ സഹായിക്കുന്നു.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ബാങ്ക് വായ്പ അപേക്ഷ നിരസിക്കപ്പെട്ട ഒരു സാധാരണക്കാരന്, ഏത് സാമ്പത്തിക സൂചികയുടെ കുറവുകൊണ്ടാണ് അപേക്ഷ നിരസിക്കപ്പെട്ടതെന്ന് വ്യക്തമായ ഭാഷയിൽ വിശദീകരണം നൽകുന്ന XAI മോഡൽ.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="footer-left">Philosophy of AI &bull; Chapter 14: Aligning Autonomous AI Aims with Human Values</div>
+        <div class="footer-right">University of Calicut LMS &bull; Core Reading Guide</div>
+    </div>
+</div>
+
+<!-- ================= PAGE 8 ================= -->
+<div class="page-container">
+    <div class="page-header">
+        <div class="header-left">
+            <div class="sub-title">Module 4: Ethics of Artificial Intelligence &bull; Chapter 14</div>
+            <div class="main-title">4.1 (A) Aligning Autonomous AI Aims with Human Values</div>
+        </div>
+        <div class="header-right">
+            <div class="page-num">Page 08 of 10</div>
+        </div>
+    </div>
+
+    <div class="section-banner">
+        <span>Part 8: Accountability, Privacy, Data Governance & System Resilience</span>
+        <span>ഉത്തരവാദിത്തം, സ്വകാര്യത, ഡാറ്റാ ഗവേണൻസ്, സിസ്റ്റം റെസിലിയൻസ്</span>
+    </div>
+
+    <div class="content-flow">
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">1. Clear Lines of Accountability: Human Blameworthiness</div>
+                <div class="card-desc-en">Clear lines of institutional and individual responsibility must be strictly established. Because AI systems do not possess legal rights, conscious intent, or moral personhood, they cannot bear legal culpability or moral guilt. Human actors—including system designers, software architects, corporate developers, and deploying institutions—must unconditionally accept blame, legal liability, and moral accountability for the system's operational outcomes and any resulting real-world harms.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">1. വ്യക്തമായ ഉത്തരവാദിത്തം: മനുഷ്യരിലെ ബാധ്യത (Lines of Accountability)</div>
+                <div class="card-desc-ml">വ്യക്തമായ ഉത്തരവാദിത്ത രേഖകൾ സ്ഥാപനങ്ങളിലും വ്യക്തികളിലും നിർബന്ധമായും ഉറപ്പിക്കണം. ആർട്ടിഫിഷ്യൽ ഇന്റലിജൻസ് സംവിധാനങ്ങൾക്ക് മനസ്സാക്ഷിയോ നിയമപരമായ വ്യക്തിത്വമോ ഇല്ലാത്തതിനാൽ, അവ ഉണ്ടാക്കുന്ന പിഴവുകൾക്ക് ധാർമ്മികമോ നിയമപരമോ ആയ ഉത്തരവാദിത്തം അവയ്ക്ക് സ്വന്തമായി വഹിക്കാൻ കഴിയില്ല. ആ സിസ്റ്റം രൂപകൽപ്പന ചെയ്തവർ (designers), സോഫ്റ്റ്‌വെയർ വികസിപ്പിച്ചവർ (developers), അത് വിന്യസിച്ച സ്ഥാപനങ്ങൾ (deployers) എന്നിവരാണ് സിസ്റ്റത്തിന്റെ പ്രവർത്തനഫലങ്ങൾക്കും അത് വരുത്തുന്ന നാശനഷ്ടങ്ങൾക്കും പൂർണ്ണ നിയമപരമായ ബാധ്യതയും ശിക്ഷാ നടപടികളും ഏറ്റെടുക്കേണ്ടത്.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ഓട്ടോണമസ് കാർ റോഡിൽ അപകടം ഉണ്ടാക്കുമ്പോൾ കാറിനെയല്ല കോടതിയിൽ വിചാരണ ചെയ്യുന്നത്; മറിച്ച് ആ കാറിന്റെ സെൻസർ സോഫ്റ്റ്‌വെയർ വികസിപ്പിച്ച എഞ്ചിനീയറിംഗ് കമ്പനിയെയാണ് നിയമപരമായി ഉത്തരവാദിയാക്കുന്നത്.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">2. Privacy & Data Governance: Minimisation, Consent, and Confidentiality</div>
+                <div class="card-desc-en">Stringent rules and governance frameworks must be implemented to ensure that data is collected, stored, processed, and utilised securely and responsibly, respecting an individual's right to privacy and sovereign control over Personally Identifiable Information (PII):<br>
+                <b>a. Data Minimisation:</b> A fundamental principle of privacy and data governance asserting that only the data essential for a particular legitimate purpose should be gathered, processed, and retained.<br>
+                <b>b. Informed Consent:</b> A crucial ethical and legal tenet necessitating that individuals comprehensively comprehend the collection, usage, storage, and sharing of their personal data and actively consent to such practices.<br>
+                <b>c. Confidentiality:</b> A fundamental principle that mandates safeguarding personal and sensitive information from unauthorised access, disclosure, misuse, or security breaches.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">2. സ്വകാര്യതയും ഡാറ്റാ ഗവേണൻസും: മിനിമൈസേഷൻ, സമ്മതം, രഹസ്യസ്വഭാവം</div>
+                <div class="card-desc-ml">വ്യക്തിവിവരങ്ങളുടെ (PII) സംരക്ഷണത്തിനായി ശക്തമായ മൂന്ന് ഡാറ്റാ നയങ്ങൾ നടപ്പിലാക്കണം:<br>
+                <b>a. ഡാറ്റാ മിനിമൈസേഷൻ (Data Minimisation):</b> ഒരു പ്രത്യേക ആവശ്യത്തിന് തികച്ചും അത്യന്താപേക്ഷിതമായ വിവരങ്ങൾ മാത്രം ശേഖരിക്കുകയും സൂക്ഷിക്കുകയും ചെയ്യുക എന്ന തത്ത്വം.<br>
+                <b>b. വിവരമറിഞ്ഞുള്ള സമ്മതം (Informed Consent):</b> സ്വന്തം വിവരങ്ങൾ എന്തിനാണ് ശേഖരിക്കുന്നത്, എങ്ങനെ പ്രോസസ്സ് ചെയ്യുന്നു എന്ന് പൂർണ്ണമായി മനസ്സിലാക്കി വ്യക്തി നൽകുന്ന സജീവമായ അനുമതി.<br>
+                <b>c. രഹസ്യസ്വഭാവം (Confidentiality):</b> അനധികൃതമായ ചോർച്ചകളിൽ നിന്നും സൈബർ ആക്രമണങ്ങളിൽ നിന്നും വ്യക്തിഗത ഡാറ്റയെ അതീവ സുരക്ഷിതമായി സംരക്ഷിക്കൽ.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ഫിറ്റ്നസ് ട്രാക്കിംഗ് ആപ്പ് ഉപയോക്താവിന്റെ നടത്തത്തിന്റെ കണക്ക് രേഖപ്പെടുത്താൻ ഫോണിലെ കോൺടാക്റ്റ് വിവരങ്ങളോ സ്വകാര്യ ഫോട്ടോകളോ ശേഖരിക്കാതെ ഒഴിവാക്കുന്നത് ഡാറ്റാ മിനിമൈസേഷൻ പാലിക്കുന്നതിന് തെളിവാണ്.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">3. System Security and Operational Resilience</div>
+                <div class="card-desc-en">AI architectures must be engineered to operate reliably, securely, and predictably across both standard operational settings and highly unexpected, adversarial, or chaotic conditions. System security and resilience guarantee that automated networks withstand cyber threats, operational stresses, and unpredictable perturbations without failing catastrophically, thereby ensuring that automated operations never trigger physical, psychological, or social harm.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">3. സിസ്റ്റം സുരക്ഷയും പ്രവർത്തനക്ഷമതയും (Security and Resilience)</div>
+                <div class="card-desc-ml">സാധാരണ സാഹചര്യങ്ങളിലും അപ്രതീക്ഷിതമായ പ്രതിസന്ധികളിലും കൃത്യതയോടും വിശ്വസ്തതയോടും സുരക്ഷിതമായും പ്രവർത്തിക്കാൻ കഴിയുന്ന രീതിയിൽ AI സംവിധാനങ്ങൾ രൂപകൽപ്പന ചെയ്യണം. ബാഹ്യമായ സൈബർ ആക്രമണങ്ങളോ സാങ്കേതിക തകരാറുകളോ ഉണ്ടായാലും സിസ്റ്റം നിയന്ത്രണം വിട്ട് മനുഷ്യർക്ക് ശാരീരികമോ സാമ്പത്തികമോ ആയ അപകടങ്ങൾ ഉണ്ടാക്കാതിരിക്കാനുള്ള പ്രതിരോധ ശേഷിയാണ് സിസ്റ്റം റെസിലിയൻസ് (Resilience). അടിയന്തര ഘട്ടങ്ങളിൽ പരാജയപ്പെടാതെ സ്വയം സുരക്ഷിത അവസ്ഥയിലേക്ക് മാറാൻ (fail-safe mode) സിസ്റ്റങ്ങൾക്ക് കഴിയണം.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> പവർ ഗ്രിഡ് നിയന്ത്രിക്കുന്ന AI സിസ്റ്റം, കടുത്ത മിന്നലേറ്റ് ചില സർക്യൂട്ടുകൾ തകരുമ്പോഴും ബ്ലായ്ക്ക്ഔട്ട് ഉണ്ടാകാതെ തനിയെ ബാക്കപ്പ് ലൈനുകളിലേക്ക് വൈദ്യുതി തിരിച്ചുവിട്ട് സ്ഥിരത നിലനിർത്തുന്നത്.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="footer-left">Philosophy of AI &bull; Chapter 14: Aligning Autonomous AI Aims with Human Values</div>
+        <div class="footer-right">University of Calicut LMS &bull; Core Reading Guide</div>
+    </div>
+</div>
+
+<!-- ================= PAGE 9 ================= -->
+<div class="page-container">
+    <div class="page-header">
+        <div class="header-left">
+            <div class="sub-title">Module 4: Ethics of Artificial Intelligence &bull; Chapter 14</div>
+            <div class="main-title">4.1 (A) Aligning Autonomous AI Aims with Human Values</div>
+        </div>
+        <div class="header-right">
+            <div class="page-num">Page 09 of 10</div>
+        </div>
+    </div>
+
+    <div class="section-banner">
+        <span>Part 9: Human Agency, Continuous Oversight & Global Governance</span>
+        <span>മനുഷ്യ ഏജൻസി, തുടർനിരീക്ഷണം, ആഗോള ഭരണ ചട്ടക്കൂടുകൾ</span>
+    </div>
+
+    <div class="content-flow">
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">1. Preserving Human Agency and Oversight in High-Stakes Domains</div>
+                <div class="card-desc-en">Artificial intelligence should function strictly as an empowering cognitive tool that amplifies human abilities rather than compromising or supplanting human authority, personal autonomy, or sovereign decision-making, particularly in crucial and life-critical situations. Human agency and oversight is an essential tenet in AI ethics and alignment that guarantees human accountability, real-time supervision, and the unhindered ability to intervene in the activities of AI systems. Maintaining active human oversight inhibits autonomous AI systems from executing detrimental, biased, or unintentional actions that endanger individuals or society. Retaining human veto power is the essential guarantee of ethical accountability.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">1. മനുഷ്യ ഏജൻസിയും പരമാധികാര നിയന്ത്രണവും സംരക്ഷിക്കൽ (Human Agency & Oversight)</div>
+                <div class="card-desc-ml">മനുഷ്യന്റെ അധികാരത്തെയോ തീരുമാനമെടുക്കാനുള്ള പരമാധികാരത്തെയോ ഇല്ലാതാക്കാനോ കീഴടക്കാനോ ഉള്ള ശക്തിയായി AI മാറരുത്; മറിച്ച് മനുഷ്യന്റെ ചിന്താശേഷിയെയും പ്രാവീണ്യത്തെയും വർദ്ധിപ്പിക്കുന്ന ഒരു സഹായ ഉപകരണമായി മാത്രമേ അത് പ്രവർത്തിക്കാവൂ. ജീവൻമരണ സാഹചര്യങ്ങളിലും നിർണ്ണായക നയതീരുമാനങ്ങളിലും മനുഷ്യന്റെ ഉത്തരവാദിത്തവും മേൽനോട്ടവും ഇടപെടാനുള്ള അന്തിമ വിവേചനാധികാരവും നിലനിർത്തുന്നത് വഴി അനിയന്ത്രിതമായ അൽഗോരിതമിക് ദുരന്തങ്ങൾ തടയാൻ സാധിക്കുന്നു. മനുഷ്യന്റെ സർഗ്ഗാത്മകതയും വിവേകവും എപ്പോഴും സാങ്കേതിക ഉപകരണങ്ങളേക്കാൾ ഉന്നതമായി നിലകൊള്ളണം.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> വിമാനത്തിന്റെ ഓട്ടോപൈലറ്റ് സിസ്റ്റം അടിയന്തര കാലാവസ്ഥാ വ്യതിയാനം നേരിടുമ്പോൾ മുന്നറിയിപ്പ് നൽകി നിയന്ത്രണം പൈലറ്റിന് കൈമാറുകയും പൈലറ്റിന്റെ തീരുമാനത്തിന് പരമമായ മുൻഗണന നൽകുകയും ചെയ്യുന്നത്.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">2. Human-in-the-Loop (HITL) and Mitigation of Alignment Drift</div>
+                <div class="card-desc-en">Preserving human-in-the-loop (HITL) or human-on-the-loop (HOTL) architectures guarantees that qualified human operators may actively oversee, intervene in, or deactivate AI systems whenever unexpected anomalies or ethical crises occur. Furthermore, as human values, cultural norms, and societal circumstances continually evolve across time, deployed AI systems are naturally vulnerable to alignment drift. AI systems must therefore undergo regular independent audits, rigorous behavioral evaluations, and continuous recalibrations to maintain alignment across time. AI development must strictly adhere to ethical principles, legal frameworks, and democratic standards, ensuring institutional accountability and the safeguarding of human rights. Continuous alignment audits ensure that technological growth remains subordinate to human welfare.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">2. ഹ്യൂമൻ-ഇൻ-ദി-ലൂപ്പ് (HITL) സംവിധാനവും അലൈൻമെന്റ് ഡ്രിഫ്റ്റ് പ്രതിരോധവും</div>
+                <div class="card-desc-ml">ആവശ്യാനുസരണം കൃത്യസമയത്ത് ഇടപെടാനോ, അടിയന്തര സാഹചര്യങ്ങളിൽ AI പ്രവർത്തനം നിർത്തലാക്കാനോ (kill switch) മനുഷ്യന് അധികാരം നൽകുന്ന 'ഹ്യൂമൻ-ഇൻ-ദി-ലൂപ്പ്' സംവിധാനങ്ങൾ നിലനിർത്തണം. കാലത്തിനനുസരിച്ച് മനുഷ്യന്റെ മൂല്യങ്ങളിലും സാമൂഹിക വ്യവസ്ഥകളിലും മാറ്റങ്ങൾ വരുന്നതിനാൽ, AI സിസ്റ്റങ്ങളുടെ പെരുമാറ്റത്തിൽ അലൈൻമെന്റ് വ്യതിയാനം (alignment drift) വരാൻ സാധ്യതയുണ്ട്. അതിനാൽ ജനാധിപത്യ മൂല്യങ്ങളും മനുഷ്യാവകാശങ്ങളും കാത്തുസൂക്ഷിക്കാൻ കൃത്യമായ ഇടവേളകളിൽ സ്വതന്ത്രമായ ഓഡിറ്റിംഗും സമഗ്രമായ റീട്രെയിനിംഗും നടത്തണം. കാലാനുസൃതമായ മാറ്റങ്ങളെ ഉൾക്കൊള്ളാൻ കഴിയുന്ന ചലനാത്മകമായ അലൈൻമെന്റ് പ്രക്രിയ അത്യന്താപേക്ഷിതമാണ്. ഇത് സിസ്റ്റത്തിന്റെ കാര്യക്ഷമതയും സുരക്ഷിതത്വവും ഉറപ്പുവരുത്തുന്നു.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ആണവ റിയാക്ടറുകൾ തണുപ്പിക്കുന്ന സ്വയംഭരണ കൂളിംഗ് സിസ്റ്റത്തിൽ എന്തെങ്കിലും വ്യതിയാനം കണ്ടാൽ പ്ലാന്റ് ചീഫ് എഞ്ചിനീയർക്ക് ഉടൻ തന്നെ മാനുവൽ ഓവർറൈഡ് സ്വിച്ച് അമർത്തി സിസ്റ്റം നിയന്ത്രിക്കാൻ കഴിയുന്നത്.</div>
+            </div>
+        </div>
+
+        <div class="dual-concept-card">
+            <div class="card-en">
+                <div class="card-title-en">3. Global Synthesis: Ethical Design, Democratic Principles & International Cooperation</div>
+                <div class="card-desc-en">Aligning the objectives of autonomous AI systems with human aspirations constitutes a paramount difficulty and foundational challenge in the advancement of artificial intelligence. As AI systems become increasingly potent, ubiquitous, and autonomous, it is imperative to guarantee that their activities align with human values, safety, dignity, and collective welfare. This alignment can be attained through the meticulous design of AI systems incorporating explicit ethical principles, safety protocols, human-centric goals, transparent explainability, and robust international collaboration, guaranteeing that autonomous AI technologies yield enduringly beneficial outcomes for humanity's future. Global consensus ensures that technological advancement serves human flourishing and global peace.</div>
+            </div>
+            <div class="card-ml">
+                <div class="card-title-ml">3. ആഗോള സംഗ്രഹം: നൈതിക രൂപകൽപ്പനയും അന്താരാഷ്ട്ര സഹകരണവും</div>
+                <div class="card-desc-ml">സ്വയംഭരണ AI സംവിധാനങ്ങളുടെ ലക്ഷ്യങ്ങളെ മനുഷ്യന്റെ പ്രതീക്ഷകളുമായി സമന്വയിപ്പിക്കുക എന്നത് ആധുനിക സാങ്കേതികവിദ്യയുടെ വികാസത്തിലെ സുപ്രധാന ദൗത്യമാണ്. കൃത്യമായ നൈതിക തത്ത്വങ്ങൾ, കർശനമായ സുരക്ഷാ പ്രോട്ടോക്കോളുകൾ, മനുഷ്യകേന്ദ്രീകൃത ലക്ഷ്യങ്ങൾ എന്നിവ മുൻനിർത്തിയുള്ള സൂക്ഷ്മ രൂപകൽപ്പനയിലൂടെ മാത്രമേ ഇത് സാധ്യമാകൂ. അന്താരാഷ്ട്ര സഹകരണവും സുതാര്യതയും ജനാധിപത്യ മൂല്യങ്ങളോടുള്ള പ്രതിബദ്ധതയും വഴി സ്വയംഭരണ സാങ്കേതികവിദ്യ മാനവരാശിയുടെ സുരക്ഷിതമായ ഭാവിയെയും ശാശ്വത ക്ഷേമത്തെയും ഉറപ്പുനൽകുന്നു. മാനവിക നന്മയ്ക്കായി സാങ്കേതികവിദ്യയെ ഉപയോഗപ്പെടുത്തുന്നതിനുള്ള സുപ്രധാന നാഴികക്കല്ലാണിത്.</div>
+                <div class="card-example"><b>ഉദാഹരണം:</b> ഐക്യരാഷ്ട്രസഭയും വിവിധ രാജ്യങ്ങളും ചേർന്ന് രൂപീകരിക്കുന്ന ആഗോള AI എത്തിക്സ് സമിതികൾ വഴി ലോകമെമ്പാടും സുരക്ഷിതമായ നിർമ്മിതബുദ്ധി മാനദണ്ഡങ്ങൾ നടപ്പിലാക്കുന്നത്.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="footer-left">Philosophy of AI &bull; Chapter 14: Aligning Autonomous AI Aims with Human Values</div>
+        <div class="footer-right">University of Calicut LMS &bull; Core Reading Guide</div>
+    </div>
+</div>
+
+<!-- ================= PAGE 10 ================= -->
+<div class="page-container">
+    <div class="page-header">
+        <div class="header-left">
+            <div class="sub-title">Module 4: Ethics of Artificial Intelligence &bull; Chapter 14</div>
+            <div class="main-title">4.1 (A) Aligning Autonomous AI Aims with Human Values</div>
+        </div>
+        <div class="header-right">
+            <div class="page-num">Page 10 of 10</div>
+        </div>
+    </div>
+
+    <div class="section-banner">
+        <span>Part 10: High-Yield Exam "Knock Your Brain" Key Concepts (20 Points)</span>
+        <span>പരീക്ഷാ സഹായി: 20 പ്രധാന തത്ത്വങ്ങൾ, നിർവ്വചനങ്ങൾ, വസ്തുതകൾ</span>
+    </div>
+
+    <div class="content-flow">
+        <div class="grid-2col">
+            <!-- Col 1 -->
+            <div style="display: flex; flex-direction: column; gap: 5.5px;">
+                <div class="knock-card blue">
+                    <div class="knock-title">1. Main Goal of AI Alignment</div>
+                    <div class="knock-desc-en">To ensure autonomous AI acts strictly according to human values, safety, and intentions.</div>
+                    <div class="knock-desc-ml">AI സിസ്റ്റങ്ങൾ മനുഷ്യന്റെ മൂല്യങ്ങൾക്കും ഉദ്ദേശ്യങ്ങൾക്കും അനുസൃതമായി പ്രവർത്തിക്കുന്നുവെന്ന് ഉറപ്പാക്കൽ.</div>
+                </div>
+                <div class="knock-card emerald">
+                    <div class="knock-title">2. Why Embed Human Values?</div>
+                    <div class="knock-desc-en">To ensure AI unconditionally respects human dignity, physical safety, fairness, and welfare.</div>
+                    <div class="knock-desc-ml">മനുഷ്യന്റെ അന്തസ്സ്, സുരക്ഷ, നീതി, ക്ഷേമം എന്നിവ AI ആദരിക്കുന്നുവെന്ന് ഉറപ്പാക്കാൻ.</div>
+                </div>
+                <div class="knock-card amber">
+                    <div class="knock-title">3. Continuous Monitoring Imperative</div>
+                    <div class="knock-desc-en">AI goals and operational behaviors may drift from human-aligned priorities over time.</div>
+                    <div class="knock-desc-ml">കാലക്രമേണ AI സംവിധാനങ്ങൾ മനുഷ്യ ലക്ഷ്യങ്ങളിൽ നിന്ന് വ്യതിചലിക്കാൻ (drift) സാധ്യതയുള്ളതിനാൽ.</div>
+                </div>
+                <div class="knock-card purple">
+                    <div class="knock-title">4. Purpose of Transparency in AI</div>
+                    <div class="knock-desc-en">To make internal AI decision-making visible, understandable, accountable, and audit-ready.</div>
+                    <div class="knock-desc-ml">AI തീരുമാനങ്ങൾ വ്യക്തവും സുതാര്യവും മനുഷ്യർക്ക് ബോധ്യപ്പെടുന്നതുമാക്കാൻ.</div>
+                </div>
+                <div class="knock-card teal">
+                    <div class="knock-title">5. Etymology of Ethics</div>
+                    <div class="knock-desc-en">Derived from Greek <i>ethos</i> (character) and Latin <i>mores</i> (customs), examining conduct.</div>
+                    <div class="knock-desc-ml">ഗ്രീക്ക് പദമായ 'ഈഥോസ്' (സ്വഭാവം), ലാറ്റിൻ 'മോറെസ്' (ആചാരങ്ങൾ) എന്നിവയിൽ നിന്ന് രൂപപ്പെട്ടു.</div>
+                </div>
+                <div class="knock-card rose">
+                    <div class="knock-title">6. Mackenzie's Classical Definition</div>
+                    <div class="knock-desc-en">"The examination of what is right or noble in human behaviour or ideals of conduct."</div>
+                    <div class="knock-desc-ml">മനുഷ്യന്റെ പെരുമാറ്റത്തിലെ ശരിയായതോ ശ്രേഷ്ഠമായതോ ആയ കാര്യങ്ങളെക്കുറിച്ചുള്ള പഠനം (മക്കൻസി).</div>
+                </div>
+                <div class="knock-card blue">
+                    <div class="knock-title">7. The Concept of 'Right' (Rectus)</div>
+                    <div class="knock-desc-en">Signifies straightness or strict adherence to established moral rules and legal duties.</div>
+                    <div class="knock-desc-ml">ലാറ്റിൻ 'റെക്ടസ്' (rectus); സ്ഥാപിത നിയമങ്ങളെയോ ബാധ്യതകളെയോ കൃത്യമായി അനുസരിക്കൽ.</div>
+                </div>
+                <div class="knock-card emerald">
+                    <div class="knock-title">8. The Concept of 'Good' (Gut)</div>
+                    <div class="knock-desc-en">Linked to German <i>gut</i>; valuable for a worthwhile purpose and ultimate flourishing.</div>
+                    <div class="knock-desc-ml">ജർമ്മൻ 'ഗുട്ട്' (gut); നിശ്ചിത ലക്ഷ്യത്തിന് മൂല്യവത്തായതും പരമനന്മയ്ക്ക് സഹായിക്കുന്നതും.</div>
+                </div>
+                <div class="knock-card amber">
+                    <div class="knock-title">9. Right to Life (Fundamental Right 1)</div>
+                    <div class="knock-desc-en">The primary right; continuation of life is the indispensable baseline for self-realisation.</div>
+                    <div class="knock-desc-ml">ഒന്നാമത്തെ അവകാശം; ആത്മസാക്ഷാത്കാരത്തിന് ജീവന്റെ പവിത്രമായ നിലനിൽപ്പ് അത്യന്താപേക്ഷിതമാണ്.</div>
+                </div>
+                <div class="knock-card purple">
+                    <div class="knock-title">10. Right to Freedom (Fundamental Right 2)</div>
+                    <div class="knock-desc-en">Liberty to exert autonomy and volition toward self-realisation within social order.</div>
+                    <div class="knock-desc-ml">സാമൂഹിക വ്യവസ്ഥയ്ക്ക് ഭംഗം വരാതെ സ്വന്തം ഇച്ഛാശക്തി വിനിയോഗിക്കാനുള്ള സ്വാതന്ത്ര്യം.</div>
+                </div>
+            </div>
+
+            <!-- Col 2 -->
+            <div style="display: flex; flex-direction: column; gap: 5.5px;">
+                <div class="knock-card teal">
+                    <div class="knock-title">11. Right to Work (Fundamental Right 3)</div>
+                    <div class="knock-desc-en">Derived from the right to life; welfare states must provide employment for self-actualization.</div>
+                    <div class="knock-desc-ml">ജീവിക്കാനുള്ള അവകാശത്തിൽ നിന്ന് ഉരുത്തിരിയുന്നു; ഉപജീവനവും ആത്മസാക്ഷാത്കാരവും നൽകുന്നു.</div>
+                </div>
+                <div class="knock-card rose">
+                    <div class="knock-title">12. Right to Education (Fundamental Right 4)</div>
+                    <div class="knock-desc-en">Attaining the highest education capable; reciprocal duty to serve collective welfare.</div>
+                    <div class="knock-desc-ml">കഴിവുകൾ വികസിപ്പിക്കാനുള്ള അവകാശം; പൊതുക്ഷേമത്തിനായി പ്രവർത്തിക്കാനുള്ള കടമ.</div>
+                </div>
+                <div class="knock-card blue">
+                    <div class="knock-title">13. Applied Ethics vs Meta-Ethics</div>
+                    <div class="knock-desc-en">Applied ethics solves situational real-world issues; meta-ethics studies semantic meaning.</div>
+                    <div class="knock-desc-ml">പ്രായോഗിക പ്രശ്നങ്ങൾ അപ്ലൈഡ് എത്തിക്സ് പഠിക്കുമ്പോൾ, പദങ്ങളുടെ അർത്ഥം മെറ്റാ-എത്തിക്സ് പഠിക്കുന്നു.</div>
+                </div>
+                <div class="knock-card emerald">
+                    <div class="knock-title">14. Physical vs Psychological Safety</div>
+                    <div class="knock-desc-en">Physical prevents bodily harm; psychological prevents emotional manipulation and panic.</div>
+                    <div class="knock-desc-ml">ശാരീരിക സുരക്ഷ പരിക്കുകൾ തടയുമ്പോൾ, മാനസിക സുരക്ഷ വൈകാരിക ചൂഷണം തടയുന്നു.</div>
+                </div>
+                <div class="knock-card amber">
+                    <div class="knock-title">15. Human Dignity Axiom</div>
+                    <div class="knock-desc-en">Humans must never be treated merely as instruments, data points, or commercial means.</div>
+                    <div class="knock-desc-ml">മനുഷ്യനെ വെറും ഉപകരണമായോ ഡാറ്റാ പോയിന്റായോ കാണരുത്; സ്വതസിദ്ധമായ അന്തസ്സുണ്ട്.</div>
+                </div>
+                <div class="knock-card purple">
+                    <div class="knock-title">16. Impartial Decision-Making</div>
+                    <div class="knock-desc-en">Objective evaluation based strictly on verified relevant facts without demographic bias.</div>
+                    <div class="knock-desc-ml">ബാഹ്യ പക്ഷപാതങ്ങളില്ലാതെ വസ്തുനിഷ്ഠമായ മാനദണ്ഡങ്ങളെ മാത്രം ആശ്രയിച്ച് തീരുമാനമെടുക്കൽ.</div>
+                </div>
+                <div class="knock-card teal">
+                    <div class="knock-title">17. Explainable AI (XAI) & Black-Box</div>
+                    <div class="knock-desc-en">Demystifying opaque neural networks so rationale is understandable to users and auditors.</div>
+                    <div class="knock-desc-ml">ബ്ലാക്ക് ബോക്സ് സിസ്റ്റങ്ങളുടെ യുക്തി മനുഷ്യർക്ക് വിശദീകരിക്കാൻ പ്രാപ്തമാക്കുന്ന സാങ്കേതികവിദ്യ.</div>
+                </div>
+                <div class="knock-card rose">
+                    <div class="knock-title">18. Data Minimisation Principle</div>
+                    <div class="knock-desc-en">Collecting and retaining only the bare minimum data essential for a specified purpose.</div>
+                    <div class="knock-desc-ml">ഒരു നിശ്ചിത ആവശ്യത്തിന് തികച്ചും അത്യന്താപേക്ഷിതമായ വിവരങ്ങൾ മാത്രം ശേഖരിക്കൽ.</div>
+                </div>
+                <div class="knock-card blue">
+                    <div class="knock-title">19. Lines of Human Accountability</div>
+                    <div class="knock-desc-en">Since AI cannot bear guilt, human designers, developers, and deployers remain liable.</div>
+                    <div class="knock-desc-ml">AI-ക്ക് ധാർമ്മിക ഉത്തരവാദിത്തം ഏൽക്കാനാവാത്തതിനാൽ, മനുഷ്യ നിർമ്മാതാക്കൾ ബാധ്യസ്ഥരാകുന്നു.</div>
+                </div>
+                <div class="knock-card emerald">
+                    <div class="knock-title">20. Human-in-the-Loop (HITL)</div>
+                    <div class="knock-desc-en">Empowering human operators to oversee, intervene, or deactivate AI systems when needed.</div>
+                    <div class="knock-desc-ml">നിർണ്ണായക ഘട്ടങ്ങളിൽ ഇടപെടാനും AI നിയന്ത്രിക്കാനും മനുഷ്യന് പൂർണ്ണ അധികാരം നൽകൽ.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="footer-left">Philosophy of AI &bull; Chapter 14: Aligning Autonomous AI Aims with Human Values</div>
+        <div class="footer-right">University of Calicut LMS &bull; Core Reading Guide</div>
+    </div>
+</div>
+
+</body>
+</html>
