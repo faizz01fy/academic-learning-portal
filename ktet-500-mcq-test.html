@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <link rel="canonical" href="https://academichubfaiz.in/ktet-500-mcq-test">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>K-TET 500 MCQs Mega Practice Pack — Academic Hub</title>
+  <title>K-TET 800 MCQs Master Practice Pack — Academic Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Manjari:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #059669;
@@ -1217,7 +1218,103 @@
       .palette-container { grid-template-columns: repeat(10, 1fr); }
       .part-pills-grid { grid-template-columns: 1fr; }
     }
+
+    /* LANGUAGE TOGGLE SWITCHER */
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: #f1f5f9;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 999px;
+      padding: 2px;
+      gap: 3px;
+    }
+
+    .lang-btn {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 0;
+      background: transparent;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .lang-btn:hover {
+      color: #065f46;
+      background: rgba(5, 150, 105, 0.08);
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: #ffffff;
+      box-shadow: 0 1px 6px rgba(5, 150, 105, 0.35);
+    }
+
+    .q-text-mal {
+      font-family: 'Noto Sans Malayalam', 'Manjari', sans-serif;
+      font-size: 15.5px;
+      color: #047857;
+      font-weight: 600;
+      line-height: 1.45;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #cbd5e1;
+    }
+
+    .opt-body {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 1;
+    }
+
+    .opt-text-mal {
+      font-family: 'Noto Sans Malayalam', 'Manjari', sans-serif;
+      font-size: 13px;
+      color: #047857;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .expl-body-mal {
+      font-family: 'Noto Sans Malayalam', 'Manjari', sans-serif;
+      font-size: 13px;
+      color: #064e3b;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #cbd5e1;
+      line-height: 1.45;
+    }
+
+    .expl-opt-mal {
+      font-family: 'Noto Sans Malayalam', 'Manjari', sans-serif;
+      font-size: 12.5px;
+      color: #047857;
+      margin-top: 2px;
+      display: block;
+    }
+
+    @media (max-width: 650px) {
+      .quiz-header .lang-switcher {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+      }
+      .quiz-header .lang-btn {
+        flex: 1;
+        text-align: center;
+        padding: 5px 6px;
+        font-size: 11px;
+      }
+    }
+
   </style>
+  
 </head>
 <body>
 <div class="wrap">
@@ -1244,14 +1341,21 @@
         <span class="pill-badge academic">🎓 Kerala Teacher Eligibility Test</span>
         <span class="pill-badge" style="background:#f1f5f9; color:#475569; border:1px solid #e2e8f0;">K-TET 2026 Mega Practice Pack</span>
       </div>
+
+      <!-- Bilingual Language Option on Start Screen -->
+      <div class="lang-switcher" id="startLangSwitcher" aria-label="Select Test Language">
+        <button class="lang-btn" data-lang="en" onclick="setTestLanguage('en')">English</button>
+        <button class="lang-btn active" data-lang="both" onclick="setTestLanguage('both')">🌐 Dual (Bilingual)</button>
+        <button class="lang-btn" data-lang="mal" onclick="setTestLanguage('mal')">മലയാളം</button>
+      </div>
       <a href="index.html" class="btn secondary" style="padding:4px 10px; font-size:11.5px;">🏠 Academic Hub</a>
     </div>
 
     <h1 class="hero-title">
-      K-TET <span>500 MCQs</span> Mega Practice Test
+      K-TET <span>800 MCQs</span> Mega Practice Test
     </h1>
     <p class="hero-subtitle">
-      Complete, official exam-pattern assessment spanning all 5 structured parts with detailed pedagogical rationales, developmental theories, inclusive education, teaching methods, and subject pedagogies.
+      Complete independent exam-pattern practice test spanning all 5 structured parts with detailed pedagogical rationales, developmental theories, inclusive education, teaching methods, and subject pedagogies.
     </p>
 
     <!-- PARTS SELECTION TABS -->
@@ -1263,9 +1367,9 @@
         <button class="part-pill-btn active" data-part="all" onclick="selectTestPart('all')">
           <div class="part-pill-top">
             <span class="part-pill-num">🌟 ALL PARTS</span>
-            <span class="part-pill-range">Q 1–500 (250 Mins)</span>
+            <span class="part-pill-range">Q 1–800 (400 Mins)</span>
           </div>
-          <div class="part-pill-subject">Complete 500 MCQs Mega Practice Pack</div>
+          <div class="part-pill-subject">Complete 800 MCQs Mega Practice Pack (All 7 Sections)</div>
         </button>
 
         <button class="part-pill-btn" data-part="1" onclick="selectTestPart('1')">
@@ -1307,6 +1411,22 @@
           </div>
           <div class="part-pill-subject">Educational Psychology, Learning Theories, Inclusive Education, Methods, Assessment, Language, Math, Science &amp; Social Science</div>
         </button>
+
+        <button class="part-pill-btn" data-part="6" onclick="selectTestPart('6')">
+          <div class="part-pill-top">
+            <span class="part-pill-num">🧠 PSYCHOLOGY 1</span>
+            <span class="part-pill-range">Q 501–650 (75 Mins)</span>
+          </div>
+          <div class="part-pill-subject">Child Development, Learning Theories &amp; Pedagogical Fundamentals (Part 1 - 150 Qs)</div>
+        </button>
+
+        <button class="part-pill-btn" data-part="7" onclick="selectTestPart('7')">
+          <div class="part-pill-top">
+            <span class="part-pill-num">🎯 PSYCHOLOGY 2</span>
+            <span class="part-pill-range">Q 651–800 (75 Mins)</span>
+          </div>
+          <div class="part-pill-subject">Intelligence, Personality Dynamics, Special Needs &amp; Educational Assessment (Part 2 - 150 Qs)</div>
+        </button>
       </div>
     </div>
 
@@ -1319,7 +1439,7 @@
       </div>
       <div class="spec-card">
         <div class="spec-icon">📝</div>
-        <div id="specQuestions" class="spec-value">500 MCQs</div>
+        <div id="specQuestions" class="spec-value">800 MCQs</div>
         <div class="spec-label">Total Questions</div>
       </div>
       <div class="spec-card">
@@ -1339,13 +1459,13 @@
       <label class="input-label" for="candidateName">Candidate Full Name</label>
       <div class="name-input-wrapper">
         <span class="name-input-icon">👤</span>
-        <input id="candidateName" type="text" autocomplete="off" maxlength="40" placeholder="Enter your full name to generate official K-TET report">
+        <input id="candidateName" type="text" autocomplete="off" maxlength="40" placeholder="Enter your full name to generate your practice report">
       </div>
       <div id="startError" class="start-error-msg">⚠️ Please enter your name to begin the assessment.</div>
 
       <div class="subject-pill-row">
-        <span>Selected Scope: <b id="startScopeLabel">Complete 500 MCQs Mega Practice Pack</b></span>
-        <span class="subject-active-tag">✨ K-TET 2026 Certified</span>
+        <span>Selected Scope: <b id="startScopeLabel">Complete 800 MCQs Mega Practice Pack</b></span>
+        <span class="subject-active-tag">✨ K-TET 2026 Practice Pack</span>
       </div>
     </div>
 
@@ -1354,7 +1474,8 @@
       <button id="startBtn" class="btn primary btn-start-large">
         Start K-TET Mock Test &nbsp;➔
       </button>
-      <span class="start-notice">🔒 Instant feedback on every question with official pedagogical rationale.</span>
+<div style="font-size:12px;color:#64748b;margin-top:8px;font-weight:600;">📌 This is an independent practice test by Academic Hub.</div>
+      <span class="start-notice">🔒 Instant feedback on every question with detailed pedagogical rationale.</span>
     </div>
   </section>
 
@@ -1374,6 +1495,13 @@
           <div class="progress-bar-container">
             <div id="progressBar" class="progress-bar-fill"></div>
           </div>
+        </div>
+
+        <!-- Bilingual Language Option in Test Window -->
+        <div class="lang-switcher" id="quizLangSwitcher" aria-label="Select test language">
+          <button class="lang-btn" data-lang="en" onclick="setTestLanguage('en')">EN</button>
+          <button class="lang-btn active" data-lang="both" onclick="setTestLanguage('both')">🌐 Dual (Bilingual)</button>
+          <button class="lang-btn" data-lang="mal" onclick="setTestLanguage('mal')">മലയാളം</button>
         </div>
 
         <!-- HUD Countdown Clock -->
@@ -1430,13 +1558,13 @@
 
 
   <!-- ==========================================
-       PAGE 3: LAST PAGE (OFFICIAL RESULTS & REVIEW)
+       PAGE 3: LAST PAGE (PRACTICE RESULTS & REVIEW)
        ========================================== -->
   <section id="result" class="card hidden">
     <!-- Top Floating Toolbar -->
     <div class="result-top-toolbar">
       <div style="display:flex; gap:8px;">
-        <button id="saveReportBtn" class="btn primary">📥 Save Official Report</button>
+        <button id="saveReportBtn" class="btn primary">📥 Save Practice Report</button>
         <button id="printReportBtn" class="btn secondary">🖨️ Print / PDF</button>
       </div>
       <button id="restartBtn" class="btn danger">🔄 Retake Test</button>
@@ -1445,7 +1573,7 @@
     <!-- Prestigious Academic Header -->
     <header class="result-academic-header">
       <div class="report-brand-tag">Academic Hub · Kerala Teacher Eligibility Test</div>
-      <div class="report-sub-tag">KTET 2026 OFFICIAL MEGA PRACTICE PACK ASSESSMENT TRANSCRIPT</div>
+      <div class="report-sub-tag">KTET 2026 INDEPENDENT MEGA PRACTICE ASSESSMENT TRANSCRIPT</div>
       <h1 class="report-main-heading">K-TET PERFORMANCE RESULTS</h1>
     </header>
 
@@ -1458,7 +1586,7 @@
         </div>
         <div class="dossier-item">
           <span class="dossier-label">Exam Pack</span>
-          <span class="dossier-value">K-TET 2026 500 MCQs Mega Pack</span>
+          <span class="dossier-value">K-TET 2026 800 MCQs Mega Pack</span>
         </div>
         <div class="dossier-item">
           <span class="dossier-label">Assessed Scope</span>
@@ -1466,13 +1594,13 @@
         </div>
         <div class="dossier-item">
           <span class="dossier-label">Qualifying Benchmark</span>
-          <span class="dossier-value">60% (Official Pass)</span>
+          <span class="dossier-value">60% (Practice Benchmark)</span>
         </div>
       </div>
 
       <!-- Grand Performance Scorecard -->
       <div class="grand-score-card">
-        <div class="grand-score-label">Official Aggregate Score</div>
+        <div class="grand-score-label">Practice Aggregate Score</div>
         <div class="grand-score-value">
           <span id="resScore">0</span>
           <span class="divider">/</span>
@@ -1519,7 +1647,7 @@
       <div id="reviewContainer"></div>
     </div>
 
-    <!-- Official Report Footer -->
+    <!-- Practice Report Footer -->
     <footer class="result-footer">
       <strong>ACADEMIC HUB K-TET EVALUATION SYSTEM</strong>
       Verified Teacher Eligibility Practice Assessment · Standardized across Kerala SCERT / Pareeksha Bhavan syllabus benchmarks.
@@ -1542,10 +1670,27 @@
     2: { name: "Part 2", subject: "Child Development, Learning Theories, Inclusive Education, Teaching Methods & Assessment", start: 101, end: 200 },
     3: { name: "Part 3", subject: "Educational Psychology, Child Development, Pedagogy, Inclusive Education & Assessment", start: 201, end: 300 },
     4: { name: "Part 4", subject: "Educational Psychology, Pedagogy, Inclusive Education, Language Learning & Educational Practice", start: 301, end: 400 },
-    5: { name: "Part 5", subject: "Educational Psychology, Learning Theories, Inclusive Education, Teaching Methods, Assessment, Language, Math, Science & Social Science", start: 401, end: 500 }
+    5: { name: "Part 5", subject: "Educational Psychology, Learning Theories, Inclusive Education, Teaching Methods, Assessment, Language, Math, Science & Social Science", start: 401, end: 500 },
+    6: { name: "Psychology 1", subject: "Child Development, Learning Theories & Pedagogical Fundamentals (Part 1)", start: 501, end: 650 },
+    7: { name: "Psychology 2", subject: "Intelligence, Personality Dynamics, Special Needs & Educational Assessment (Part 2)", start: 651, end: 800 }
   };
 
+  let currentLang = 'both'; // 'both', 'en', 'mal'
   let selectedPartMode = 'all'; // 'all', '1', '2', '3', '4', '5'
+
+  window.setTestLanguage = function(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-switcher .lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    if (!$('test').classList.contains('hidden') && testQuestions.length > 0) {
+      renderQuestion();
+    }
+    if (!$('result').classList.contains('hidden') && testQuestions.length > 0) {
+      const activeFilter = document.querySelector('.filter-btn.active')?.dataset?.filter || 'all';
+      renderReviewCards(activeFilter);
+    }
+  };
   let activePalettePart = 1;
   let testQuestions = [];
   let userAnswers = {};
@@ -1568,13 +1713,15 @@
     const startScopeLabel = $('startScopeLabel');
 
     if (part === 'all') {
-      specTime.textContent = '250 Mins';
-      specQuestions.textContent = '500 MCQs';
-      startScopeLabel.textContent = 'Complete 500 MCQs Mega Practice Pack (Parts 1 to 5)';
+      specTime.textContent = '400 Mins';
+      specQuestions.textContent = '800 MCQs';
+      startScopeLabel.textContent = 'Complete 800 MCQs Mega Practice Pack (Parts 1–5 & Psychology 1 & 2)';
     } else {
       const p = PARTS_MAP[part];
-      specTime.textContent = '50 Mins';
-      specQuestions.textContent = '100 MCQs';
+      const count = p.end - p.start + 1;
+      const mins = Math.round(count * 0.5);
+      specTime.textContent = `${mins} Mins`;
+      specQuestions.textContent = `${count} MCQs`;
       startScopeLabel.textContent = `${p.name}: ${p.subject} (Q ${p.start}–${p.end})`;
     }
   }
@@ -1607,14 +1754,14 @@
     }
 
     if (selectedPartMode === 'all') {
-      testQuestions = rawData.slice(); // all 500
-      totalAllowedSeconds = 250 * 60; // 250 minutes (30s per Q matching AI MCQ test)
+      testQuestions = rawData.slice(); // all 800
+      totalAllowedSeconds = Math.round(testQuestions.length * 30); // 30s per Q = 400 mins
       activePalettePart = 1;
     } else {
       const pNum = parseInt(selectedPartMode, 10);
       const pMeta = PARTS_MAP[pNum];
       testQuestions = rawData.filter(q => q.id >= pMeta.start && q.id <= pMeta.end);
-      totalAllowedSeconds = 50 * 60; // 50 minutes (30s per Q)
+      totalAllowedSeconds = Math.round(testQuestions.length * 30); // 30s per Q
       activePalettePart = pNum;
     }
 
@@ -1672,10 +1819,12 @@
     }
 
     let html = '';
-    for (let p = 1; p <= 5; p++) {
+    const partKeys = Object.keys(PARTS_MAP).map(Number).sort((a,b)=>a-b);
+    partKeys.forEach(p => {
       const isActive = (p === activePalettePart);
-      html += `<button class="pal-part-tab-btn ${isActive ? 'active' : ''}" onclick="switchPalettePart(${p})">Part ${p}</button>`;
-    }
+      const label = PARTS_MAP[p].name;
+      html += `<button class="pal-part-tab-btn ${isActive ? 'active' : ''}" onclick="switchPalettePart(${p})">${label}</button>`;
+    });
     tabsContainer.innerHTML = html;
   }
 
@@ -1714,7 +1863,7 @@
         }
         html += `<button class="nav-btn ${stateClass}" onclick="jumpToQuestion(${i})">${i + 1}</button>`;
       }
-      $('paletteHeading').textContent = `Questions: Part ${activePalettePart} (${pMeta.start}–${pMeta.end})`;
+      $('paletteHeading').textContent = `Questions: ${pMeta.name} (${pMeta.start}–${pMeta.end})`;
     } else {
       for (let i = 0; i < totalQ; i++) {
         const userAns = userAnswers[i];
@@ -1764,8 +1913,14 @@
     $('qSectionBadge').textContent = q.section;
     $('qCategory').textContent = `PART ${q.part}: ${q.partSubject} · ${q.section}`;
 
-    // Question Text
-    $('qText').innerHTML = `<b>${q.id}.</b> ${q.question}`;
+    // Question Text with Language Mode support
+    if (currentLang === 'mal') {
+      $('qText').innerHTML = `<b>${q.id}.</b> ${q.questionMal || q.question}`;
+    } else if (currentLang === 'both') {
+      $('qText').innerHTML = `<b>${q.id}.</b> ${q.question}${q.questionMal ? `<div class="q-text-mal">👉 ${q.questionMal}</div>` : ''}`;
+    } else {
+      $('qText').innerHTML = `<b>${q.id}.</b> ${q.question}`;
+    }
 
     const selectedAns = userAnswers[currentPos];
     let optsHtml = '';
@@ -1781,11 +1936,25 @@
         }
       }
 
+      let optContent = '';
+      if (currentLang === 'mal') {
+        optContent = `<span class="opt-text">${opt.textMal || opt.text}</span>`;
+      } else if (currentLang === 'both') {
+        optContent = `
+          <div class="opt-body">
+            <span class="opt-text">${opt.text}</span>
+            ${opt.textMal ? `<span class="opt-text-mal">${opt.textMal}</span>` : ''}
+          </div>
+        `;
+      } else {
+        optContent = `<span class="opt-text">${opt.text}</span>`;
+      }
+
       optsHtml += `
         <label class="${cardClass}" onclick="handleOptionSelect('${opt.value}')">
           <input type="radio" name="quizOpt" value="${opt.value}" ${selectedAns === opt.value ? 'checked' : ''} ${selectedAns ? 'disabled' : ''}>
           <span class="opt-letter">${opt.value}</span>
-          <span class="opt-text">${opt.text}</span>
+          ${optContent}
         </label>
       `;
     });
@@ -1846,6 +2015,27 @@
 
     let html = '';
 
+    // Bilingual text for explanation drawer
+    let correctText = correctOpt.text;
+    let chosenText = chosenOpt ? chosenOpt.text : '';
+    let explText = q.explanation || 'Verified as the standard response according to teacher eligibility curriculum standards.';
+
+    if (currentLang === 'mal') {
+      correctText = correctOpt.textMal || correctOpt.text;
+      chosenText = chosenOpt ? (chosenOpt.textMal || chosenOpt.text) : '';
+      explText = q.explanationMal || q.explanation;
+    } else if (currentLang === 'both') {
+      if (correctOpt.textMal) {
+        correctText = `${correctOpt.text} <span class="expl-opt-mal">👉 ${correctOpt.textMal}</span>`;
+      }
+      if (chosenOpt && chosenOpt.textMal) {
+        chosenText = `${chosenOpt.text} <span class="expl-opt-mal" style="color:#ef4444;">👉 ${chosenOpt.textMal}</span>`;
+      }
+      if (q.explanationMal) {
+        explText = `${q.explanation}<div class="expl-body-mal">📖 ${q.explanationMal}</div>`;
+      }
+    }
+
     if (!isCorrect) {
       html = `
         <div class="expl-header">
@@ -1854,13 +2044,13 @@
         </div>
 
         <div class="expl-section">
-          <div class="expl-section-title expl-why-wrong-title">⚠️ Your selected choice: (${chosenOpt ? chosenOpt.value : ''}) ${chosenOpt ? chosenOpt.text : ''}</div>
+          <div class="expl-section-title expl-why-wrong-title">⚠️ Your selected choice: (${chosenOpt ? chosenOpt.value : ''}) ${chosenText}</div>
         </div>
 
         <div class="expl-section">
-          <div class="expl-section-title expl-why-right-title">✅ Correct Answer: (${correctOpt.value}) ${correctOpt.text}</div>
+          <div class="expl-section-title expl-why-right-title">✅ Correct Answer: (${correctOpt.value}) ${correctText}</div>
           <div class="expl-highlight-correct">
-            <b>Official Pedagogical Explanation:</b><br>${q.explanation || 'Verified as the standard response according to teacher eligibility curriculum standards.'}
+            <b>Pedagogical Explanation:</b><br>${explText}
           </div>
         </div>
 
@@ -1878,8 +2068,8 @@
         </div>
 
         <div class="expl-section">
-          <div class="expl-section-title expl-why-right-title">🎯 Correct Answer: (${correctOpt.value}) ${correctOpt.text}</div>
-          <div class="expl-body">${q.explanation || 'Accurate understanding of developmental and educational psychology concepts.'}</div>
+          <div class="expl-section-title expl-why-right-title">🎯 Correct Answer: (${correctOpt.value}) ${correctText}</div>
+          <div class="expl-body">${explText}</div>
         </div>
 
         <div class="expl-footer-action">
@@ -1951,10 +2141,10 @@
     const pct = (correct / totalQ) * 100;
     const accuracy = attempted > 0 ? (correct / attempted) * 100 : 0;
 
-    showOfficialReport(correct, wrong, unanswered, attempted, pct, accuracy, auto);
+    showPracticeReport(correct, wrong, unanswered, attempted, pct, accuracy, auto);
   }
 
-  function showOfficialReport(correct, wrong, unanswered, attempted, pct, accuracy, auto) {
+  function showPracticeReport(correct, wrong, unanswered, attempted, pct, accuracy, auto) {
     switchScreen('result');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -1969,7 +2159,7 @@
 
     let scopeDesc = '';
     if (selectedPartMode === 'all') {
-      scopeDesc = 'Complete 500 MCQs (Parts 1–5)';
+      scopeDesc = 'Complete 800 MCQs (Parts 1–5)';
     } else {
       const p = PARTS_MAP[selectedPartMode];
       scopeDesc = `${p.name}: ${p.subject}`;
@@ -1981,7 +2171,7 @@
       statusBadge.textContent = '🌟 DISTINCTION · HIGHLY QUALIFIED';
       statusBadge.className = 'status-badge-lg status-excellent';
     } else if (pct >= 60) {
-      statusBadge.textContent = '🏅 QUALIFIED (OFFICIAL PASS)';
+      statusBadge.textContent = '🏅 QUALIFIED (BENCHMARK MET)';
       statusBadge.className = 'status-badge-lg status-good';
     } else if (pct >= 55) {
       statusBadge.textContent = '⚠️ RESERVED CATEGORY PASS';
@@ -2051,13 +2241,17 @@
             <span class="review-part-tag">PART ${q.part} · ${q.partSubject} · ${q.section}</span>
             ${statusTag}
           </div>
-          <div class="review-q-text"><b>Q${q.id}.</b> ${q.question}</div>
+          <div class="review-q-text">
+            <b>Q${q.id}.</b> ${currentLang === 'mal' ? (q.questionMal || q.question) : q.question}
+            ${(currentLang === 'both' && q.questionMal) ? `<div class="q-text-mal" style="font-size:13.5px; margin-top:4px; padding-top:4px;">👉 ${q.questionMal}</div>` : ''}
+          </div>
           <div class="review-ans-row">
-            ${userAns ? `<span>Your answer: <b style="color:${isCorrect ? '#10b981' : '#ef4444'}">(${userAns}) ${userOpt ? userOpt.text : ''}</b></span>` : '<span style="color:#64748b;">Not Attempted</span>'}
-            <span>Correct answer: <b style="color:#10b981">(${q.answer}) ${correctOpt ? correctOpt.text : ''}</b></span>
+            ${userAns ? `<span>Your answer: <b style="color:${isCorrect ? '#10b981' : '#ef4444'}">(${userAns}) ${userOpt ? ((currentLang === 'mal') ? (userOpt.textMal || userOpt.text) : (currentLang === 'both' && userOpt.textMal ? `${userOpt.text} (${userOpt.textMal})` : userOpt.text)) : ''}</b></span>` : '<span style="color:#64748b;">Not Attempted</span>'}
+            <span>Correct answer: <b style="color:#10b981">(${q.answer}) ${correctOpt ? ((currentLang === 'mal') ? (correctOpt.textMal || correctOpt.text) : (currentLang === 'both' && correctOpt.textMal ? `${correctOpt.text} (${correctOpt.textMal})` : correctOpt.text)) : ''}</b></span>
           </div>
           <div class="review-expl-box">
-            <b>Rationale:</b> ${q.explanation || 'Standard textbook pedagogical response.'}
+            <b>Rationale:</b> ${(currentLang === 'mal') ? (q.explanationMal || q.explanation) : q.explanation}
+            ${(currentLang === 'both' && q.explanationMal) ? `<div class="expl-body-mal" style="margin-top:4px; padding-top:4px; font-size:12px;">📖 ${q.explanationMal}</div>` : ''}
           </div>
         </div>
       `;
@@ -2085,7 +2279,7 @@
   $('printReportBtn').addEventListener('click', () => window.print());
 
   $('saveReportBtn').addEventListener('click', () => {
-    const reportText = `ACADEMIC HUB — K-TET 500 MCQs OFFICIAL REPORT
+    const reportText = `ACADEMIC HUB — K-TET 800 MCQs PRACTICE REPORT
 Candidate Name: ${candidateName}
 Scope: ${$('resScope').textContent}
 Score: ${$('resScore').textContent} / ${$('resTotal').textContent} (${$('resPct').textContent})
