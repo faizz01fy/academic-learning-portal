@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hindi Module 1 · Chapter 1 : Samvidhan Nirman Evam Preamble</title>
+  <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;500;600;700;800&display=swap');
+
+@page {
+  size: A4 portrait;
+  margin: 7mm 8mm 7mm 8mm;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', 'Noto Sans Malayalam', sans-serif;
+  color: #090d16;
+  background: #ffffff;
+  line-height: 1.46;
+  font-size: 8.8pt;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.page-container {
+  min-height: 280mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  page-break-after: always;
+  break-after: page;
+  position: relative;
+  box-sizing: border-box;
+  padding: 2mm 0;
+}
+
+.page-container:last-child {
+  page-break-after: auto;
+  break-after: auto;
+}
+
+/* Top bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #c2410c;
+  padding-bottom: 3px;
+  margin-bottom: 6px;
+}
+
+.top-bar-left {
+  font-size: 7pt;
+  font-weight: 800;
+  color: #c2410c;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.top-bar-right {
+  font-size: 7pt;
+  font-weight: 700;
+  color: #1e293b;
+  background: #fff7ed;
+  border: 1px solid #fdba74;
+  padding: 1.5px 8px;
+  border-radius: 4px;
+}
+
+/* Hero Header */
+.chapter-hero {
+  background: linear-gradient(135deg, #7c2d12 0%, #c2410c 55%, #ea580c 100%);
+  color: #ffffff;
+  border-radius: 7px;
+  padding: 7px 12px;
+  margin-bottom: 7px;
+  box-shadow: 0 2px 5px rgba(194, 65, 12, 0.2);
+  border: 1px solid #fb923c;
+}
+
+.hero-tag {
+  font-size: 6.6pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #fed7aa;
+  margin-bottom: 2px;
+}
+
+.hero-title-hi {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 10.5pt;
+  font-weight: 800;
+  margin: 0 0 2px 0;
+  line-height: 1.25;
+  color: #ffffff;
+}
+
+.hero-title-ml {
+  font-family: 'Noto Sans Malayalam', sans-serif;
+  font-size: 9.2pt;
+  font-weight: 700;
+  margin: 0;
+  color: #ffedd5;
+  line-height: 1.32;
+}
+
+/* Content Box */
+.content-box {
+  border: 1.2px solid #e2e8f0;
+  border-radius: 6px;
+  background: #ffffff;
+  margin-bottom: 5.5px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.section-header {
+  background: linear-gradient(90deg, #fff7ed 0%, #f8fafc 100%);
+  border-left: 3.5px solid #ea580c;
+  border-bottom: 1px solid #fed7aa;
+  padding: 3.5px 8px;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title-hi {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 8.2pt;
+  font-weight: 800;
+  color: #9a3412;
+}
+
+.section-title-ml {
+  font-family: 'Noto Sans Malayalam', sans-serif;
+  font-size: 7.8pt;
+  font-weight: 700;
+  color: #047857;
+  margin-left: 8px;
+}
+
+/* Bilingual Side-by-Side Grid */
+.bilingual-pair {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 6px !important;
+  padding: 5px 7px !important;
+  box-sizing: border-box !important;
+  background: #ffffff !important;
+}
+
+.block-hi {
+  background: #fffaf5 !important;
+  border: 1px solid #fed7aa !important;
+  border-left: 3.5px solid #ea580c !important;
+  padding: 5px 8px !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+}
+
+.block-hi-label {
+  font-family: 'Noto Sans Devanagari', sans-serif !important;
+  font-size: 6.6pt !important;
+  font-weight: 800 !important;
+  color: #c2410c !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.4px !important;
+  margin-bottom: 2.5px !important;
+}
+
+.block-hi p, .block-hi div, .block-hi li {
+  font-family: 'Noto Sans Devanagari', sans-serif !important;
+  font-size: 8.4pt !important;
+  font-weight: 500 !important;
+  color: #090d16 !important;
+  line-height: 1.48 !important;
+  margin: 0 0 3.5px 0 !important;
+  text-align: justify !important;
+}
+
+.block-hi ul, .block-hi ol {
+  margin: 0 0 3px 0;
+  padding-left: 14px;
+}
+
+.block-hi p:last-child, .block-hi ul:last-child { margin-bottom: 0 !important; }
+
+.block-ml {
+  background: #f0fdf4 !important;
+  border: 1px solid #bbf7d0 !important;
+  border-left: 3.5px solid #059669 !important;
+  padding: 5px 8px !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+}
+
+.block-ml-label {
+  font-family: 'Noto Sans Malayalam', sans-serif !important;
+  font-size: 6.6pt !important;
+  font-weight: 800 !important;
+  color: #047857 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.4px !important;
+  margin-bottom: 2.5px !important;
+}
+
+.block-ml p, .block-ml div, .block-ml li {
+  font-family: 'Noto Sans Malayalam', sans-serif !important;
+  font-size: 8.3pt !important;
+  font-weight: 500 !important;
+  color: #044e39 !important;
+  line-height: 1.48 !important;
+  margin: 0 0 3.5px 0 !important;
+  text-align: justify !important;
+}
+
+.block-ml ul, .block-ml ol {
+  margin: 0 0 3px 0;
+  padding-left: 14px;
+}
+
+.block-ml p:last-child, .block-ml ul:last-child { margin-bottom: 0 !important; }
+
+/* Poem Layout */
+.poem-box {
+  background: #fefce8;
+  border: 1px solid #fef08a;
+  border-radius: 5px;
+  padding: 5px 8px;
+  margin: 3px 0;
+}
+
+.poem-line-hi {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 9.4pt;
+  font-weight: 700;
+  color: #7c2d12;
+  line-height: 1.55;
+}
+
+.poem-line-ml {
+  font-family: 'Noto Sans Malayalam', sans-serif;
+  font-size: 8.9pt;
+  font-weight: 600;
+  color: #065f46;
+  line-height: 1.55;
+}
+
+/* Vocabulary / Q&A Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 3px 0;
+  font-size: 7.3pt;
+}
+
+.data-table th, .data-table td {
+  border: 1px solid #e2e8f0;
+  padding: 3px 6px;
+  text-align: left;
+}
+
+.data-table th {
+  background: #f8fafc;
+  color: #1e293b;
+  font-weight: 800;
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 6.4pt;
+  font-weight: 800;
+}
+.badge-orange { background: #ea580c; color: #ffffff; }
+.badge-green { background: #059669; color: #ffffff; }
+.badge-blue { background: #2563eb; color: #ffffff; }
+
+/* Footer */
+.bottom-bar {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 6.8pt;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+  </style>
+  <style id="hub-universal-protection">
+*, *::before, *::after {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+img {
+  -webkit-user-drag: none !important;
+  user-drag: none !important;
+}
+@media print {
+  html, body {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+a[download], button[download], [download], .btn-download, .download, #downloadBtn, #saveBtn, .save {
+  display: none !important;
+}
+</style>
+</head>
+<body>
+
+    <section class="page-container">
+      <div>
+        <div class="top-bar">
+          <span class="top-bar-left">Calicut University CDOE FYUGP · Hindi · Module 1 · Chapter 1</span>
+          <span class="top-bar-right">Samvidhan Nirman & Preamble (Malayalam) · Page 1 of 4</span>
+        </div>
+        
+    <div class="chapter-hero">
+      <div class="hero-tag">MODULE 1 · CHAPTER 1 · CONSTITUTION OF INDIA</div>
+      <h1 class="hero-title-hi">भारतीय संविधान : निर्माण प्रक्रिया, संविधान सभा एवं उद्देशिका</h1>
+      <h2 class="hero-title-ml">ഇന്ത്യൻ ഭരണഘടന : നിർമ്മാണ പ്രക്രിയ, ഭരണഘടനാ നിർമ്മാണ സഭയും ആമുഖവും</h2>
+    </div>
+
+    <div class="content-box">
+      <div class="section-header">
+        <span class="section-title-hi">1. संविधान का परिचय एवं उद्देश्य (LMS पाठ्य विवरण)</span>
+        <span class="section-title-ml">ഭരണഘടനയുടെ ആമുഖവും ലക്ഷ്യങ്ങളും</span>
+      </div>
+      <div class="bilingual-pair">
+        <div class="block-hi">
+          <span class="block-hi-label">हिन्दी मूल पाठ (Official LMS)</span>
+          <p><strong>पाठ्यक्रम का उद्देश्य :</strong> इस खंड में उल्लिखित पाठ का उद्देश्य विद्यार्थियों को नागरिकों के अधिकारों, कर्तव्यों और शासन की व्यवस्था को स्पष्ट करता है। भारत का संविधान विश्व का सबसे बड़ा लिखित संविधान है, जो लोकतांत्रिक मूल्यों और समानता की भावना को मजबूत करता है।</p>
+          <p>संविधान पढ़ने से विद्यार्थी अपने अधिकारों और कर्तव्यों को समझते हैं। शिक्षा का अधिकार, समानता का अधिकार, अभिव्यक्ति की स्वतंत्रता जैसे मौलिक अधिकार उनके जीवन में गहराई से जुड़ जाते हैं।</p>
+          <p>बच्चों को संविधान पढ़ाना केवल कानून की जानकारी देना नहीं है, बल्कि उन्हें जागरूक, जिम्मेदार और संवेदनशील नागरिक बनाना है जो राष्ट्र निर्माण और लोकतंत्र को सुदृढ़ बनाते हैं।</p>
+        </div>
+        <div class="block-ml">
+          <span class="block-ml-label">മലയാള പരിഭാഷയും വിശദീകരണവും</span>
+          <p><strong>പഠന ലക്ഷ്യം :</strong> പൗരന്മാരുടെ അവകാശങ്ങൾ, കടമകൾ, ഭരണസംവിധാനം എന്നിവ വിദ്യാർത്ഥികൾക്ക് വ്യക്തമാക്കിക്കൊടുക്കുക എന്നതാണ് ഈ പാഠഭാഗത്തിന്റെ പ്രധാന ലക്ഷ്യം. ലോകത്തിലെ ഏറ്റവും വലിയ ലിഖിത ഭരണഘടനയാണ് ഇന്ത്യൻ ഭരണഘടന. ഇത് ജനാധിപത്യ മൂല്യങ്ങളെയും സമത്വ ഭാവനയെയും ദൃഢമാക്കുന്നു.</p>
+          <p>ഭരണഘടന പഠിക്കുന്നതിലൂടെ വിദ്യാർത്ഥികൾ തങ്ങളുടെ അവകാശങ്ങളും ഉത്തരവാദിത്തങ്ങളും തിരിച്ചറിയുന്നു. വിദ്യാഭ്യാസത്തിനുള്ള അവകാശം, സമത്വത്തിനുള്ള അവകാശം, അഭിപ്രായസ്വാതന്ത്ര്യം തുടങ്ങിയ മൗലികാവകാശങ്ങൾ അവരുടെ ജീവിതത്തിന്റെ ഭാഗമാകുന്നു.</p>
+          <p>കുട്ടികളെ ഭരണഘടന പഠിപ്പിക്കുന്നത് വെറും നിയമവിവരങ്ങൾ നൽകലല്ല; മറിച്ച് ഉത്തരവാദിത്തമുള്ളവരും പ്രതികരണശേഷിയുള്ളവരുമായ ഉത്തമ പൗരന്മാരാക്കി അവരെ വളർത്തിയെടുക്കലാണ്.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-box">
+      <div class="section-header">
+        <span class="section-title-hi">2. सर्वोच्च कानून एवं ऐतिहासिक पृष्ठभूमि</span>
+        <span class="section-title-ml">പരമോന്നത നിയമവും ചരിത്ര പശ്ചാത്തലവും</span>
+      </div>
+      <div class="bilingual-pair">
+        <div class="block-hi">
+          <span class="block-hi-label">हिन्दी मूल पाठ</span>
+          <p>भारत का संविधान हमारे देश का सर्वोच्च कानून है। यह <strong>26 जनवरी 1950</strong> को लागू हुआ और इसी दिन भारत एक गणराज्य बना। संविधान वह दस्तावेज़ है जो देश की शासन प्रणाली, नागरिकों के अधिकारों और कर्तव्यों, तथा राज्य के विभिन्न अंगों — विधायिका, कार्यपालिका और न्यायपालिका — के कार्यों को निर्धारित करता है।</p>
+          <p><strong>26 नवंबर</strong> को भारत में <em>'संविधान दिवस'</em> घोषित किया गया है, जबकि <strong>26 जनवरी</strong> का दिन <em>'गणतंत्र दिवस'</em> के रूप में मनाया जाता है। भारत के संविधान का मूल आधार <strong>भारत सरकार अधिनियम 1935</strong> को माना जाता है।</p>
+        </div>
+        <div class="block-ml">
+          <span class="block-ml-label">മലയാള പരിഭാഷ</span>
+          <p>ഇന്ത്യൻ ഭരണഘടന രാജ്യത്തിന്റെ പരമോന്നത നിയമമാണ്. <strong>1950 ജനുവരി 26-നാണ്</strong> ഇത് നിലവിൽ വന്നതും ഭാരതം ഒരു റിപ്പബ്ലിക്കായി മാറിയതും. രാജ്യത്തിന്റെ ഭരണസംവിധാനം, പൗരന്മാരുടെ അവകാശങ്ങൾ, കടമകൾ, ഭരണകൂടത്തിന്റെ മൂന്ന് പ്രധാന അവയവങ്ങളായ നിയമനിർമ്മാണ സഭ (Legislature), ഭരണനിർവ്വഹണ വിഭാഗം (Executive), നീതിന്യായ വിഭാഗം (Judiciary) എന്നിവയുടെ അധികാരങ്ങൾ നിശ്ചയിക്കുന്ന രേഖയാണിത്.</p>
+          <p>എല്ലാ വർഷവും <strong>നവംബർ 26</strong> <em>'ഭരണഘടനാ ദിനമായും'</em> (Constitution Day), <strong>ജനുവരി 26</strong> <em>'റിപ്പബ്ലിക് ദിനമായും'</em> കൊണ്ടാടപ്പെടുന്നു. <strong>1935-ലെ ഗവൺമെന്റ് ഓഫ് ഇന്ത്യ ആക്ട്</strong> ആണ് ഭരണഘടനയുടെ അടിസ്ഥാന സ്രോതസ്സായി കരുതപ്പെടുന്നത്.</p>
+        </div>
+      </div>
+    </div>
+    
+      </div>
+      <footer class="bottom-bar">
+        <span>Calicut University · CDOE · FYUGP Foundation Hindi · Bilingual Reading Guide</span>
+        <span>Page 1 of 4</span>
+      </footer>
+    </section>
+    
+    <section class="page-container">
+      <div>
+        <div class="top-bar">
+          <span class="top-bar-left">Calicut University CDOE FYUGP · Hindi · Module 1 · Chapter 1</span>
+          <span class="top-bar-right">Samvidhan Nirman & Preamble (Malayalam) · Page 2 of 4</span>
+        </div>
+        
+    <div class="content-box">
+      <div class="section-header">
+        <span class="section-title-hi">3. संविधान सभा का गठन, प्रारूप समिति एवं संरचना</span>
+        <span class="section-title-ml">ഭരണഘടനാ നിർമ്മാണ സഭയും ഡ്രാഫ്റ്റിംഗ് കമ്മിറ്റിയും</span>
+      </div>
+      <div class="bilingual-pair">
+        <div class="block-hi">
+          <span class="block-hi-label">संविधान सभा व प्रारूप समिति (7 सदस्य)</span>
+          <p>भारतीय संविधान सभा के लिए <strong>जुलाई 1946</strong> में निर्वाचन हुए थे। पहली बैठक <strong>दिसंबर 1946</strong> को हुई। सभा में <strong>299 सदस्य</strong> थे। <strong>सच्चिदानंद सिन्हा</strong> प्रथम अस्थायी सभापति और बाद में <strong>डॉ. राजेंद्र प्रसाद</strong> स्थायी अध्यक्ष निर्वाचित हुए।</p>
+          <p><strong>अगस्त 1947</strong> में गठित <strong>प्रारूप समिति (Drafting Committee)</strong> के अध्यक्ष <strong>डॉ. भीमराव आंबेडकर</strong> थे। समिति के अन्य 6 सदस्य थे : के.एम. मुंशी, गोपालस्वामी अय्यंगार, अल्लादी कृष्णस्वामी अय्यर, सैयद मोहम्मद सादुल्लाह, एन. माधव राव (बी.एल. मित्र के स्थान पर) और टी.टी. कृष्णमाचारी (डी.पी. खेतान के स्थान पर)।</p>
+          <p>संविधान तैयार करने में <strong>2 वर्ष, 11 माह, 18 दिन</strong> और कुल <strong>166 बैठकें</strong> हुईं। मूल संविधान में <strong>395 अनुच्छेद, 22 भाग और 8 अनुसूचियाँ</strong> थीं। वर्तमान में 470+ अनुच्छेद, 25 भाग और 12 अनुसूचियाँ हैं।</p>
+        </div>
+        <div class="block-ml">
+          <span class="block-ml-label">മലയാള വിശദീകരണം</span>
+          <p><strong>1946 ജൂലൈയിലാണ്</strong> ഭരണഘടനാ നിർമ്മാണ സഭ തിരഞ്ഞെടുപ്പ് നടന്നത്. ആദ്യ സമ്മേളനം 1946 ഡിസംബറിൽ ചേർന്നു. സഭയിൽ <strong>299 അംഗങ്ങൾ</strong> ഉണ്ടായിരുന്നു. ആദ്യ താത്കാലിക അധ്യക്ഷനായി <strong>സച്ചിദാനന്ദ സിൻഹയെയും</strong>, തുടർന്ന് <strong>ഡോ. രാജേന്ദ്ര പ്രസാദിനെ</strong> സ്ഥിരം പ്രസിഡന്റായും തിരഞ്ഞെടുത്തു.</p>
+          <p><strong>1947 ആഗസ്റ്റിൽ</strong> രൂപീകരിച്ച <strong>ഡ്രാഫ്റ്റിംഗ് കമ്മിറ്റിയുടെ</strong> ചെയർമാൻ <strong>ഡോ. ബി.ആർ. അംബേദ്കർ</strong> ആയിരുന്നു. മറ്റ് 6 അംഗങ്ങൾ: കെ.എം. മുൻഷി, എൻ. ഗോപാലസ്വാമി അയ്യങ്കാർ, അല്ലാടി കൃഷ്ണസ്വാമി അയ്യർ, സയ്യിദ് മുഹമ്മദ് സാദുല്ല, എൻ. മാധവ റാവു, ടി.ടി. കൃഷ്ണമാചാരി.</p>
+          <p>ഭരണഘടന തയ്യാറാക്കാൻ <strong>2 വർഷം, 11 മാസം, 18 ദിവസങ്ങൾ</strong> എടുത്തു (166 യോഗങ്ങൾ). യഥാർത്ഥ ഭരണഘടനയിൽ <strong>395 അനുച്ഛേദങ്ങളും 22 ഭാഗങ്ങളും 8 ഷെഡ്യൂളുകളും</strong> ഉണ്ടായിരുന്നു. ഇന്നതിൽ 470-ലധികം അനുച്ഛേദങ്ങളും 25 ഭാഗങ്ങളും 12 ഷെഡ്യൂളുകളുമുണ്ട്.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-box">
+      <div class="section-header">
+        <span class="section-title-hi">4. उद्देशिका (Preamble) के मुख्य दार्शनिक आधार</span>
+        <span class="section-title-ml">ആമുഖത്തിലെ പ്രധാന ആശയങ്ങളും ദർശനങ്ങളും</span>
+      </div>
+      <div class="bilingual-pair">
+        <div class="block-hi">
+          <span class="block-hi-label">उद्देशिका के मुख्य शब्द</span>
+          <p>• <strong>हम भारत के लोग :</strong> संप्रभुता का स्रोत भारत की जनता है।<br/>
+          • <strong>संप्रभु :</strong> भारत आंतरिक व बाह्य रूप से पूर्ण स्वतंत्र है।<br/>
+          • <strong>समाजवादी व धर्मनिरपेक्ष :</strong> जनकल्याण व सर्वधर्म समभाव (42वाँ संशोधन 1976)।<br/>
+          • <strong>लोकतांत्रिक गणराज्य :</strong> जनता द्वारा चुनी सरकार और निर्वाचित राष्ट्राध्यक्ष।<br/>
+          • <strong>तीन न्याय :</strong> सामाजिक, आर्थिक और राजनीतिक न्याय।<br/>
+          • <strong>स्वतंत्रता, समानता, बंधुत्व एवं अखंडता :</strong> राष्ट्रीय एकता के मूल आधार।</p>
+        </div>
+        <div class="block-ml">
+          <span class="block-ml-label">ആമുഖ ദർശനങ്ങൾ (മലയാളം)</span>
+          <p>• <strong>നമ്മൾ ഭാരതത്തിലെ ജനങ്ങൾ :</strong> പരമാധികാര ശക്തി ജനങ്ങളിലാണ്.<br/>
+          • <strong>പരമാധികാരം :</strong> വിദേശ നിയന്ത്രണങ്ങളില്ലാത്ത സ്വതന്ത്ര രാഷ്ട്രം.<br/>
+          • <strong>സോഷ്യലിസ്റ്റ് & മതേതരത്വം :</strong> സമത്വവും എല്ലാ മതങ്ങൾക്കും തുല്യ ബഹുമാനവും (42-ാം ഭേദഗതി 1976).<br/>
+          • <strong>ജനാധിപത്യ റിപ്പബ്ലിക് :</strong> ജനങ്ങളാൽ തിരഞ്ഞെടുക്കപ്പെടുന്ന ഭരണാധികാരിയും രാഷ്ട്രപതിയും.<br/>
+          • <strong>മൂന്ന് നീതികൾ :</strong> സാമൂഹിക, സാമ്പത്തിക, രാഷ്ട്രീയ നീതി.<br/>
+          • <strong>സ്വാതന്ത്ര്യം, സമത്വം, സാഹോദര്യം, അഖണ്ഡത :</strong> ദേശീയോദ്ഗ്രഥനത്തിന്റെ അടിത്തറ.</p>
+        </div>
+      </div>
+    </div>
+    
+      </div>
+      <footer class="bottom-bar">
+        <span>Calicut University · CDOE · FYUGP Foundation Hindi · Bilingual Reading Guide</span>
+        <span>Page 2 of 4</span>
+      </footer>
+    </section>
+    
+    <section class="page-container">
+      <div>
+        <div class="top-bar">
+          <span class="top-bar-left">Calicut University CDOE FYUGP · Hindi · Module 1 · Chapter 1</span>
+          <span class="top-bar-right">Samvidhan Nirman & Preamble (Malayalam) · Page 3 of 4</span>
+        </div>
+        
+    <div class="content-box">
+      <div class="section-header" style="background: linear-gradient(90deg, #ffedd5 0%, #fed7aa 100%); border-left: 4px solid #ea580c;">
+        <span class="section-title-hi" style="font-size:9.2pt;">★ लघु उत्तरीय प्रश्न (4 अंक के 3 प्रश्न) — 4-Mark Questions</span>
+        <span class="section-title-ml" style="font-size:8.8pt;">ഹ്രസ്വ ചോദ്യോത്തരങ്ങൾ (4 മാർക്കിന്റെ 3 ചോദ്യങ്ങൾ)</span>
+      </div>
+
+      <!-- Q1 (4 Marks) -->
+      <div class="bilingual-pair" style="border-bottom: 1.5px solid #fed7aa;">
+        <div class="block-hi">
+          <span class="block-hi-label"><span class="badge badge-orange">प्रश्न 1 (4 अंक)</span> संविधान सभा के गठन और कार्यप्रणाली</span>
+          <p><strong>प्रश्न : भारतीय संविधान सभा के गठन और इसकी कार्यप्रणाली पर संक्षिप्त टिप्पणी लिखिए।</strong></p>
+          <p><strong>उत्तर :</strong> भारतीय संविधान सभा के लिए निर्वाचन जुलाई 1946 में हुए थे। इसकी पहली बैठक दिसंबर 1946 को हुई। देश के विभाजन के बाद सभा में 299 सदस्य रह गए। डॉ. सच्चिदानंद सिन्हा इसके प्रथम अस्थायी सभापति बने तथा बाद में डॉ. राजेंद्र प्रसाद को स्थायी अध्यक्ष निर्वाचित किया गया। संविधान सभा ने 2 वर्ष, 11 माह और 18 दिनों में कुल 166 बैठकें कर विश्व के सबसे बड़े लिखित संविधान का निर्माण किया। बैठकों में प्रेस और जनता को भी भाग लेने की स्वतंत्रता थी।</p>
+        </div>
+        <div class="block-ml">
+          <span class="block-ml-label"><span class="badge badge-green">ചോദ്യം 1 (4 Marks)</span> ഭരണഘടനാ നിർമ്മാണ സഭയുടെ പ്രവർത്തനം</span>
+          <p><strong>ചോദ്യം : ഭരണഘടനാ നിർമ്മാണ സഭയുടെ രൂപീകരണത്തെയും പ്രവർത്തനരീതിയെയും കുറിച്ച് ലഘുകുറിപ്പ് എഴുതുക.</strong></p>
+          <p><strong>ഉത്തരം :</strong> 1946 ജൂലൈയിലാണ് ഭരണഘടനാ നിർമ്മാണ സഭയിലേക്കുള്ള തിരഞ്ഞെടുപ്പ് നടന്നത്. ആദ്യ സമ്മേളനം 1946 ഡിസംബറിൽ ചേർന്നു. വിഭജനാനന്തരം സഭയിൽ 299 അംഗങ്ങളുണ്ടായിരുന്നു. ആദ്യ താത്കാലിക അധ്യക്ഷനായി സച്ചിദാനന്ദ സിൻഹയെയും തുടർന്ന് ഡോ. രാജേന്ദ്ര പ്രസാദിനെ സ്ഥിരം പ്രസിഡന്റായും തിരഞ്ഞെടുത്തു. 2 വർഷം, 11 മാസം, 18 ദിവസങ്ങൾ കൊണ്ട് ആകെ 166 യോഗങ്ങൾ ചേർന്നാണ് ലോകത്തിലെ ഏറ്റവും വലിയ ലിഖിത ഭരണഘടന തയ്യാറാക്കിയത്.</p>
+        </div>
+      </div>
+
+      <!-- Q2 (4 Marks) -->
+      <div class="bilingual-pair" style="border-bottom: 1.5px solid #fed7aa;">
+        <div class="block-hi">
+          <span class="block-hi-label"><span class="badge badge-orange">प्रश्न 2 (4 अंक)</span> प्रारूप समिति (Drafting Committee) का परिचय</span>
+          <p><strong>प्रश्न : संविधान निर्माण में मसौदा समिति (प्रारूप समिति) की भूमिका और इसके सदस्यों का उल्लेख कीजिए।</strong></p>
+          <p><strong>उत्तर :</strong> 29 अगस्त 1947 को संविधान का मसौदा तैयार करने के लिए सबसे महत्वपूर्ण 'प्रारूप समिति' गठित की गई। इसके अध्यक्ष <strong>डॉ. भीमराव आंबेडकर</strong> थे। समिति में कुल 7 सदस्य थे : डॉ. आंबेडकर (अध्यक्ष), के.एम. मुंशी, गोपालस्वामी अय्यंगार, अल्लादी कृष्णस्वामी अय्यर, सैयद मोहम्मद सादुल्लाह, एन. माधव राव (बी.एल. मित्र के स्थान पर) तथा टी.टी. कृष्णमाचारी (डी.पी. खेतान के स्थान पर)। इस समिति ने कठिन परिश्रम कर 4 नवंबर 1948 को अंतिम प्रारूप प्रस्तुत किया।</p>
+        </div>
+        <div class="block-ml">
+          <span class="block-ml-label"><span class="badge badge-green">ചോദ്യം 2 (4 Marks)</span> ഡ്രാഫ്റ്റിംഗ് കമ്മിറ്റിയും അംഗങ്ങളും</span>
+          <p><strong>ചോദ്യം : ഭരണഘടനാ നിർമ്മാണത്തിൽ ഡ്രാഫ്റ്റിംഗ് കമ്മിറ്റിയുടെ പങ്കും അംഗങ്ങളെയും വ്യക്തമാക്കുക.</strong></p>
+          <p><strong>ഉത്തരം :</strong> ഭരണഘടനയുടെ കരട് രൂപീകരിക്കാൻ 1947 ആഗസ്റ്റ് 29-ന് ഡ്രാഫ്റ്റിംഗ് കമ്മിറ്റി രൂപീകരിച്ചു. <strong>ഡോ. ബി.ആർ. അംബേദ്കർ</strong> ആയിരുന്നു ഇതിന്റെ ചെയർമാൻ. സമിതിയിൽ ആകെ 7 അംഗങ്ങളുണ്ടായിരുന്നു: ഡോ. അംബേദ്കർ, കെ.എം. മുൻഷി, എൻ. ഗോപാലസ്വാമി അയ്യങ്കാർ, അല്ലാടി കൃഷ്ണസ്വാമി അയ്യർ, സയ്യിദ് മുഹമ്മദ് സാദുല്ല, എൻ. മാധവ റാവു, ടി.ടി. കൃഷ്ണമാചാരി. ഈ സമിതി 1948 നവംബർ 4-ന് അന്തിമ കരട് സമർപ്പിച്ചു.</p>
+        </div>
+      </div>
+
+      <!-- Q3 (4 Marks) -->
+      <div class="bilingual-pair">
+        <div class="block-hi">
+          <span class="block-hi-label"><span class="badge badge-orange">प्रश्न 3 (4 अंक)</span> उद्देशिका में वर्णित 'तीन प्रकार का न्याय'</span>
+          <p><strong>प्रश्न : भारतीय संविधान की उद्देशिका में उल्लिखित तीन प्रकार के 'न्याय' की व्याख्या कीजिए।</strong></p>
+          <p><strong>उत्तर :</strong> उद्देशिका में नागरिकों के लिए तीन प्रकार के न्याय की गारंटी दी गई है :<br/>
+          <strong>1. सामाजिक न्याय :</strong> जाति, धर्म, लिंग या वर्ग के आधार पर किसी भी नागरिक के साथ भेदभाव नहीं किया जाएगा।<br/>
+          <strong>2. आर्थिक न्याय :</strong> धन और संपत्ति के आधार पर भेदभाव समाप्त कर सभी को आजीविका और समान कार्य के लिए समान वेतन के अवसर मिलेंगे।<br/>
+          <strong>3. राजनीतिक न्याय :</strong> बिना किसी भेदभाव के सभी नागरिकों को चुनाव लड़ने, मतदान करने और शासन में भाग लेने का समान अधिकार है।</p>
+        </div>
+        <div class="block-ml">
+          <span class="block-ml-label"><span class="badge badge-green">ചോദ്യം 3 (4 Marks)</span> ആമുഖത്തിലെ 'മൂന്ന് നീതികൾ'</span>
+          <p><strong>ചോദ്യം : ഭരണഘടനാ ആമുഖത്തിൽ പറയുന്ന മൂന്ന് നീതികളെക്കുറിച്ച് വിശദീകരിക്കുക.</strong></p>
+          <p><strong>ഉത്തരം :</strong> ആമുഖം പൗരന്മാർക്ക് മൂന്ന് തരത്തിലുള്ള നീതി ഉറപ്പുനൽകുന്നു :<br/>
+          <strong>1. സാമൂഹിക നീതി :</strong> ജാതി, മതം, ലിംഗം എന്നിവയുടെ പേരിൽ ആർക്കും യാതൊരു വിവേചനവും ഉണ്ടാകരുത്.<br/>
+          <strong>2. സാമ്പത്തിക നീതി :</strong> വരുമാനത്തിന്റെയും സാമ്പത്തിക സ്ഥിതിയുടെയും അടിസ്ഥാനത്തിൽ വിവേചനം പാടില്ല; തുല്യ ജോലിക്ക് തുല്യ വേതനം ഉറപ്പാക്കുന്നു.<br/>
+          <strong>3. രാഷ്ട്രീയ നീതി :</strong> വോട്ട് ചെയ്യാനും തിരഞ്ഞെടുപ്പിൽ മത്സരിക്കാനും ഭരണകാര്യങ്ങളിൽ പങ്കാളിയാകാനും എല്ലാവർക്കും തുല്യാവകാശം.</p>
+        </div>
+      </div>
+    </div>
+    
+      </div>
+      <footer class="bottom-bar">
+        <span>Calicut University · CDOE · FYUGP Foundation Hindi · Bilingual Reading Guide</span>
+        <span>Page 3 of 4</span>
+      </footer>
+    </section>
+    
+    <section class="page-container">
+      <div>
+        <div class="top-bar">
+          <span class="top-bar-left">Calicut University CDOE FYUGP · Hindi · Module 1 · Chapter 1</span>
+          <span class="top-bar-right">Samvidhan Nirman & Preamble (Malayalam) · Page 4 of 4</span>
+        </div>
+        
+    <div class="content-box">
+      <div class="section-header" style="background: linear-gradient(90deg, #fee2e2 0%, #fecaca 100%); border-left: 4px solid #dc2626;">
+        <span class="section-title-hi" style="font-size:9.2pt; color:#991b1b;">★ दीर्घ उत्तरीय निबंधात्मक प्रश्न (6 अंक के 2 प्रश्न) — 6-Mark Essay Questions</span>
+        <span class="section-title-ml" style="font-size:8.8pt; color:#991b1b;">ഉപന്യാസ മാതൃകാ ചോദ്യോത്തരങ്ങൾ (6 മാർക്കിന്റെ 2 ചോദ്യങ്ങൾ)</span>
+      </div>
+
+      <!-- Q1 (6 Marks) -->
+      <div class="bilingual-pair" style="border-bottom: 1.5px solid #fecaca;">
+        <div class="block-hi">
+          <span class="block-hi-label"><span class="badge badge-orange" style="background:#dc2626;">प्रश्न 1 (6 अंक - निबंध)</span> उद्देशिका के मुख्य दार्शनिक आधार</span>
+          <p><strong>प्रश्न : भारतीय संविधान की उद्देशिका (Preamble) के मुख्य दार्शनिक आधारों और प्रमुख शब्दों का सविस्तार वर्णन कीजिए।</strong></p>
+          <p><strong>उत्तर :</strong> भारतीय संविधान की उद्देशिका का आधार पं. जवाहरलाल नेहरू द्वारा 22 जनवरी 1947 को प्रस्तुत 'उद्देश्य प्रस्ताव' है। इसे संविधान की आत्मा और कुंजी कहा जाता है। इसके प्रमुख दार्शनिक शब्द निम्नलिखित हैं :<br/>
+          1. <strong>हम भारत के लोग :</strong> यह स्पष्ट करता है कि संविधान की सर्वोच्च सत्ता और संप्रभुता भारत की जनता में निहित है।<br/>
+          2. <strong>संप्रभु (Sovereign) :</strong> भारत पूर्णतः स्वतंत्र है और किसी विदेशी सत्ता के अधीन नहीं है।<br/>
+          3. <strong>समाजवादी (Socialist) :</strong> 42वें संशोधन (1976) द्वारा जोड़ा गया। इसका लक्ष्य लोकतांत्रिक साधनों से आर्थिक विषमता मिटाना और मिश्रित अर्थव्यवस्था द्वारा जनकल्याण करना है।<br/>
+          4. <strong>धर्मनिरपेक्ष (Secular) :</strong> राज्य का कोई आधिकारिक धर्म नहीं है। सभी धर्मों को समान सम्मान और संरक्षण प्राप्त है।<br/>
+          5. <strong>लोकतांत्रिक गणराज्य :</strong> शासन जनता द्वारा चुने गए प्रतिनिधियों द्वारा चलाया जाता है और देश का सर्वोच्च प्रमुख (राष्ट्रपति) निर्वाचित होता है, वंशानुगत नहीं।<br/>
+          6. <strong>न्याय, स्वतंत्रता, समानता और बंधुत्व :</strong> नागरिकों को सर्वांगीण विकास, विचार की स्वतंत्रता और राष्ट्रीय एकता-अखंडता की गारंटी देते हैं।</p>
+        </div>
+        <div class="block-ml">
+          <span class="block-ml-label"><span class="badge badge-green" style="background:#059669;">ചോദ്യം 1 (6 Marks - Essay)</span> ഭരണഘടനാ ആമുഖ ദർശനങ്ങൾ</span>
+          <p><strong>ചോദ്യം : ഇന്ത്യൻ ഭരണഘടനാ ആമുഖത്തിന്റെ അടിസ്ഥാന തത്ത്വചിന്തയും പ്രധാന ആശയങ്ങളും സവിസ്തരം ഉപന്യസിക്കുക.</strong></p>
+          <p><strong>ഉത്തരം :</strong> 1947 ജനുവരി 22-ന് ജവഹർലാൽ നെഹ്‌റു അവതരിപ്പിച്ച 'ലക്ഷ്യപ്രമേയ'മാണ് ആമുഖത്തിന് അടിസ്ഥാനമായത്. ഭരണഘടനയുടെ ആത്മാവായി ഇത് വിശേഷിപ്പിക്കപ്പെടുന്നു. പ്രധാന തത്ത്വങ്ങൾ :<br/>
+          1. <strong>നമ്മൾ ഭാരതത്തിലെ ജനങ്ങൾ :</strong> പരമാധികാര ശക്തി ഇന്ത്യൻ ജനതയിലാണ് നിക്ഷിപ്തമായിരിക്കുന്നത്.<br/>
+          2. <strong>പരമാധികാരം :</strong> വിദേശ നിയന്ത്രണങ്ങൾക്ക് വിധേയമല്ലാത്ത പൂർണ്ണ സ്വതന്ത്ര രാഷ്ട്രം.<br/>
+          3. <strong>സോഷ്യലിസ്റ്റ് :</strong> 1976-ലെ 42-ാം ഭേദഗതിയിലൂടെ ചേർത്തത്. ജനാധിപത്യ മാർഗ്ഗങ്ങളിലൂടെ സാമ്പത്തിക സമത്വവും ജനക്ഷേമവും ലക്ഷ്യമിടുന്നു.<br/>
+          4. <strong>മതേതരത്വം :</strong> രാഷ്ട്രത്തിന് ഔദ്യോഗിക മതമില്ല; എല്ലാ മതങ്ങൾക്കും തുല്യ ബഹുമാനവും സംരക്ഷണവും നൽകുന്നു.<br/>
+          5. <strong>ജനാധിപത്യ റിപ്പബ്ലിക് :</strong> തിരഞ്ഞെടുക്കപ്പെടുന്ന സർക്കാരും, തിരഞ്ഞെടുപ്പിലൂടെ സ്ഥാനമേൽക്കുന്ന രാഷ്ട്രത്തലവനും (രാഷ്ട്രപതി).<br/>
+          6. <strong>നീതി, സ്വാതന്ത്ര്യം, സമത്വം, സാഹോദര്യം :</strong> പൗരന്മാർക്ക് ഉന്നതിയും രാജ്യത്തിന് ഐക്യവും അഖണ്ഡതയും ഉറപ്പുനൽകുന്നു.</p>
+        </div>
+      </div>
+
+      <!-- Q2 (6 Marks) -->
+      <div class="bilingual-pair">
+        <div class="block-hi">
+          <span class="block-hi-label"><span class="badge badge-orange" style="background:#dc2626;">प्रश्न 2 (6 अंक - निबंध)</span> संविधान का महत्व एवं नागरिक कर्तव्य</span>
+          <p><strong>प्रश्न : संविधान की आवश्यकता, विद्यार्थियों के लिए इसके अध्ययन का महत्व तथा लोकतांत्रिक राष्ट्र निर्माण में इसकी भूमिका पर निबंध लिखिए।</strong></p>
+          <p><strong>उत्तर :</strong> संविधान किसी भी स्वतंत्र लोकतांत्रिक राष्ट्र का सर्वोच्च विधान और आधारशिला होता है।<br/>
+          1. <strong>शासन व्यवस्था का नियमन :</strong> संविधान विधायिका, कार्यपालिका और न्यायपालिका के कार्यों, अधिकारों और सीमाओं को स्पष्ट करता है ताकि सत्ता का दुरुपयोग न हो।<br/>
+          2. <strong>मौलिक अधिकारों का संरक्षण :</strong> समानता का अधिकार, स्वतंत्रता का अधिकार, शोषण के विरुद्ध अधिकार और शिक्षा का अधिकार जैसे मौलिक अधिकारों की रक्षा संविधान द्वारा होती है।<br/>
+          3. <strong>विद्यार्थियों के लिए महत्व (LMS पाठ्यानुसार) :</strong> बच्चों और विद्यार्थियों को संविधान पढ़ाना केवल कानून सिखाना नहीं है, बल्कि उन्हें जागरूक, जिम्मेदार और संवेदनशील नागरिक बनाना है। अधिकार जानने के साथ-साथ समाज और देश के प्रति कर्तव्य निभाना भी आवश्यक है।<br/>
+          4. <strong>राष्ट्र निर्माण में भूमिका :</strong> विविधतापूर्ण भारत में संविधान अनेकता में एकता, सामाजिक सौहार्द और बंधुत्व स्थापित कर राष्ट्र को अखंड बनाए रखने में केंद्रीय भूमिका निभाता है।</p>
+        </div>
+        <div class="block-ml">
+          <span class="block-ml-label"><span class="badge badge-green" style="background:#059669;">ചോദ്യം 2 (6 Marks - Essay)</span> ഭരണഘടനയുടെ പ്രാധാന്യവും പൗരധർമ്മവും</span>
+          <p><strong>ചോദ്യം : ഭരണഘടനയുടെ ആവശ്യകത, വിദ്യാർത്ഥികളിൽ ഭരണഘടനാ പഠനത്തിനുള്ള പ്രാധാന്യം, രാഷ്ട്രനിർമ്മാണത്തിലെ പങ്ക് എന്നിവ ഉപന്യസിക്കുക.</strong></p>
+          <p><strong>ഉത്തരം :</strong> ഒരു ജനാധിപത്യ രാജ്യത്തിന്റെ പരമോന്നത പ്രമാണവും അടിത്തറയുമാണ് ഭരണഘടന.<br/>
+          1. <strong>ഭരണസംവിധാന ക്രമീകരണം :</strong> നിയമനിർമ്മാണ സഭ, ഭരണനിർവ്വഹണ വിഭാഗം, നീതിന്യായ വിഭാഗം എന്നിവയുടെ അധികാര പരിധികൾ നിശ്ചയിച്ച് അധികാര ദുർവിനിയോഗം തടയുന്നു.<br/>
+          2. <strong>മൗലികാവകാശ സംരക്ഷണം :</strong> സമത്വം, സ്വാതന്ത്ര്യം, ചൂഷണത്തിനെതിരായ അവകാശം, വിദ്യാഭ്യാസം തുടങ്ങിയ മൗലികാവകാശങ്ങൾ സംരക്ഷിക്കുന്നു.<br/>
+          3. <strong>വിദ്യാർത്ഥികൾക്കുള്ള പ്രാധാന്യം :</strong> വെറും നിയമവിവരങ്ങൾക്കപ്പുറം ഉത്തരവാദിത്തബോധവും സാമൂഹിക പ്രതിബദ്ധതയുമുള്ള ഉത്തമ പൗരന്മാരായി വിദ്യാർത്ഥികളെ വാർത്തെടുക്കാൻ ഭരണഘടനാ പഠനം സഹായിക്കുന്നു.<br/>
+          4. <strong>രാഷ്ട്രനിർമ്മാണം :</strong> വൈവിധ്യങ്ങൾ നിറഞ്ഞ ഭാരതത്തിൽ ഐക്യവും സാഹോദര്യവും ഉറപ്പുവരുത്തി രാജ്യത്തെ മുന്നോട്ടു നയിക്കാൻ ഭരണഘടന അത്യന്താപേക്ഷിതമാണ്.</p>
+        </div>
+      </div>
+    </div>
+    
+      </div>
+      <footer class="bottom-bar">
+        <span>Calicut University · CDOE · FYUGP Foundation Hindi · Bilingual Reading Guide</span>
+        <span>Page 4 of 4</span>
+      </footer>
+    </section>
+    
+<script id="hub-universal-protection-script">
+(function() {
+  window.addEventListener('contextmenu', function(e) { e.preventDefault(); e.stopPropagation(); return false; }, true);
+  window.addEventListener('keydown', function(e) {
+    var k = e.key ? e.key.toLowerCase() : '';
+    if ((e.ctrlKey || e.metaKey) && ['s', 'p', 'u', 'c', 'a', 'x'].indexOf(k) !== -1) {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+    if (e.key === 'F12' || ((e.ctrlKey || e.metaKey) && e.shiftKey && ['i', 'j', 'c'].indexOf(k) !== -1)) {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+  }, true);
+  window.addEventListener('dragstart', function(e) { e.preventDefault(); return false; }, true);
+  window.addEventListener('copy', function(e) { e.preventDefault(); return false; }, true);
+  window.addEventListener('cut', function(e) { e.preventDefault(); return false; }, true);
+  window.addEventListener('selectstart', function(e) { e.preventDefault(); return false; }, true);
+  document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; }, true);
+})();
+</script>
+</body>
+</html>

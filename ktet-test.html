@@ -474,13 +474,207 @@
         padding: 24px 18px;
       }
     }
+
+    .ktet-sg-section {
+      margin-top: 28px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    }
+    .ktet-sg-section h2 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 20px;
+      color: #064e3b;
+      margin-bottom: 8px;
+    }
+    .ktet-sg-lead {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .ktet-cat-guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .ktet-cat-guide-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .ktet-cat-guide-box h3 {
+      font-size: 14.5px;
+      color: #065f46;
+      margin-bottom: 6px;
+    }
+    .ktet-cat-guide-box p {
+      font-size: 12.8px;
+      color: #475569;
+      line-height: 1.5;
+    }
+    .ktet-sg-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .ktet-sg-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 15px;
+      background: #ffffff;
+    }
+    .ktet-sg-meta {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .ktet-sg-badge {
+      font-size: 11px;
+      font-weight: 800;
+      color: #065f46;
+      background: #ecfdf5;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .ktet-sg-subj {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #64748b;
+    }
+    .ktet-sg-card h3 {
+      font-size: 15px;
+      color: #0f172a;
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+    .ktet-sg-opts {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 5px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: #334155;
+    }
+    .ktet-sg-opt {
+      padding: 5px 10px;
+      border-radius: 7px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+    .ktet-sg-opt-right {
+      background: #ecfdf5;
+      border-color: #6ee7b7;
+      color: #064e3b;
+      font-weight: 600;
+    }
+    .ktet-sg-ans {
+      background: #f0fdf4;
+      border-left: 3px solid #059669;
+      padding: 9px 12px;
+      border-radius: 6px;
+      font-size: 12.8px;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+    .ktet-sg-src {
+      font-size: 11.5px;
+      color: #047857;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+  
+
+    .sg-preview-wrap, #ktetPreviewGuide, .sg-protected-bank {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+    input, textarea, #candidateName {
+      -webkit-user-select: text !important;
+      -moz-user-select: text !important;
+      user-select: text !important;
+    }
+    .sg-protection-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #0369a1;
+      background: #e0f2fe;
+      border: 1px solid #bae6fd;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    @media print {
+      .sg-preview-wrap, #ktetPreviewGuide, .sg-protected-bank {
+        display: none !important;
+      }
+    }
+
+  
+
+    /* MOBILE_OVERFLOW_FIX_MCQ */
+    html, body { max-width: 100%; overflow-x: hidden; }
+    .sg-preview-wrap, .sg-syllabus-grid, .sg-mod-box, .sample-q-grid, .sample-q-card, .sample-q-opts, .sample-opt, .sg-related-bar, .sg-related-links {
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    @media (max-width: 640px) {
+      .sg-syllabus-grid, .sample-q-opts {
+        grid-template-columns: 1fr !important;
+      }
+      .sg-related-links .btn {
+        max-width: 100%;
+        white-space: normal;
+        text-align: center;
+      }
+    }
+
   </style>
-  </head>
+  <style id="hub-universal-protection">
+*, *::before, *::after {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+img {
+  -webkit-user-drag: none !important;
+  user-drag: none !important;
+}
+@media print {
+  html, body {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+a[download], button[download], [download], .btn-download, .download, #downloadBtn, #saveBtn, .save {
+  display: none !important;
+}
+</style>
+</head>
 <body>
 
   <!-- Top Site Navigation Header per PDF Plan: HOME | PSC CRACKER | KTET TEST -->
   <header class="site-nav">
-    <a href="index.html" class="site-brand">
+    <a href="/" class="site-brand">
       <div class="brand-badge">AH</div>
       <div class="brand-text">
         <strong>Academic Hub</strong>
@@ -488,19 +682,15 @@
       </div>
     </a>
     <nav class="division-nav" aria-label="Division Switcher">
-      <a href="index.html" class="division-tab">
+      <a href="/" class="division-tab">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
         Home
       </a>
-      <a href="psc-cracker.html" class="division-tab">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 6 12 12 16 14"></polygon></svg>
-        PSC Cracker
-      </a>
-      <a href="ktet-test.html" class="division-tab">
+      <a href="ktet-test" class="division-tab">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
         KTET Portal
       </a>
-      <a href="ktet-500-mcq-test.html" class="division-tab" style="color:#059669; font-weight:800;">
+      <a href="/ktet-500-mcq-test" class="division-tab" style="color:#059669; font-weight:800;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
         KTET Mock Test
       </a>
@@ -554,8 +744,8 @@
       <div class="tab-pills" id="mode-pills">
         <button class="tab-pill active" onclick="switchKtetMode('practice')">Practice Mode (Instant Feedback)</button>
         <button class="tab-pill" onclick="switchKtetMode('mock')">Timed Mock Test</button>
-        <a href="ktet-500-mcq-test.html" class="tab-pill" style="background:linear-gradient(135deg, #064e3b, #059669); color:#fde047; border-color:#065f46; text-decoration:none; display:inline-flex; align-items:center; gap:6px;"><span>🔥</span> K-TET 800 MCQs Master Test</a>
-        <a href="study-guide-reader.html?file=KTET_Psychology_Comprehensive_Master_Question_Bank.pdf&tab=mcq&fullscreen=1" class="tab-pill" style="background:linear-gradient(135deg, #0f2b5c, #1d4ed8); color:#ffffff; border-color:#1e40af; text-decoration:none; display:inline-flex; align-items:center; gap:6px;" oncontextmenu="event.preventDefault(); return false;"><span>📖</span> KTET PDF (62 Pages Fullscreen)</a>
+        <a href="/ktet-500-mcq-test" class="tab-pill" style="background:linear-gradient(135deg, #064e3b, #059669); color:#fde047; border-color:#065f46; text-decoration:none; display:inline-flex; align-items:center; gap:6px;"><span>🔥</span> K-TET 800 MCQs Master Test</a>
+        <a href="study-guide-reader?file=KTET_Psychology_Comprehensive_Master_Question_Bank.pdf&tab=mcq&fullscreen=1" class="tab-pill" style="background:linear-gradient(135deg, #0f2b5c, #1d4ed8); color:#ffffff; border-color:#1e40af; text-decoration:none; display:inline-flex; align-items:center; gap:6px;" oncontextmenu="event.preventDefault(); return false;"><span>📖</span> KTET PDF (62 Pages Fullscreen)</a>
       </div>
     </div>
 
@@ -588,6 +778,164 @@
         </div>
       </div>
       <div class="dl-list" id="downloads-list"></div>
+    </section>
+
+
+    <!-- Static Crawlable Syllabus Guide & Model Questions -->
+    <section class="ktet-sg-section" aria-label="K-TET Category Syllabus Overview and Verified Model Questions">
+      <h2>K-TET Complete Syllabus Overview (Category I, II, III &amp; IV)</h2>
+      <p class="ktet-sg-lead">
+        The Kerala Teacher Eligibility Test (K-TET) conducted by Pareeksha Bhavan under SCERT guidelines assesses teaching aptitude, child psychology, language competence, and subject mastery across four qualification categories:
+      </p>
+      <div class="ktet-cat-guide-grid">
+        <div class="ktet-cat-guide-box">
+          <h3>Category I (Lower Primary · Classes 1–5)</h3>
+          <p>Covers Child Development &amp; Pedagogy, Language I (Malayalam/Tamil/Kannada), Language II (English/Arabic), Mathematics, and Environmental Studies (EVS).</p>
+        </div>
+        <div class="ktet-cat-guide-box">
+          <h3>Category II (Upper Primary · Classes 6–8)</h3>
+          <p>Assesses Child Development &amp; Pedagogy, Language I, Language II, and optional specialization in Science &amp; Mathematics or Social Science.</p>
+        </div>
+        <div class="ktet-cat-guide-box">
+          <h3>Category III (High School · Classes 8–10)</h3>
+          <p>Focuses on Adolescent Psychology, Theories of Learning, Teaching Aptitude, Language I, and High School subject-specific pedagogy.</p>
+        </div>
+        <div class="ktet-cat-guide-box">
+          <h3>Category IV (Specialist &amp; Language Teachers)</h3>
+          <p>Evaluates Child Development, Pedagogy &amp; Teacher Aptitude along with Hindi, Arabic, Urdu, Sanskrit, Physical Education, Art &amp; Craft subjects.</p>
+        </div>
+      </div>
+
+      <h2>Solved SCERT Model Questions &amp; Rectified Key Explanations</h2>
+      <div class="ktet-sg-grid">
+        <article class="ktet-sg-card">
+          <div class="ktet-sg-meta">
+            <span class="ktet-sg-badge">Model Q1 · Category I</span>
+            <span class="ktet-sg-subj">Child Development &amp; Pedagogy</span>
+          </div>
+          <h3>Which of the following developmental periods is generally termed as &#x27;the period of conflicts and turmoil&#x27; in human growth?</h3>
+          <ul class="ktet-sg-opts"><li class="ktet-sg-opt"><strong>A.</strong> Infancy</li><li class="ktet-sg-opt"><strong>B.</strong> Childhood</li><li class="ktet-sg-opt ktet-sg-opt-right"><strong>C.</strong> Adolescence</li><li class="ktet-sg-opt"><strong>D.</strong> Adulthood</li></ul>
+          <div class="ktet-sg-ans">
+            <div><strong>Verified Answer:</strong> (C) Adolescence</div>
+            <p><strong>Explanation:</strong> Adolescence is widely designated as a period of &#x27;stress and storm&#x27; or conflict (as noted by Stanley Hall) due to rapid biological, emotional, and social changes.</p>
+            <div class="ktet-sg-src">K-TET, SCERT Kerala Official Model Paper, Category I, Q1</div>
+          </div>
+        </article>        <article class="ktet-sg-card">
+          <div class="ktet-sg-meta">
+            <span class="ktet-sg-badge">Model Q2 · Category I</span>
+            <span class="ktet-sg-subj">Child Development &amp; Pedagogy</span>
+          </div>
+          <h3>Assume a student is provided a list of correlated words to study and asked to recall them at a later time. According to J.P. Guilford&#x27;s Structure of Intellect (SI) model, the content dimension of this test is:</h3>
+          <ul class="ktet-sg-opts"><li class="ktet-sg-opt"><strong>A.</strong> Symbolic</li><li class="ktet-sg-opt"><strong>B.</strong> Behavioural</li><li class="ktet-sg-opt"><strong>C.</strong> Figural</li><li class="ktet-sg-opt ktet-sg-opt-right"><strong>D.</strong> Semantic</li></ul>
+          <div class="ktet-sg-ans">
+            <div><strong>Verified Answer:</strong> (D) Semantic</div>
+            <p><strong>Explanation:</strong> In Guilford&#x27;s Structure of Intellect model, verbal ideas, words, and meanings belong to the &#x27;Semantic&#x27; content dimension.</p>
+            <div class="ktet-sg-src">K-TET, SCERT Kerala Official Model Paper, Category I, Q2</div>
+          </div>
+        </article>        <article class="ktet-sg-card">
+          <div class="ktet-sg-meta">
+            <span class="ktet-sg-badge">Model Q3 · Category I</span>
+            <span class="ktet-sg-subj">Child Development &amp; Pedagogy</span>
+          </div>
+          <h3>In order to help an intellectually challenged child in an inclusive classroom, which pedagogical strategy is most constructive?</h3>
+          <ul class="ktet-sg-opts"><li class="ktet-sg-opt"><strong>A.</strong> Send him immediately to a separate segregated institution</li><li class="ktet-sg-opt"><strong>B.</strong> Do not provide any special attention so as not to single him out</li><li class="ktet-sg-opt ktet-sg-opt-right"><strong>C.</strong> Provide him with simple, concrete learning experiences and scaffolded tasks</li><li class="ktet-sg-opt"><strong>D.</strong> Ask him to independently change his learning style</li></ul>
+          <div class="ktet-sg-ans">
+            <div><strong>Verified Answer:</strong> (C) Provide him with simple, concrete learning experiences and scaffolded tasks</div>
+            <p><strong>Explanation:</strong> Inclusive education emphasizes providing differentiated instruction with concrete learning aids, step-by-step scaffolding, and hands-on experiences.</p>
+            <div class="ktet-sg-src">K-TET, SCERT Kerala Official Model Paper, Category I, Q3</div>
+          </div>
+        </article>        <article class="ktet-sg-card">
+          <div class="ktet-sg-meta">
+            <span class="ktet-sg-badge">Model Q4 · Category I</span>
+            <span class="ktet-sg-subj">Child Development &amp; Pedagogy</span>
+          </div>
+          <h3>A child in your classroom constantly attributes his academic failures to other children or external circumstances. Which psychological defense mechanism is being exhibited?</h3>
+          <ul class="ktet-sg-opts"><li class="ktet-sg-opt"><strong>A.</strong> Rationalization</li><li class="ktet-sg-opt ktet-sg-opt-right"><strong>B.</strong> Projection</li><li class="ktet-sg-opt"><strong>C.</strong> Repression</li><li class="ktet-sg-opt"><strong>D.</strong> Compensation</li></ul>
+          <div class="ktet-sg-ans">
+            <div><strong>Verified Answer:</strong> (B) Projection</div>
+            <p><strong>Explanation:</strong> Projection is the ego-defense mechanism wherein an individual projects their own inadequacies, mistakes, or impulses onto other people or external conditions.</p>
+            <div class="ktet-sg-src">K-TET, SCERT Kerala Official Model Paper, Category I, Q5</div>
+          </div>
+        </article>        <article class="ktet-sg-card">
+          <div class="ktet-sg-meta">
+            <span class="ktet-sg-badge">Model Q5 · Category I</span>
+            <span class="ktet-sg-subj">Environmental Studies (EVS)</span>
+          </div>
+          <h3>Which of the following is considered an abiotic (non-living) component of a natural terrestrial ecosystem?</h3>
+          <ul class="ktet-sg-opts"><li class="ktet-sg-opt"><strong>A.</strong> Decomposers (bacteria and fungi)</li><li class="ktet-sg-opt"><strong>B.</strong> Primary producers (green plants)</li><li class="ktet-sg-opt ktet-sg-opt-right"><strong>C.</strong> Soil minerals and moisture</li><li class="ktet-sg-opt"><strong>D.</strong> Herbivores</li></ul>
+          <div class="ktet-sg-ans">
+            <div><strong>Verified Answer:</strong> (C) Soil minerals and moisture</div>
+            <p><strong>Explanation:</strong> Abiotic factors consist of physical and chemical elements such as sunlight, air, water, temperature, and soil minerals, whereas organisms are biotic.</p>
+            <div class="ktet-sg-src">K-TET, Category I EVS Pedagogy &amp; Content Standard</div>
+          </div>
+        </article>        <article class="ktet-sg-card">
+          <div class="ktet-sg-meta">
+            <span class="ktet-sg-badge">Model Q6 · Category II</span>
+            <span class="ktet-sg-subj">Science &amp; Mathematics Pedagogy</span>
+          </div>
+          <h3>In learning mathematics, Bruner&#x27;s sequence of cognitive representation progresses in which order?</h3>
+          <ul class="ktet-sg-opts"><li class="ktet-sg-opt"><strong>A.</strong> Iconic → Enactive → Symbolic</li><li class="ktet-sg-opt ktet-sg-opt-right"><strong>B.</strong> Enactive → Iconic → Symbolic</li><li class="ktet-sg-opt"><strong>C.</strong> Symbolic → Iconic → Enactive</li><li class="ktet-sg-opt"><strong>D.</strong> Enactive → Symbolic → Iconic</li></ul>
+          <div class="ktet-sg-ans">
+            <div><strong>Verified Answer:</strong> (B) Enactive → Iconic → Symbolic</div>
+            <p><strong>Explanation:</strong> Jerome Bruner proposed that learning advances from Enactive (action-based / concrete objects) to Iconic (image-based) to Symbolic (language and mathematical symbols).</p>
+            <div class="ktet-sg-src">K-TET, Category II Upper Primary Pedagogy Paper</div>
+          </div>
+        </article>        <article class="ktet-sg-card">
+          <div class="ktet-sg-meta">
+            <span class="ktet-sg-badge">Model Q7 · Category II</span>
+            <span class="ktet-sg-subj">Social Science</span>
+          </div>
+          <h3>The Right of Children to Free and Compulsory Education (RTE) Act in India was enacted by Parliament in which year?</h3>
+          <ul class="ktet-sg-opts"><li class="ktet-sg-opt"><strong>A.</strong> 2002</li><li class="ktet-sg-opt"><strong>B.</strong> 2005</li><li class="ktet-sg-opt ktet-sg-opt-right"><strong>C.</strong> 2009</li><li class="ktet-sg-opt"><strong>D.</strong> 2012</li></ul>
+          <div class="ktet-sg-ans">
+            <div><strong>Verified Answer:</strong> (C) 2009</div>
+            <p><strong>Explanation:</strong> The RTE Act was enacted in August 2009 under Article 21A of the Constitution of India and came into full effect on April 1, 2010.</p>
+            <div class="ktet-sg-src">K-TET, Category II Social Science &amp; Educational Acts</div>
+          </div>
+        </article>        <article class="ktet-sg-card">
+          <div class="ktet-sg-meta">
+            <span class="ktet-sg-badge">Model Q8 · Category III</span>
+            <span class="ktet-sg-subj">Adolescent Psychology &amp; Learning Theories</span>
+          </div>
+          <h3>According to Jean Piaget&#x27;s stages of cognitive development, the ability to formulate hypotheses and execute abstract deductive reasoning emerges during which stage?</h3>
+          <ul class="ktet-sg-opts"><li class="ktet-sg-opt"><strong>A.</strong> Sensorimotor stage</li><li class="ktet-sg-opt"><strong>B.</strong> Pre-operational stage</li><li class="ktet-sg-opt"><strong>C.</strong> Concrete operational stage</li><li class="ktet-sg-opt ktet-sg-opt-right"><strong>D.</strong> Formal operational stage</li></ul>
+          <div class="ktet-sg-ans">
+            <div><strong>Verified Answer:</strong> (D) Formal operational stage</div>
+            <p><strong>Explanation:</strong> The Formal Operational Stage (typically beginning around age 11-12 into adolescence) allows hypothetical-deductive reasoning, abstract conceptualization, and systematic problem testing.</p>
+            <div class="ktet-sg-src">K-TET, Category III High School Psychology &amp; Learning Theories</div>
+          </div>
+        </article>        <article class="ktet-sg-card">
+          <div class="ktet-sg-meta">
+            <span class="ktet-sg-badge">Model Q9 · Category III</span>
+            <span class="ktet-sg-subj">Subject Pedagogy</span>
+          </div>
+          <h3>Formative Assessment is primarily designed for:</h3>
+          <ul class="ktet-sg-opts"><li class="ktet-sg-opt"><strong>A.</strong> Grading learners at the end of the academic year</li><li class="ktet-sg-opt ktet-sg-opt-right"><strong>B.</strong> Diagnosing learning gaps and providing ongoing pedagogical feedback during instruction</li><li class="ktet-sg-opt"><strong>C.</strong> Comparing schools for national accreditation</li><li class="ktet-sg-opt"><strong>D.</strong> Selecting students for competitive merit scholarships</li></ul>
+          <div class="ktet-sg-ans">
+            <div><strong>Verified Answer:</strong> (B) Diagnosing learning gaps and providing ongoing pedagogical feedback during instruction</div>
+            <p><strong>Explanation:</strong> Formative evaluation occurs during the instructional process to monitor student learning and adjust teaching strategies, distinguishing it from summative evaluation.</p>
+            <div class="ktet-sg-src">K-TET, Category III Teaching Aptitude &amp; Assessment</div>
+          </div>
+        </article>        <article class="ktet-sg-card">
+          <div class="ktet-sg-meta">
+            <span class="ktet-sg-badge">Model Q10 · Category IV</span>
+            <span class="ktet-sg-subj">Specialist &amp; Language Pedagogy</span>
+          </div>
+          <h3>Which approach in second-language teaching places maximum focus on communicative competence rather than rote mastery of grammatical drills?</h3>
+          <ul class="ktet-sg-opts"><li class="ktet-sg-opt"><strong>A.</strong> Grammar-Translation Method</li><li class="ktet-sg-opt"><strong>B.</strong> Audio-Lingual Drill Method</li><li class="ktet-sg-opt ktet-sg-opt-right"><strong>C.</strong> Communicative Language Teaching (CLT)</li><li class="ktet-sg-opt"><strong>D.</strong> Direct Structural Mimicry</li></ul>
+          <div class="ktet-sg-ans">
+            <div><strong>Verified Answer:</strong> (C) Communicative Language Teaching (CLT)</div>
+            <p><strong>Explanation:</strong> CLT (Communicative Language Teaching) prioritizes functional, meaningful communication in real-life contexts over mechanical grammatical drills.</p>
+            <div class="ktet-sg-src">K-TET, Category IV Specialist Teacher Aptitude Paper</div>
+          </div>
+        </article>
+      </div>
+
+      <div style="margin-top:18px; padding-top:14px; border-top:1px dashed #cbd5e1; display:flex; flex-wrap:wrap; gap:8px;">
+        <a href="/ktet-500-mcq-test" class="dl-btn">🔥 Start Full K-TET 800 MCQ Timed Mock Test</a>
+        <a href="/philosophy-of-education-mock-test" class="dl-btn" style="background:#0f766e;">✎ Philosophy of Education Mock Test</a>
+        <a href="/edu-reading" class="dl-btn" style="background:#1e40af;">📖 Education Reading Guide</a>
+      </div>
     </section>
 
   </main>
@@ -835,5 +1183,85 @@
       renderDownloads();
     });
   </script>
+
+<!-- NO_SAVE_MCQ_GUARD -->
+<script>
+(function() {
+  if (window.__ahNoSaveMcqActive) return;
+  window.__ahNoSaveMcqActive = true;
+
+  function showLockToast() {
+    var existing = document.getElementById('ahLockToast');
+    if (existing) {
+      existing.style.opacity = '1';
+      clearTimeout(window.__ahLockToastTimer);
+      window.__ahLockToastTimer = setTimeout(function() { existing.style.opacity = '0'; }, 2200);
+      return;
+    }
+    var t = document.createElement('div');
+    t.id = 'ahLockToast';
+    t.textContent = '🔒 Protected View-Only MCQ Mode — Saving, printing & copying disabled.';
+    t.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 18px;border-radius:10px;font-size:12.5px;font-weight:700;z-index:99999;box-shadow:0 8px 24px rgba(15,23,42,0.28);pointer-events:none;transition:opacity 0.25s ease;';
+    document.body.appendChild(t);
+    window.__ahLockToastTimer = setTimeout(function() { t.style.opacity = '0'; }, 2200);
+  }
+
+  function isEditableTarget(el) {
+    if (!el || !el.tagName) return false;
+    var tag = el.tagName.toUpperCase();
+    return tag === 'INPUT' || tag === 'TEXTAREA' || el.isContentEditable;
+  }
+
+  document.addEventListener('contextmenu', function(e) {
+    if (!isEditableTarget(e.target)) {
+      e.preventDefault();
+      showLockToast();
+    }
+  });
+  document.addEventListener('dragstart', function(e) {
+    if (!isEditableTarget(e.target)) e.preventDefault();
+  });
+  document.addEventListener('copy', function(e) {
+    if (!isEditableTarget(e.target)) {
+      e.preventDefault();
+      showLockToast();
+    }
+  });
+  document.addEventListener('cut', function(e) {
+    if (!isEditableTarget(e.target)) e.preventDefault();
+  });
+  document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key) {
+      var k = e.key.toLowerCase();
+      if (k === 's' || k === 'p' || k === 'u') {
+        e.preventDefault();
+        showLockToast();
+      } else if ((k === 'c' || k === 'x') && !isEditableTarget(e.target)) {
+        e.preventDefault();
+        showLockToast();
+      }
+    }
+  });
+})();
+</script>
+<script id="hub-universal-protection-script">
+(function() {
+  window.addEventListener('contextmenu', function(e) { e.preventDefault(); e.stopPropagation(); return false; }, true);
+  window.addEventListener('keydown', function(e) {
+    var k = e.key ? e.key.toLowerCase() : '';
+    if ((e.ctrlKey || e.metaKey) && ['s', 'p', 'u', 'c', 'a', 'x'].indexOf(k) !== -1) {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+    if (e.key === 'F12' || ((e.ctrlKey || e.metaKey) && e.shiftKey && ['i', 'j', 'c'].indexOf(k) !== -1)) {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+  }, true);
+  window.addEventListener('dragstart', function(e) { e.preventDefault(); return false; }, true);
+  window.addEventListener('copy', function(e) { e.preventDefault(); return false; }, true);
+  window.addEventListener('cut', function(e) { e.preventDefault(); return false; }, true);
+  window.addEventListener('selectstart', function(e) { e.preventDefault(); return false; }, true);
+  document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; }, true);
+})();
+</script>
 </body>
 </html>

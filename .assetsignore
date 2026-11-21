@@ -1,0 +1,10 @@
+
+# Heavy temp and output folders
+output/**
+output_pipeline/**
+output_temp/**
+scratch/**
+temp_*/**
+*.mp4
+*.zip
+*.tar.gz

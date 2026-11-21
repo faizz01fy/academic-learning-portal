@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 20: Ethical Accountability of AI Developers, Users, and Institutions & Moral Agency</title>
+  <style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+  @page {
+    size: A4;
+    margin: 16mm 16mm 18mm 16mm;
+    @bottom-right {
+      content: "Page " counter(page);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9pt;
+      font-weight: 700;
+      color: #64748b;
+    }
+    @bottom-left {
+      content: "University of Calicut · BA Philosophy · Philosophy of AI (PHL1MN102)";
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      color: #94a3b8;
+    }
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Malayalam', sans-serif;
+    color: #0f172a;
+    background: #ffffff;
+    line-height: 1.65;
+    font-size: 9.8pt;
+    margin: 0;
+    padding: 0;
+  }
+  .header-box {
+    border: 2px solid #0f766e;
+    border-radius: 12px;
+    padding: 18px 22px;
+    background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+    margin-bottom: 20px;
+  }
+  .badge {
+    display: inline-block;
+    background: #0f766e;
+    color: #ffffff;
+    font-size: 8pt;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  h1 {
+    margin: 0 0 4px 0;
+    color: #115e59;
+    font-size: 15.5pt;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+  .sub-title {
+    font-size: 11.5pt;
+    font-weight: 700;
+    color: #0f766e;
+    margin-bottom: 8px;
+  }
+  .meta-info {
+    font-size: 8.5pt;
+    color: #334155;
+    font-weight: 600;
+    border-top: 1px dashed #99f6e4;
+    padding-top: 6px;
+    margin-top: 6px;
+  }
+  .section-title {
+    background: #0f766e;
+    color: #ffffff;
+    padding: 9px 15px;
+    border-radius: 8px;
+    font-size: 11pt;
+    font-weight: 800;
+    margin: 22px 0 13px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    page-break-after: avoid;
+  }
+  .bilingual-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+    margin-bottom: 13px;
+    page-break-inside: avoid;
+  }
+  .card-en, .card-ml {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 13px 15px;
+    background: #ffffff;
+    font-size: 9.3pt;
+  }
+  .card-en {
+    border-left: 4px solid #2563eb;
+    background: #f8fafc;
+  }
+  .card-ml {
+    border-left: 4px solid #0f766e;
+    background: #ffffff;
+  }
+  .card-title {
+    font-weight: 800;
+    margin-bottom: 6px;
+    font-size: 9.8pt;
+  }
+  .card-en .card-title { color: #1e40af; }
+  .card-ml .card-title { color: #115e59; }
+  .table-box {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 8.8pt;
+  }
+  .table-box th, .table-box td {
+    border: 1px solid #cbd5e1;
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .table-box th {
+    background: #0f766e;
+    color: #ffffff;
+    font-weight: 700;
+  }
+  .table-box tr:nth-child(even) { background: #f8fafc; }
+  .concept-box {
+    background: #f0fdfa;
+    border: 1px solid #99f6e4;
+    border-left: 5px solid #0d9488;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 13px 0;
+    font-size: 9.4pt;
+  }
+  .concept-box strong { color: #115e59; }
+  .qa-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #0f766e;
+    border-radius: 8px;
+    padding: 13px 16px;
+    margin-bottom: 13px;
+    page-break-inside: avoid;
+  }
+  .qa-q {
+    font-weight: 800;
+    color: #115e59;
+    margin-bottom: 5px;
+    font-size: 9.8pt;
+  }
+  .qa-a {
+    color: #334155;
+    font-size: 9.3pt;
+    line-height: 1.6;
+  }
+  p { margin: 0 0 9px 0; }
+
+  </style>
+  <style id="hub-universal-protection">
+*, *::before, *::after {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+img {
+  -webkit-user-drag: none !important;
+  user-drag: none !important;
+}
+@media print {
+  html, body {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+a[download], button[download], [download], .btn-download, .download, #downloadBtn, #saveBtn, .save {
+  display: none !important;
+}
+</style>
+</head>
+<body>
+
+  <div class="header-box">
+    <div class="badge">Calicut University · Minor Philosophy (PHL1MN102)</div>
+    <h1>അധ്യായം 20: ഡെവലപ്പർമാർ, ഉപയോക്താക്കൾ, സ്ഥാപനങ്ങൾ എന്നിവരുടെ ധാർമ്മിക ഉത്തരവാദിത്തവും മോറൽ ഏജൻസിയും</h1>
+    <div class="sub-title">Chapter 20: Ethical Accountability of AI Developers, Users, and Institutions & Moral Agency</div>
+    <div class="meta-info">
+      <span>📚 Module 4 · Unit Chapter 20</span> &nbsp;|&nbsp; 
+      <span>⏱️ 15 Hours Module Weightage · 15 Marks</span>
+    </div>
+  </div>
+
+  <div class="concept-box">
+    <strong>പാഠ്യസംഗ്രഹം (Module Scope):</strong> ബുദ്ധിപരമായ സംവിധാനങ്ങൾ നിർമ്മിക്കുകയും നടപ്പിലാക്കുകയും ചെയ്യുന്നതിൽ ഡെവലപ്പർമാർ, ഉപയോക്താക്കൾ, സ്ഥാപനങ്ങൾ എന്നിവർക്കുള്ള ധാർമ്മിക ഉത്തരവാദിത്തവും (Ethical Accountability), മെഷീനുകൾക്ക് സ്വന്തമായി ധാർമ്മിക കർത്താക്കളാകാൻ (Moral Agency) കഴിയുമോ എന്ന അന്വേഷണവും റെസ്പോൺസിബിലിറ്റി ഗ്യാപ്പും ഈ അധ്യായം വിശദീകരിക്കുന്നു.
+  </div>
+
+
+  <div class="section-title">
+    <span>1. ധാർമ്മിക കർത്തൃത്വത്തിന്റെ മാനദണ്ഡങ്ങൾ (Criteria for Moral Agency)</span>
+    <span style="font-size: 8.5pt; font-weight: 600;">What Defines a Moral Agent?</span>
+  </div>
+  <div class="bilingual-grid">
+    <div class="card-ml">
+      <div class="card-title">ആരാണ് ധാർമ്മിക കർത്താവ്?</div>
+      
+              <p>ഒരു പ്രവൃത്തിയുടെ നന്മതിന്മകളെ തിരിച്ചറിഞ്ഞ്, സ്വന്തം സ്വാതന്ത്ര്യത്തോടെ (Free Will) തെരഞ്ഞെടുപ്പ് നടത്താനും, ആ പ്രവൃത്തിയുടെ ധാർമ്മിക ഉത്തരവാദിത്തം (Accountability) സ്വയം ഏൽക്കാനും കഴിവുള്ള അസ്തിത്വത്തെയാണ് <strong>മോറൽ ഏജന്റ് (Moral Agent)</strong> എന്ന് വിളിക്കുന്നത്.</p>
+              <p>പരമ്പരാഗതമായി മനുഷ്യർ മാത്രമാണ് ധാർമ്മിക കർത്താക്കൾ. എന്നാൽ സ്വതന്ത്രമായി തീരുമാനങ്ങളെടുക്കുന്ന ഡ്രോണുകളും അൽഗോരിതങ്ങളും വരുമ്പോൾ അവയെ ധാർമ്മിക കർത്താക്കളായി കാണാമോ എന്ന ചോദ്യമുയരുന്നു.</p>
+            
+    </div>
+    <div class="card-en">
+      <div class="card-title">Autonomy, Intentionality, and Free Will</div>
+      
+              <p>A <strong>moral agent</strong> is an entity capable of moral deliberation, intentional action, autonomous choice governed by free will, and accountable for the normative consequences of its conduct.</p>
+              <p>Historically, full moral agency was unique to adult humans. The advent of autonomous algorithmic systems executing lethal or life-altering choices forces philosophy to reconsider this boundary.</p>
+            
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span>2. എഐ ധാർമ്മിക ഉപകരണങ്ങൾ മാത്രം (Moral Entities But Not Moral Agents)</span>
+    <span style="font-size: 8.5pt; font-weight: 600;">Moral Entities But Not Moral Agents</span>
+  </div>
+  <div class="bilingual-grid">
+    <div class="card-ml">
+      <div class="card-title">മനുഷ്യന്റെ ഇച്ഛാശക്തിയുടെ മാധ്യമങ്ങൾ</div>
+      
+              <p>കമ്പ്യൂട്ടർ സംവിധാനങ്ങൾ <em>ധാർമ്മിക സത്തകളാണ് (Moral Entities), എന്നാൽ ധാർമ്മിക കർത്താക്കളല്ല (Not Moral Agents)</em>.</p>
+              <p>എഐ സംവിധാനങ്ങൾക്ക് സ്വന്തമായി <strong>ഉദ്ദേശ്യബോധമോ (Intentionality) സ്വതന്ത്ര ഇച്ഛയോ (Free Will)</strong> ഇല്ല. അവ പ്രവർത്തിക്കുന്നത് മനുഷ്യരായ പ്രോഗ്രാമർമാരുടെയും സ്ഥാപനങ്ങളുടെയും ഇച്ഛകളെ നടപ്പിലാക്കുന്ന മാധ്യമങ്ങളായാണ് (Mediators of human intentionality). അതിനാൽ അന്തിമ ധാർമ്മിക കുറ്റം യന്ത്രത്തിന് മേൽ ചുമത്താനാവില്ല.</p>
+            
+    </div>
+    <div class="card-en">
+      <div class="card-title">Tools Mediating Human Intentionality</div>
+      
+              <p>Computer systems are <strong>moral entities, but not moral agents</strong>. Systems act within moral domains, but possess neither genuine intentionality nor autonomous free will.</p>
+              <p>AI functions as an extension and mediator of human purpose. The moral causality remains anchored to the human designers, deployers, and institutions orchestrating the system.</p>
+            
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span>3. ഡെവലപ്പർമാരുടെയും സ്ഥാപനങ്ങളുടെയും ഉത്തരവാദിത്തം</span>
+    <span style="font-size: 8.5pt; font-weight: 600;">Accountability of Developers, Users, and Institutions</span>
+  </div>
+  <div class="bilingual-grid">
+    <div class="card-ml">
+      <div class="card-title">ഉത്തരവാദിത്തം ആർക്ക്?</div>
+      
+              <p>ധാർമ്മിക തത്ത്വചിന്ത ഊന്നിപ്പറയുന്നത്: <strong>എഐ ഡെവലപ്പർമാർ, ഉപയോക്താക്കൾ, സ്ഥാപനങ്ങൾ എന്നിവർക്കുള്ള ധാർമ്മിക ഉത്തരവാദിത്തം</strong> കൃത്യമായി നിർവ്വചിക്കപ്പെടണം.</p>
+              <p><strong>1. ഡെവലപ്പർമാർ:</strong> അൽഗോരിതങ്ങൾ സുരക്ഷിതവും പക്ഷപാതരഹിതവുമാണെന്ന് ഉറപ്പുവരുത്തേണ്ട ബാധ്യത.<br>
+              <strong>2. സ്ഥാപനങ്ങൾ:</strong> ലാഭത്തിനുവേണ്ടി സുരക്ഷാ മാനദണ്ഡങ്ങൾ ലംഘിക്കാതെ സിസ്റ്റങ്ങൾ ഉത്തരവാദിത്തത്തോടെ വിന്യസിക്കൽ.<br>
+              <strong>3. ഉപയോക്താക്കൾ:</strong> അൽഗോരിതങ്ങളെ ദുരുപയോഗം ചെയ്യാതിരിക്കലും വിമർശനാത്മക വിവേചനം പുലർത്തലും.</p>
+            
+    </div>
+    <div class="card-en">
+      <div class="card-title">Ethical Burden Across the Value Chain</div>
+      
+              <p>Ethical philosophy mandates defining accountability across creators, deployers, and end-users:</p>
+              <p><strong>1. Developers:</strong> Bound to audit datasets, identify proxy biases, and build explainable models.<br>
+              <strong>2. Institutions:</strong> Liable for structural failures, refusing reckless deployment for commercial exploitation.<br>
+              <strong>3. Users:</strong> Retain personal moral duty not to weaponize or abdicate critical judgment to automated tools.</p>
+            
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span>4. റെസ്പോൺസിബിലിറ്റി ഗ്യാപ്പും വിതരണ ഉത്തരവാദിത്തവും</span>
+    <span style="font-size: 8.5pt; font-weight: 600;">The Responsibility Gap & Distributed Liability</span>
+  </div>
+  <div class="bilingual-grid">
+    <div class="card-ml">
+      <div class="card-title">ആരെ കുറ്റപ്പെടുത്തും? (The Responsibility Gap)</div>
+      
+              <p>മെഷീൻ ലേണിംഗ് മോഡലുകൾ പ്രോഗ്രാമർമാർ പോലും മുൻകൂട്ടി കാണാത്ത പുതിയ തന്ത്രങ്ങൾ സ്വയം പഠിച്ചെടുക്കുമ്പോൾ, ഒരു വലിയ അപകടമുണ്ടായാൽ അതിന്റെ പൂർണ്ണ കുറ്റം പ്രോഗ്രാമറുടെ മേൽ ചുമത്താൻ കഴിയില്ല, യന്ത്രത്തെ ജയിലിലിടാനും കഴിയില്ല (The Responsibility Gap)!</p>
+              <p>ഇതിനുള്ള പരിഹാരമായി തത്ത്വചിന്ത <strong>വിതരണ ഉത്തരവാദിത്തം (Distributed Responsibility)</strong> മുന്നോട്ടുവെക്കുന്നു: കമ്പനികൾ, പ്രോഗ്രാമർമാർ, പരിശോധകർ, സർക്കാരുകൾ എന്നിവർ കൂട്ടായി ആപത്തുകളുടെ ഉത്തരവാദിത്തം പങ്കിടണം.</p>
+            
+    </div>
+    <div class="card-en">
+      <div class="card-title">Autonomous Learning & Distributed Liability</div>
+      
+              <p>The <strong>Responsibility Gap</strong> occurs when deep learning systems develop behaviors unforeseen and unprogrammed by their creators, causing traditional moral attribution to collapse.</p>
+              <p>We cannot justly punish the human programmer for unpredicted actions, nor can we punish the machine. Philosophy resolves this through <strong>Distributed Responsibility</strong>: shared legal and moral accountability across institutions, regulators, and developers.</p>
+            
+    </div>
+  </div>
+
+
+  <div class="section-title">
+    <span>ധാർമ്മിക ഉത്തരവാദിത്ത വിതരണ പട്ടിക</span>
+    <span style="font-size: 8.5pt; font-weight: 600;">Stakeholder Accountability Matrix</span>
+  </div>
+  <table class="table-box">
+    <thead>
+      <tr>
+        <th>പങ്കാളി (Stakeholder)</th><th>ധാർമ്മിക ബാധ്യത (Ethical Duty)</th><th>ഉത്തരവാദിത്ത വീഴ്ചയിലെ പരിണതഫലം</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr><td>സോഫ്റ്റ്‌വെയർ ഡെവലപ്പർമാർ</td><td>പക്ഷപാതമില്ലാത്ത കോഡിംഗും സുരക്ഷാ പരിശോധനകളും</td><td>അപകടകരമായ അൽഗോരിതങ്ങൾ നിർമ്മിക്കുന്നതിലെ നേരിട്ടുള്ള കുറ്റം</td></tr>
+    <tr><td>കോർപ്പറേറ്റ് സ്ഥാപനങ്ങൾ</td><td>സ്വതന്ത്ര ഓഡിറ്റിംഗും സുതാര്യതയും ഉറപ്പാക്കൽ</td><td>നിയമപരമായ നഷ്ടപരിഹാരവും സ്ഥാപനപരമായ ഉത്തരവാദിത്തവും</td></tr>
+    <tr><td>അന്തിമ ഉപയോക്താക്കൾ</td><td>തീരുമാനങ്ങൾ അന്ധമായി യന്ത്രങ്ങൾക്ക് വിട്ടുകൊടുക്കാതിരിക്കൽ</td><td>വ്യക്തിഗത ധാർമ്മിക വീഴ്ച</td></tr>
+    <tr><td>നിയന്ത്രണ ഏജൻസികൾ</td><td>കർശനമായ സുരക്ഷാ മാനദണ്ഡങ്ങളും ലൈസൻസിംഗും</td><td>പൊതുജന സുരക്ഷാ പരാജയം</td></tr>
+
+    </tbody>
+  </table>
+
+
+  <div class="section-title">
+    <span>പ്രധാന പരീക്ഷാ ആശയങ്ങൾ (Key Examination Points)</span>
+    <span style="font-size: 8.5pt; font-weight: 600;">Core Revision Points</span>
+  </div>
+  <div class="bilingual-grid">
+    <div class="card-ml">
+      <div class="card-title">മലയാളം സംഗ്രഹം (Key Takeaways)</div>
+      
+          <p>• <strong>മോറൽ ഏജന്റ്:</strong> സ്വന്തം ഇച്ഛാശക്തിയാൽ നന്മതിന്മകൾ തെരഞ്ഞെടുക്കാൻ കഴിയുന്ന അസ്തിത്വം.<br>
+          • <strong>ഉദ്ദേശ്യബോധത്തിന്റെ അഭാവം:</strong> എഐ യന്ത്രങ്ങൾ മനുഷ്യന്റെ ഇച്ഛകളെ നടപ്പിലാക്കുന്ന ഉപകരണങ്ങൾ മാത്രമാണ്.<br>
+          • <strong>ഡെവലപ്പർ & സ്ഥാപന ഉത്തരവാദിത്തം:</strong> അൽഗോരിതങ്ങളുടെ ഓരോ ഘട്ടത്തിലും നിർമ്മാതാക്കൾക്കാണ് അന്തിമ ബാധ്യത.<br>
+          • <strong>വിതരണ ഉത്തരവാദിത്തം:</strong> കൂട്ടായ ഉത്തരവാദിത്തത്തിലൂടെ റെസ്പോൺസിബിലിറ്റി ഗ്യാപ്പ് പരിഹരിക്കപ്പെടുന്നു.</p>
+        
+    </div>
+    <div class="card-en">
+      <div class="card-title">English Summary (Key Takeaways)</div>
+      
+          <p>• <strong>Moral Agency:</strong> Requires autonomous intent, deliberation, and liability for normative outcomes.<br>
+          • <strong>Mediating Tools:</strong> AI represents moral entities mediating human intentionality, lacking intrinsic moral agency.<br>
+          • <strong>Developer Accountability:</strong> Explicit ethical liability remains permanently with creators and institutions.<br>
+          • <strong>Distributed Model:</strong> Resolving the responsibility gap through shared institutional accountability.</p>
+        
+    </div>
+  </div>
+
+
+  <div class="section-title">
+    <span>വിചിന്തന ചോദ്യങ്ങൾ (Review & Discussion Questions)</span>
+    <span style="font-size: 8.5pt; font-weight: 600;">Academic Essay & Short Questions</span>
+  </div>
+
+  <div class="qa-card">
+    <div class="qa-q">1. എന്തുകൊണ്ടാണ് കമ്പ്യൂട്ടർ സിസ്റ്റങ്ങളെ 'ധാർമ്മിക സത്തകൾ എന്നാൽ ധാർമ്മിക കർത്താക്കളല്ല' എന്ന് വിശേഷിപ്പിക്കുന്നത്?</div>
+    <div class="qa-a">കമ്പ്യൂട്ടറുകൾ ആളുകളുടെ ജീവിതത്തെ ബാധിക്കുന്ന ധാർമ്മിക സാഹചര്യങ്ങളിൽ പ്രവർത്തിക്കുന്നുവെങ്കിലും അവയ്ക്ക് സ്വന്തമായി ഉദ്ദേശ്യബോധമോ സ്വതന്ത്ര ഇച്ഛയോ ഇല്ല. അവ മനുഷ്യന്റെ ഇച്ഛകളെ നടപ്പിലാക്കുന്ന ഉപകരണങ്ങൾ മാത്രമായതിനാൽ അവ സ്വതന്ത്ര ധാർമ്മിക കർത്താക്കളല്ല.</div>
+  </div>
+
+  <div class="qa-card">
+    <div class="qa-q">2. എഐ വിന്യാസത്തിൽ ഡെവലപ്പർമാരുടെയും സ്ഥാപനങ്ങളുടെയും ഉത്തരവാദിത്തം എന്താണ്?</div>
+    <div class="qa-a">അൽഗോരിതങ്ങൾ പക്ഷപാതരഹിതവും സുരക്ഷിതവുമാണെന്ന് ഡെവലപ്പർമാർ ഉറപ്പുവരുത്തണം. ലാഭത്തിനായി അപകടസാധ്യതയുള്ള മോഡലുകൾ വിന്യസിക്കാതെ സുതാര്യതയും പൊതുജന നന്മയും കാത്തുസൂക്ഷിക്കാൻ സ്ഥാപനങ്ങൾ ബാധ്യസ്ഥരാണ്.</div>
+  </div>
+
+
+<script id="hub-universal-protection-script">
+(function() {
+  window.addEventListener('contextmenu', function(e) { e.preventDefault(); e.stopPropagation(); return false; }, true);
+  window.addEventListener('keydown', function(e) {
+    var k = e.key ? e.key.toLowerCase() : '';
+    if ((e.ctrlKey || e.metaKey) && ['s', 'p', 'u', 'c', 'a', 'x'].indexOf(k) !== -1) {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+    if (e.key === 'F12' || ((e.ctrlKey || e.metaKey) && e.shiftKey && ['i', 'j', 'c'].indexOf(k) !== -1)) {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+  }, true);
+  window.addEventListener('dragstart', function(e) { e.preventDefault(); return false; }, true);
+  window.addEventListener('copy', function(e) { e.preventDefault(); return false; }, true);
+  window.addEventListener('cut', function(e) { e.preventDefault(); return false; }, true);
+  window.addEventListener('selectstart', function(e) { e.preventDefault(); return false; }, true);
+  document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; }, true);
+})();
+</script>
+</body>
+</html>

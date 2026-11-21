@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sociology Mock Exam · Academic Hub</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f2f5ff;color:#192346;font:16px/1.55 system-ui,sans-serif}main{max-width:720px;margin:auto;padding:16px}a{color:#4338ca}header,article,.panel{border-radius:18px;padding:20px;margin:14px 0;background:white}header{background:linear-gradient(120deg,#37239a,#174d87);color:white}h1,h2,p{margin:0 0 12px}button,select,textarea{font:inherit}button,select{min-height:48px;padding:10px 16px;border-radius:12px}button{border:0;background:#4338ca;color:white;font-weight:700;cursor:pointer}button:disabled{opacity:.6}textarea{width:100%;min-height:128px;padding:12px;border:1px solid #8996bd;border-radius:12px}textarea:focus-visible,button:focus-visible{outline:3px solid #0d9488;outline-offset:3px}.timer{position:sticky;top:0;background:#192346;color:white;padding:12px 18px;border-radius:12px;z-index:1;font-variant-numeric:tabular-nums}.feedback{background:#e5faf3;border-radius:12px;padding:14px;margin-top:12px}.marks{color:#086451;font-weight:750}small{display:block;margin:8px 0}label{display:block;font-weight:650}#submit{width:100%}[hidden]{display:none!important}
+.timer{display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(110deg,#25175e,#2149a2);box-shadow:0 5px 18px #211b6940;border:1px solid #8c88e5;top:4px}
+.timer[data-urgent="true"]{background:linear-gradient(110deg,#7f1d3c,#a52b42)}
+.clock-label{display:block;font-size:.8rem;font-weight:750;letter-spacing:.06em}
+.clock-digits{display:block;font:800 clamp(1.8rem,7vw,2.65rem)/1.1 system-ui,sans-serif;font-variant-numeric:tabular-nums}
+.clock-ring{width:48px;height:48px;flex:none;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#6ee7dc var(--remaining,100%),#ffffff40 0)}
+.clock-ring span{display:grid;place-items:center;width:39px;height:39px;border-radius:50%;background:#241c59;font-size:1.25rem}
+.answer-instructions{margin:16px 0;padding:16px;background:#eef2ff;border:1px solid #b6bef9;border-radius:14px}
+.answer-instructions h2{font-size:1.15rem;color:#37239a}
+.answer-instructions ul{padding-inline-start:1.3rem;margin:0 0 12px}
+.answer-instructions li+li{margin-top:6px}
+.answer-instructions p:last-child{margin-bottom:0}
+.revision{background:#eefcf8;border:1px solid #a6ddd2}.revision h2{font-size:1.1rem}.revision h3{font-size:1rem;margin:0 0 8px;color:#145a53}.revision article{margin:0 0 10px;padding:12px;border:1px solid #bfe5db}.revision p:last-child{margin:0}.revision button{margin-bottom:10px;background:#15665e}#revision-scroll{max-height:245px;overflow:auto;overscroll-behavior:contain}
+@media(min-width:900px){main{max-width:1040px}.exam-prep{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:18px;align-items:start}.revision:only-child,.exam-prep:has(#setup[hidden]) .revision{grid-column:1/-1}}
+.more-explanation{margin-top:12px;border:1px solid #82bdad;border-radius:10px;padding:0 12px;background:#fff}.more-explanation summary{cursor:pointer;min-height:48px;padding-block:12px;font-weight:700;color:#145a53}.more-explanation summary:focus-visible{outline:2px solid #0d9488;outline-offset:2px}
+</style>
+<main>
+<a href="/#tests">← Practice tests</a>
+<header><h1>Sociology Mock Exam</h1><p>5 questions · 3 marks each · 30 minutes</p></header>
+<div class="exam-prep" id="exam-prep">
+<section class="panel" id="setup">
+<label for="language">Feedback language</label><select id="language"><option value="en">English</option><option value="ml">മലയാളം</option></select>
+<section class="answer-instructions" aria-labelledby="answer-instructions-title">
+  <h2 id="answer-instructions-title">How to answer <span lang="ml">· എങ്ങനെ ഉത്തരം നൽകാം</span></h2>
+  <ul lang="en">
+    <li><strong>Type:</strong> Enter your answer in English or Malayalam.</li>
+    <li><strong>Voice type:</strong> On your phone, tap the answer box, choose English or Malayalam on your keyboard, and tap the keyboard microphone to speak. Check and correct the text before submitting.</li>
+  </ul>
+  <ul lang="ml">
+    <li><strong>ടൈപ്പ് ചെയ്യാൻ:</strong> ഇംഗ്ലീഷിലോ മലയാളത്തിലോ ഉത്തരം ടൈപ്പ് ചെയ്യാം.</li>
+    <li><strong>സംസാരിച്ച് ടൈപ്പ് ചെയ്യാൻ:</strong> ഫോണിൽ ഉത്തരം എഴുതാനുള്ള ബോക്‌സിൽ തൊടുക. കീബോർഡിൽ ഇംഗ്ലീഷോ മലയാളമോ തിരഞ്ഞെടുത്ത് മൈക്രോഫോൺ അമർത്തി സംസാരിക്കുക. സമർപ്പിക്കുന്നതിന് മുമ്പ് വന്ന എഴുത്ത് വായിച്ച് തെറ്റുകൾ തിരുത്തുക.</li>
+  </ul>
+  <p>Submit whenever you finish. Grading starts immediately.</p>
+  <p lang="ml">ഉത്തരം എഴുതിക്കഴിഞ്ഞാൽ ഉടൻ സമർപ്പിക്കാം. സമർപ്പിച്ചാലുടൻ മൂല്യനിർണ്ണയം ആരംഭിക്കും.</p>
+</section>
+<p>One random question from each of the five modules.</p>
+<p lang="ml">അഞ്ച് മോഡ്യൂളുകളിൽനിന്നും ഓരോ ചോദ്യം വീതം ക്രമരഹിതമായി തിരഞ്ഞെടുക്കും.</p>
+<button id="start" type="button">Start Mock Exam</button>
+</section>
+<aside class="panel revision" id="revision" aria-labelledby="revision-title">
+  <h2 id="revision-title">Sociology notes <span lang="ml">· പഠനക്കുറിപ്പുകൾ</span></h2>
+  <button id="revision-toggle" type="button" hidden>Pause scrolling</button>
+  <button id="revision-next" type="button">Get another revision tip <span lang="ml">· മറ്റൊരു പഠനസൂചന</span></button>
+  <div id="revision-tip" aria-live="polite"></div>
+  <div id="revision-scroll" tabindex="0" role="region" aria-labelledby="revision-title"><article><h3>Social norms <span lang="ml">· സാമൂഹിക ചട്ടങ്ങൾ</span></h3><p>Waiting in a queue is an unwritten rule. Ask what happens when someone breaks it.</p><p lang="ml">വരിയിൽ കാത്തുനിൽക്കുന്നത് എഴുതിവെക്കാത്ത ഒരു ചട്ടമാണ്. ഒരാൾ അത് ലംഘിച്ചാൽ മറ്റുള്ളവർ എങ്ങനെ പ്രതികരിക്കും?</p></article>
+<article><h3>Culture <span lang="ml">· സംസ്കാരം</span></h3><p>A greeting can mean different things in different communities. Its meaning is learned through interaction.</p><p lang="ml">ഒരേ അഭിവാദനത്തിന് വ്യത്യസ്ത സമൂഹങ്ങളിൽ വ്യത്യസ്ത അർത്ഥമുണ്ടാകാം. ഇടപെടലുകളിലൂടെയാണ് ആ അർത്ഥം പഠിക്കുന്നത്.</p></article>
+<article><h3>Social inequality <span lang="ml">· സാമൂഹിക അസമത്വം</span></h3><p>Two students with equal ability may have different access to transport, devices, or quiet study space.</p><p lang="ml">ഒരേ കഴിവുള്ള രണ്ട് വിദ്യാർത്ഥികൾക്ക് യാത്രാസൗകര്യം, പഠനോപകരണങ്ങൾ, ശാന്തമായ പഠനസ്ഥലം എന്നിവ ഒരുപോലെ ലഭിക്കണമെന്നില്ല.</p></article>
+<article><h3>Observation <span lang="ml">· നിരീക്ഷണം</span></h3><p>To study a bus stop, note where people stand and how they board. Separate what you observe from what you infer.</p><p lang="ml">ഒരു ബസ് സ്റ്റോപ്പ് പഠിക്കാൻ ആളുകൾ എവിടെ നിൽക്കുന്നു, എങ്ങനെ ബസിൽ കയറുന്നു എന്ന് കുറിക്കുക. കണ്ടതും അതിൽനിന്ന് അനുമാനിച്ചതും വേർതിരിക്കുക.</p></article></div>
+</aside>
+</div>
+<div class="timer" id="clock" hidden>
+  <div><span class="clock-label" id="clock-label">Time remaining</span><strong class="clock-digits" id="clock-digits" role="timer" aria-labelledby="clock-label">30:00</strong></div>
+  <div class="clock-ring" id="clock-ring" aria-hidden="true"><span>◷</span></div>
+</div>
+<form id="exam" hidden><div id="questions"></div><button id="submit" type="submit">Submit answers</button></form>
+<div class="panel" id="status" role="status" hidden></div>
+<button type="button" id="retry" hidden>Retry evaluation</button>
+<button type="button" id="again" hidden>Start a new mock</button>
+</main>
+<script>
+const byId = id => document.getElementById(id);
+const key = 'academic-hub-sociology-theory-v1';
+let attempt, busy = false;
+try { attempt = JSON.parse(localStorage.getItem(key)); } catch {}
+function save() { try { localStorage.setItem(key, JSON.stringify(attempt)); } catch {} }
+function status(message) { byId('status').hidden = false; byId('status').textContent = message; }
+async function request(payload) {
+  const response = await fetch('/api/answer-evaluate-text', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(payload), signal:AbortSignal.timeout(60000)
+  });
+  const data = await response.json().catch(() => null);
+  if (!response.ok || !data) throw Error(data?.error || 'Could not reach the evaluator. Please try again.');
+  return data;
+}
+function add(parent, tag, value, className) {
+  const element = document.createElement(tag);
+  element.textContent = value;
+  if (className) element.className = className;
+  parent.append(element);
+  return element;
+}
+const detailedExplanations = [
+  [
+    "Sociology looks for patterns across people’s experiences. A student’s marks tell you something about one person. Comparing study conditions across many students can show how family income, transport or school resources affect educational opportunities. In your answer, define sociology, name what it studies, then connect one example to that scope.",
+    "പലരുടെയും അനുഭവങ്ങളിൽ ആവർത്തിക്കുന്ന രീതികൾ സമൂഹശാസ്ത്രം കണ്ടെത്തുന്നു. ഒരു വിദ്യാർത്ഥിയുടെ മാർക്ക് ആ വ്യക്തിയെക്കുറിച്ച് ചില വിവരങ്ങൾ നൽകും. പല വിദ്യാർത്ഥികളുടെയും പഠനസാഹചര്യങ്ങൾ താരതമ്യം ചെയ്താൽ കുടുംബവരുമാനം, യാത്രാസൗകര്യം, സ്കൂളിലെ വിഭവങ്ങൾ എന്നിവ വിദ്യാഭ്യാസ അവസരങ്ങളെ എങ്ങനെ സ്വാധീനിക്കുന്നു എന്ന് മനസ്സിലാക്കാം. നിർവചനം നൽകി, പഠനവിഷയങ്ങൾ സൂചിപ്പിച്ച്, ഒരു ഉദാഹരണം അവയുമായി ബന്ധിപ്പിക്കുക."
+  ],
+  [
+    "Explain the chain of change: factories concentrated work in towns, migration expanded those towns, and wage labour changed relationships between workers and owners. Crowded housing and poor working conditions raised questions about how society was organised. Connect these changes to the need for systematic study.",
+    "മാറ്റങ്ങളുടെ തുടർച്ച വിശദീകരിക്കുക. ഫാക്ടറികൾ തൊഴിൽ നഗരങ്ങളിൽ കേന്ദ്രീകരിച്ചു. കുടിയേറ്റം നഗരങ്ങളെ വളർത്തി. കൂലിത്തൊഴിൽ തൊഴിലാളികളും ഉടമകളും തമ്മിലുള്ള ബന്ധം മാറ്റി. തിങ്ങിപ്പാർപ്പും മോശം തൊഴിൽസാഹചര്യങ്ങളും സമൂഹത്തിന്റെ ഘടനയെക്കുറിച്ച് ചോദ്യങ്ങൾ ഉയർത്തി. ഈ മാറ്റങ്ങളെ ക്രമബദ്ധമായ സാമൂഹിക പഠനത്തിന്റെ ആവശ്യവുമായി ബന്ധിപ്പിക്കുക."
+  ],
+  [
+    "Mills connects biography with wider social conditions. If many qualified workers lose jobs when an industry shuts down, individual decisions explain only part of the pattern. The closure is also a public issue. Define the idea, describe the personal trouble, then explain the wider cause.",
+    "മിൽസ് വ്യക്തിയുടെ ജീവിതാനുഭവങ്ങളെ വിശാലമായ സാമൂഹിക സാഹചര്യങ്ങളുമായി ബന്ധിപ്പിക്കുന്നു. ഒരു വ്യവസായം അടച്ചുപൂട്ടുമ്പോൾ നിരവധി യോഗ്യരായ തൊഴിലാളികൾക്ക് ജോലി നഷ്ടപ്പെട്ടാൽ വ്യക്തിപരമായ തീരുമാനങ്ങൾ കൊണ്ട് മാത്രം അത് വിശദീകരിക്കാനാവില്ല. അടച്ചുപൂട്ടൽ ഒരു പൊതുസാമൂഹിക പ്രശ്നവുമാണ്. ആശയം നിർവചിച്ച് വ്യക്തിപരമായ ബുദ്ധിമുട്ടും അതിന്റെ വിശാലമായ കാരണവും വിശദീകരിക്കുക."
+  ],
+  [
+    "Compare the relationship and its purpose. Close friends usually value the relationship itself. Members of a committee may interact mainly to complete a shared task. Group size alone does not settle the distinction. Give one example of each and explain what makes it fit.",
+    "ബന്ധത്തിന്റെ സ്വഭാവവും ലക്ഷ്യവും താരതമ്യം ചെയ്യുക. അടുത്ത സുഹൃത്തുക്കൾ സാധാരണയായി ബന്ധത്തിന് തന്നെ വില നൽകുന്നു. ഒരു കമ്മിറ്റിയിലെ അംഗങ്ങൾ പൊതുവായ ജോലി പൂർത്തിയാക്കാനായി ഇടപെടുന്നു. സംഘത്തിന്റെ വലുപ്പം മാത്രം ഈ വ്യത്യാസം നിർണ്ണയിക്കുന്നില്ല. ഓരോ വിഭാഗത്തിനും ഒരു ഉദാഹരണം നൽകി അത് യോജിക്കുന്നതിന്റെ കാരണം പറയുക."
+  ],
+  [
+    "Socialisation is learning how to participate in society. At home, a child may learn language and how to share. At school, group projects and classroom routines teach cooperation and responsibility beyond the family. Define socialisation first, then explain one example for each institution.",
+    "സമൂഹത്തിൽ എങ്ങനെ ഇടപെടണമെന്ന് പഠിക്കുന്ന പ്രക്രിയയാണ് സാമൂഹീകരണം. വീട്ടിൽ കുട്ടി ഭാഷയും പങ്കുവെക്കാനുള്ള ശീലവും പഠിക്കുന്നു. വിദ്യാലയത്തിലെ കൂട്ടുപ്രവർത്തനങ്ങളും ക്ലാസ് ദിനചര്യയും കുടുംബത്തിനു പുറത്തുള്ള സഹകരണവും ഉത്തരവാദിത്തവും പഠിപ്പിക്കുന്നു. ആദ്യം സാമൂഹീകരണം നിർവചിക്കുക. തുടർന്ന് ഓരോ സ്ഥാപനത്തിനും ഒരു ഉദാഹരണം വിശദീകരിക്കുക."
+  ],
+  [
+    "Focus on who enforces the rule and how. A traffic fine follows a written rule and comes from an authorised body. Disapproval for cutting a queue comes from other people and enforces an everyday norm. Compare both using the same two points: the rule and the response to breaking it.",
+    "ചട്ടം ആരാണ് നടപ്പാക്കുന്നത്, എങ്ങനെയാണ് നടപ്പാക്കുന്നത് എന്നീ കാര്യങ്ങളിൽ ശ്രദ്ധിക്കുക. ഗതാഗതപ്പിഴ എഴുതപ്പെട്ട നിയമത്തെ അടിസ്ഥാനമാക്കിയുള്ളതാണ്. അധികാരപ്പെട്ട സ്ഥാപനമാണ് അത് ചുമത്തുന്നത്. വരിയിൽ ഇടിച്ചുകയറുമ്പോഴുള്ള അതൃപ്തി മറ്റുള്ളവരിൽ നിന്നാണ് വരുന്നത്. ചട്ടവും അത് ലംഘിച്ചാലുള്ള പ്രതികരണവും ഉപയോഗിച്ച് രണ്ടിനെയും താരതമ്യം ചെയ്യുക."
+  ],
+  [
+    "A status names a social position. A role describes what others expect from someone in that position. A class representative holds a position, and communicating classmates’ concerns is part of the role. Use the same example for both terms to make the distinction clear.",
+    "സാമൂഹിക പദവി ഒരാൾ വഹിക്കുന്ന സ്ഥാനത്തെ സൂചിപ്പിക്കുന്നു. ആ സ്ഥാനത്തുള്ള ആളിൽ നിന്ന് മറ്റുള്ളവർ പ്രതീക്ഷിക്കുന്ന പെരുമാറ്റമാണ് പങ്ക്. ക്ലാസ് പ്രതിനിധി എന്നത് ഒരു സ്ഥാനമാണ്. സഹപാഠികളുടെ പ്രശ്നങ്ങൾ അറിയിക്കുന്നത് ആ പങ്കിന്റെ ഭാഗമാണ്. വ്യത്യാസം വ്യക്തമാക്കാൻ ഒരേ ഉദാഹരണം രണ്ടിനും ഉപയോഗിക്കുക."
+  ],
+  [
+    "Name each factor and show how it changes a social pattern. Smartphones can shift communication from local meetings to online groups. Migration can bring new languages and customs into a neighbourhood. Explain the effect of each factor so the answer goes beyond listing two words.",
+    "ഓരോ ഘടകവും പേരെടുത്ത് അത് സാമൂഹിക ജീവിതരീതിയെ എങ്ങനെ മാറ്റുന്നു എന്ന് വിശദീകരിക്കുക. സ്മാർട്ട്ഫോണുകൾ നേരിട്ടുള്ള കൂടിക്കാഴ്ചകളിൽ നിന്ന് ഓൺലൈൻ കൂട്ടായ്മകളിലേക്ക് ആശയവിനിമയം മാറ്റാം. കുടിയേറ്റം ഒരു പ്രദേശത്ത് പുതിയ ഭാഷകളും ആചാരങ്ങളും കൊണ്ടുവരാം. രണ്ട് ഘടകങ്ങൾ പട്ടികപ്പെടുത്തുന്നതിനൊപ്പം ഓരോന്നിന്റെയും ഫലം വിശദീകരിക്കുക."
+  ],
+  ["Taking part helps you see everyday routines from within. Keep a record of what happened, and separate observations from your own interpretation.","പങ്കെടുക്കുന്നത് സംഘത്തിന്റെ ദൈനംദിന പ്രവർത്തനം അടുത്തറിയാൻ സഹായിക്കും. കണ്ട കാര്യങ്ങൾ രേഖപ്പെടുത്തുക. സ്വന്തം വ്യാഖ്യാനം അതിൽ നിന്ന് വേർതിരിക്കുക."],
+  ["Use an interview to understand why one student travels far; use a questionnaire to compare travel times across a whole class.","ഒരു വിദ്യാർത്ഥി ദൂരെ നിന്ന് യാത്ര ചെയ്യുന്നതിന്റെ കാരണം മനസ്സിലാക്കാൻ അഭിമുഖം ഉപയോഗിക്കാം. ക്ലാസിലെ എല്ലാവരുടെയും യാത്രാസമയം താരതമ്യം ചെയ്യാൻ ചോദ്യാവലി ഉപയോഗിക്കാം."],
+  ["The same team can cooperate internally and compete with other teams. Identify who shares the goal and who seeks a limited reward.","ഒരേ ടീമിലെ അംഗങ്ങൾ പരസ്പരം സഹകരിക്കുകയും മറ്റു ടീമുകളോട് മത്സരിക്കുകയും ചെയ്യാം. ആരാണ് ലക്ഷ്യം പങ്കിടുന്നതെന്നും ആരാണ് പരിമിതമായ നേട്ടത്തിനായി മത്സരിക്കുന്നതെന്നും വ്യക്തമാക്കുക."],
+  ["Contrast learning to greet people at home with learning the rules of a new club. The difference is the setting and what is learned.","വീട്ടിൽ അഭിവാദനം ചെയ്യാൻ പഠിക്കുന്നതും പുതിയ ക്ലബ്ബിന്റെ ചട്ടങ്ങൾ പഠിക്കുന്നതും താരതമ്യം ചെയ്യുക. പഠിക്കുന്ന ഇടവും പഠനവിഷയവുമാണ് വ്യത്യാസം."],
+  ["Name a life transition, then identify what changes in the person’s expected behaviour.","ജീവിതത്തിലെ ഒരു ഘട്ടമാറ്റം സൂചിപ്പിക്കുക. അതോടെ ആ വ്യക്തിയുടെ പെരുമാറ്റത്തെക്കുറിച്ചുള്ള പ്രതീക്ഷ എങ്ങനെ മാറുന്നുവെന്ന് പറയുക."],
+  ["A crowd at a bus stop may disperse quickly. To explain society, focus on relationships and shared arrangements that continue beyond a single gathering.","ബസ് സ്റ്റോപ്പിലെ ആൾക്കൂട്ടം പെട്ടെന്ന് പിരിഞ്ഞുപോകാം. സമൂഹത്തെ വിശദീകരിക്കാൻ ഒറ്റ കൂടിച്ചേരലിനപ്പുറം നിലനിൽക്കുന്ന ബന്ധങ്ങളിലും പൊതുവായ ക്രമീകരണങ്ങളിലും ശ്രദ്ധിക്കുക."],
+  ["Education is broader than one school building. Identify the shared rules and roles that persist across different schools.","വിദ്യാഭ്യാസം ഒരു സ്കൂൾ കെട്ടിടത്തിൽ ഒതുങ്ങുന്നില്ല. വിവിധ വിദ്യാലയങ്ങളിൽ പൊതുവായി നിലനിൽക്കുന്ന ചട്ടങ്ങളും പങ്കുകളും കണ്ടെത്തുക."],
+  ["‘Three people moved aside when the bus arrived’ records behaviour. ‘They were being polite’ is an interpretation that needs support.","‘ബസ് എത്തിയപ്പോൾ മൂന്ന് പേർ വശത്തേക്ക് മാറി’ എന്നത് കണ്ട കാര്യമാണ്. ‘അവർ മര്യാദ കാണിച്ചു’ എന്നത് തെളിവ് ആവശ്യമായ വ്യാഖ്യാനമാണ്."],
+  ["Start with what you recorded, then define the concept. End by showing which part of your observation supports the connection.","രേഖപ്പെടുത്തിയ കാര്യം ആദ്യം പറയുക. ശേഷം ആശയം നിർവചിക്കുക. നിരീക്ഷണത്തിലെ ഏത് ഭാഗമാണ് ആ ബന്ധത്തിന് തെളിവാകുന്നതെന്ന് അവസാനം വിശദീകരിക്കുക."]
+];
+
+function render() {
+  byId('setup').hidden = true;
+  byId('revision').hidden = !attempt.report;
+  byId('clock').hidden = false;
+  byId('exam').hidden = false;
+  const list = byId('questions');
+  list.replaceChildren();
+  attempt.questions.forEach((question, i) => {
+    const card = add(list, 'article', '');
+    const heading = add(card, 'h2', (i+1) + '. ' + (attempt.language === 'ml' ? question.ml : question.en));
+    const alternate = add(card, 'p', attempt.language === 'ml' ? question.en : question.ml);
+    heading.lang = attempt.language;
+    alternate.lang = attempt.language === 'ml' ? 'en' : 'ml';
+    add(card, 'p', (question.module ? 'Module ' + question.module + ' · ' : '') + '3 marks', 'marks');
+    const label = add(card, 'label', 'Your answer');
+    label.htmlFor = 'answer-' + i;
+    add(card, 'small', 'Type here or tap your keyboard microphone to dictate.');
+    const input = add(card, 'textarea', '');
+    input.id = label.htmlFor;
+    input.lang = attempt.language;
+    input.maxLength = 1000;
+    input.value = attempt.answers[i];
+    input.readOnly = attempt.locked;
+    input.addEventListener('input', () => {
+      if (Date.now() >= attempt.deadline) {
+        input.value = attempt.answers[i];
+        tick();
+        return;
+      }
+      attempt.answers[i] = input.value;
+      save();
+    });
+    const result = attempt.report?.results.find(row => row.id === question.id);
+    if (result) {
+      const box = add(card, 'section', '', 'feedback');
+      add(box, 'h3', result.marks + ' / 3 marks');
+      if (result.feedbackBilingual) {
+        const sections = [
+          ['review', 'Why you got this mark', 'ഈ മാർക്ക് ലഭിച്ചതിന്റെ കാരണം'],
+          ['focus', 'What to focus on', 'ശ്രദ്ധിക്കേണ്ട കാര്യങ്ങൾ'],
+          ['structure', 'How to structure your answer', 'ഉത്തരം എങ്ങനെ ക്രമീകരിക്കാം']
+        ];
+        for (const [key, english, malayalam] of sections) {
+          const heading = add(box, 'h4', english + ' · ');
+          add(heading, 'span', malayalam).lang = 'ml';
+          add(box, 'p', result.feedbackBilingual.en[key]).lang = 'en';
+          add(box, 'p', result.feedbackBilingual.ml[key]).lang = 'ml';
+        }
+      } else {
+        add(box, 'h4', 'Feedback · നിർദ്ദേശങ്ങൾ');
+        add(box, 'p', result.feedback).lang = attempt.language;
+      }
+      if (result.modelAnswer) {
+        add(box, 'h4', 'Model answer · മാതൃകാ ഉത്തരം');
+        add(box, 'p', result.modelAnswer.en).lang = 'en';
+        add(box, 'p', result.modelAnswer.ml).lang = 'ml';
+      } else {
+        add(box, 'h4', 'Model answer points');
+        add(box, 'p', result.answerPoints);
+      }
+      const explanation = detailedExplanations[question.id];
+      if (explanation) {
+        const details = add(box, 'details', '', 'more-explanation');
+        const summary = add(details, 'summary', 'Get more explanation · ');
+        add(summary, 'span', 'കൂടുതൽ വിശദീകരണം').lang = 'ml';
+        add(details, 'p', explanation[0]).lang = 'en';
+        add(details, 'p', explanation[1]).lang = 'ml';
+      }
+    }
+  });
+  byId('submit').hidden = attempt.locked;
+  byId('again').hidden = !attempt.report;
+}
+function lock() {
+  if (attempt.locked) return;
+  attempt.locked = true;
+  save();
+  render();
+}
+async function evaluate() {
+  if (busy || attempt.report || !attempt.locked) return;
+  busy = true;
+  byId('retry').hidden = true;
+  status('Evaluating your answers…');
+  try {
+    attempt.report = await request({mode:'theory-grade',session:attempt.session,language:attempt.language,
+      answers:attempt.questions.map(({id},i) => ({id,text:attempt.answers[i]}))});
+    save();
+    render();
+    status('Result: ' + attempt.report.total + ' / 15. Compare each answer with the model, then start a new mock to practise again.');
+  } catch (error) {
+    status(error.message + ' Your answers are still saved on this device.');
+    byId('retry').hidden = false;
+  } finally { busy = false; }
+}
+function tick() {
+  if (!attempt) return;
+  const seconds = Math.max(0, Math.ceil((attempt.deadline - Date.now())/1000));
+  byId('clock-label').textContent = attempt.report ? 'Final score' : attempt.locked ? 'Answers submitted' : seconds ? 'Time remaining' : 'Time is up';
+  byId('clock-digits').textContent = attempt.report ? attempt.report.total + ' / 15' :
+    String(Math.floor(seconds/60)).padStart(2,'0') + ':' + String(seconds%60).padStart(2,'0');
+  byId('clock').dataset.urgent = String(seconds > 0 && seconds <= 300);
+  byId('clock-ring').hidden = Boolean(attempt.report);
+  byId('clock-ring').style.setProperty('--remaining', Math.min(100, seconds / 18) + '%');
+  if (!seconds) lock();
+  if (attempt.locked && byId('retry').hidden) evaluate();
+}
+byId('start').onclick = async () => {
+  byId('start').disabled = true;
+  try {
+    const {questions,session,deadline} = await request({mode:'theory-start'});
+    attempt = {questions,answers:Array(5).fill(''),language:byId('language').value,deadline,session,locked:false};
+    save();
+    byId('status').hidden = true;
+    render();
+    tick();
+  } catch (error) { status(error.message); }
+  finally { byId('start').disabled = false; }
+};
+byId('exam').onsubmit = event => {
+  event.preventDefault();
+  if (Date.now() < attempt.deadline && !confirm('Submit and lock your answers now?')) return;
+  lock();
+  tick();
+};
+byId('retry').onclick = evaluate;
+byId('again').onclick = () => { try { localStorage.removeItem(key); } catch {} location.reload(); };
+if (attempt?.questions?.length === 5) { render(); tick(); }
+setInterval(tick,1000);
+const revisionModules = [1,1,2,3,3,3,4,4,2,2,3,3,3,4,4,5,5];
+const revisionNotes = byId('revision-scroll');
+const existingNotes = [...revisionNotes.children];
+const tipCards = detailedExplanations.map(([en, ml], id) => {
+  const card = add(revisionNotes, 'article', '');
+  const heading = add(card, 'h3', 'Module ' + revisionModules[id] + ' · ');
+  add(heading, 'span', 'മോഡ്യൂൾ ' + revisionModules[id]).lang = 'ml';
+  add(card, 'p', en).lang = 'en';
+  add(card, 'p', ml).lang = 'ml';
+  return card;
+});
+const deck = [...existingNotes, ...tipCards];
+let remainingTips = [], lastTip;
+function nextTip() {
+  if (!remainingTips.length) remainingTips = [...deck];
+  const choices = remainingTips.filter(card => card !== lastTip);
+  const card = (choices.length ? choices : remainingTips)[Math.floor(Math.random() * (choices.length || remainingTips.length))];
+  remainingTips.splice(remainingTips.indexOf(card), 1);
+  lastTip = card;
+  byId('revision-tip').replaceChildren(card.cloneNode(true));
+}
+byId('revision-next').onclick = nextTip;
+nextTip();
+const notes = revisionNotes;
+const toggleNotes = byId('revision-toggle');
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+let notesPaused = reduceMotion.matches;
+let notesHovered = false;
+toggleNotes.hidden = false;
+function updateNotesButton() {
+  toggleNotes.textContent = notesPaused ? 'Play scrolling / സ്ക്രോൾ തുടങ്ങുക' : 'Pause scrolling / സ്ക്രോൾ നിർത്തുക';
+}
+updateNotesButton();
+toggleNotes.onclick = () => { notesPaused = !notesPaused; updateNotesButton(); };
+notes.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') notesHovered = true; });
+notes.addEventListener('pointerleave', () => { notesHovered = false; });
+notes.addEventListener('touchstart', () => { notesPaused = true; updateNotesButton(); }, {passive:true});
+setInterval(() => {
+  if (notesPaused || notesHovered || notes.contains(document.activeElement) || document.hidden || byId('revision').hidden) return;
+  const bottom = notes.scrollHeight - notes.clientHeight;
+  if (bottom > 0) notes.scrollTop = notes.scrollTop >= bottom - 1 ? 0 : notes.scrollTop + 1;
+}, 85);
+</script>
+</html>

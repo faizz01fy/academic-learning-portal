@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Private Admin Monitoring | Academic Hub</title>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+*{box-sizing:border-box}body{font-family:Poppins,Segoe UI,Arial,sans-serif;margin:0;background:linear-gradient(135deg,#eef2ff,#f5f3ff 45%,#ecfeff);color:#172554}.wrap{max-width:1200px;margin:auto;padding:22px}.card{background:rgba(255,255,255,.94);border-radius:18px;padding:20px;box-shadow:0 10px 30px rgba(30,41,100,.12);margin-bottom:18px;border:1px solid rgba(99,102,241,.12)}h1{color:#312e81;letter-spacing:.2px}input{padding:12px;border-radius:10px;border:1px solid #c7d2fe;font-family:inherit}button{padding:12px 18px;border-radius:10px;border:0;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;font-family:inherit;font-weight:700;cursor:pointer}button:hover{opacity:.92}table{width:100%;border-collapse:separate;border-spacing:0;font-size:14px}th,td{padding:11px;text-align:left;border-bottom:1px solid #e5e7eb;vertical-align:top}th{background:#eef2ff;color:#3730a3;font-weight:700;position:sticky;top:0;z-index:1}tr:hover td{background:#f8faff}.scroll{overflow:auto}.stat{display:inline-block;margin-right:24px;font-weight:700;color:#3730a3}.danger{color:#b91c1c}.country-cell{font-weight:700;white-space:nowrap}.flag{font-size:24px;vertical-align:middle;margin-right:7px}.ip{font-family:Consolas,monospace;font-size:13px}.details{color:#64748b;font-size:12px;line-height:1.5;max-width:300px;word-break:break-word}.details b{color:#334155}.badge{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:700;background:#e0e7ff;color:#3730a3}.legend{margin-top:12px;color:#64748b;font-size:13px}</style>  <style id="hub-universal-protection">
+*, *::before, *::after {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+img {
+  -webkit-user-drag: none !important;
+  user-drag: none !important;
+}
+@media print {
+  html, body {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+a[download], button[download], [download], .btn-download, .download, #downloadBtn, #saveBtn, .save {
+  display: none !important;
+}
+</style>
+</head>
+<body><div class="wrap">
+<div class="card"><h1>📊 Academic Hub — Admin Monitoring</h1>
+<p><strong>Admin results viewer.</strong> A valid Admin Token is required to fetch student results from the results API. This does not by itself make this webpage private. Keep the token secret and do not commit it to GitHub. For stronger protection, restrict this page with an authentication layer when available.</p><p class="legend">Monitoring links open Cloudflare. Select the matching Worker there: <b>ba-sociology-hub</b> for site traffic and <b>ba-sociology-results</b> for result API traffic and errors.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin:12px 0">
+<a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:10px 14px;border-radius:10px;background:#fff;border:1px solid #c7d2fe;color:#3730a3;text-decoration:none;font-weight:700">Open Cloudflare Dashboard ↗</a>
+<a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:10px 14px;border-radius:10px;background:#fff;border:1px solid #c7d2fe;color:#3730a3;text-decoration:none;font-weight:700">Open Worker Observability ↗</a>
+</div>
+<input id="api" value="https://ba-sociology-results.faiz0812.workers.dev" style="width:100%;box-sizing:border-box">
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><input id="token" type="password" autocomplete="current-password" placeholder="Admin token" aria-label="Admin token" style="flex:1;min-width:220px;width:100%;box-sizing:border-box"><button type="button" id="toggleToken" aria-pressed="false" style="background:#e0e7ff;color:#3730a3">Show token</button></div>
+<button type="button" id="loadBtn" style="margin-top:8px">Load Results</button>
+<select id="subjectFilter" style="margin-top:8px;width:100%;padding:12px;border-radius:10px;border:1px solid #c7d2fe;font-family:inherit">
+<option value="">All Subjects</option>
+</select>
+<span id="msg"></span></div>
+<div class="card" id="summary"></div>
+<div class="card" id="subjectSummary"></div>
+<div class="card scroll"><table><thead><tr><th>Name</th><th>Subject</th><th>Score</th><th>%</th><th>Status</th><th>Time</th></tr></thead><tbody id="rows"></tbody></table></div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  document.getElementById("loadBtn").addEventListener("click", loadResults);
+  document.getElementById("subjectFilter").addEventListener("change", applySubjectFilter);
+  document.getElementById("toggleToken").addEventListener("click", function(){
+    var field = document.getElementById("token");
+    var reveal = field.type === "password";
+    field.type = reveal ? "text" : "password";
+    this.textContent = reveal ? "Hide token" : "Show token";
+    this.setAttribute("aria-pressed", reveal ? "true" : "false");
+  });
+});
+
+var allRows = [];
+
+// Consolidate dashboard results into the six official subjects.
+// Malayalam submissions and any unclassified subjects are excluded.
+function canonicalSubject(value){
+  var raw = String(value == null ? "" : value).trim().toLowerCase();
+  if(!raw) return null;
+
+  // Exclude Malayalam tests before normalizing the test title.
+  if(/malayalam/.test(raw)) return null;
+
+  var key = raw
+    .replace(/&/g, " and ")
+    .replace(/[’']/g, "")
+    .replace(/\b(60q|\d+q|mcq|mock|practice|online|offline|test|tests|quiz|exam|examination|assessment|internal|final|finals|paper|question|questions|chapter|module|unit|part|mod)\b/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  // Match the subject phrase even when a test title contains extra words.
+  if(/\b(english|functional english|english language)\b/.test(key)) return "English";
+  if(/\b(sociology|sociological)\b/.test(key)) return "Sociology";
+  if(/\b(philosophy of ai|philosophy of artificial intelligence|artificial intelligence|classical ai|symbolic ai|good old fashioned ai|ai philosophy|philosophy of mind)\b/.test(key)) return "Philosophy of AI";
+  if(/\b(philosophy of education|education philosophy)\b/.test(key)) return "Philosophy of Education";
+  if(/\b(fundamentals of ethics|ethics)\b/.test(key)) return "Fundamentals of Ethics";
+  if(/\b(development issues (of|in) indian economy|development of indian economy|indian economy|development economics)\b/.test(key)) return "Development Issues in Indian Economy";
+  return null;
+}
+
+function renderRows(rows){
+  var html = "";
+  for(var i=0;i<rows.length;i++){
+    var x = rows[i];
+    var code = String(x.country || "").toUpperCase();
+    var flag = getFlag(code);
+    var country = getCountry(code);
+    html += "<tr>";
+    html += "<td><b>" + esc(x.name) + "</b><br><span class='badge'>" + esc(x.reg || "N/A") + "</span></td>";
+    html += "<td>" + esc(canonicalSubject(x.subject)) + "</td>";
+    html += "<td><b>" + esc(x.score) + "/" + esc(x.total) + "</b><br><span class='details'>Wrong: " + esc(x.wrong) + " · Unanswered: " + esc(x.unanswered) + "</span></td>";
+    html += "<td>" + esc(x.percentage) + "%</td>";
+    html += "<td>" + esc(x.status) + "</td>";
+    html += "<td>" + esc(formatDate(x.submitted_at)) + "</td>";
+    html += "</tr>";
+  }
+  document.getElementById("rows").innerHTML = html;
+}
+
+function renderSummary(rows){
+  var subjects = {};
+  for(var i=0;i<rows.length;i++){
+    var s = canonicalSubject(rows[i].subject);
+    if(!s) continue;
+    subjects[s] = (subjects[s] || 0) + 1;
+  }
+  document.getElementById("summary").innerHTML =
+    "<span class='stat'>Submissions: " + rows.length + "</span>" +
+    "<span class='stat'>Pass: " + rows.filter(function(x){return x.status === "PASS";}).length + "</span>";
+
+  var keys = Object.keys(subjects);
+  if(!keys.length){
+    document.getElementById("subjectSummary").innerHTML = "<b>Subject-wise Results</b><br><span class='legend'>No submissions found.</span>";
+    return;
+  }
+  keys.sort();
+  var html = "<b>📚 Subject-wise Results</b><div style='margin-top:12px;display:flex;flex-wrap:wrap;gap:10px'>";
+  for(var j=0;j<keys.length;j++){
+    var key = keys[j];
+    var subset = rows.filter(function(x){return canonicalSubject(x.subject) === key;});
+    var pass = subset.filter(function(x){return x.status === "PASS";}).length;
+    var avg = subset.reduce(function(sum,x){return sum + Number(x.percentage || 0);},0) / subset.length;
+    html += "<div style='background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px;padding:12px;min-width:220px'><b>" + esc(key) + "</b><br><span class='details'>Submissions: " + subset.length + " · Pass: " + pass + " · Avg: " + avg.toFixed(1) + "%</span></div>";
+  }
+  html += "</div>";
+  document.getElementById("subjectSummary").innerHTML = html;
+}
+
+function applySubjectFilter(){
+  var selected = document.getElementById("subjectFilter").value;
+  var rows = (selected ? allRows.filter(function(x){return canonicalSubject(x.subject) === selected;}) : allRows.filter(function(x){return canonicalSubject(x.subject) !== null;}));
+  renderRows(rows);
+  renderSummary(rows);
+}
+
+async function loadResults(){
+  var api = document.getElementById("api").value.trim().replace(/\/$/, "");
+  var token = document.getElementById("token").value.trim();
+  var msg = document.getElementById("msg");
+  var btn = document.getElementById("loadBtn");
+
+  if(!api || !token){
+    msg.textContent = " Please enter the Admin Token.";
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = "Loading...";
+  msg.textContent = "";
+
+  try{
+    var response = await fetch(api + "/results?limit=2000", {
+      method: "GET",
+      headers: { "Authorization": "Bearer " + token }
+    });
+
+    if(!response.ok){
+      throw new Error("HTTP " + response.status);
+    }
+
+    var data = await response.json();
+    var rows = Array.isArray(data.results) ? data.results : [];
+
+    allRows = (Array.isArray(data.results) ? data.results : []).filter(function(x){return canonicalSubject(x.subject) !== null;});
+
+    var select = document.getElementById("subjectFilter");
+    var current = select.value;
+    select.innerHTML = "<option value=''>All Subjects</option>";
+    var subjects = Array.from(new Set(allRows.map(function(x){return canonicalSubject(x.subject);}))).sort();
+    for(var i=0;i<subjects.length;i++){
+      var opt = document.createElement("option");
+      opt.value = subjects[i];
+      opt.textContent = subjects[i];
+      select.appendChild(opt);
+    }
+    if(subjects.indexOf(current) >= 0) select.value = current;
+
+    applySubjectFilter();
+
+    msg.textContent = " Loaded successfully.";
+  }catch(error){
+    msg.textContent = " Error: " + error.message;
+  }finally{
+    btn.disabled = false;
+    btn.textContent = "Load Results";
+  }
+}
+
+function esc(value){
+  return String(value == null ? "" : value).replace(/[&<>"]/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];
+  });
+}
+
+function getFlag(code){
+  if(!/^[A-Z]{2}$/.test(code)) return "🌐";
+  return String.fromCodePoint.apply(null, code.split("").map(function(ch){
+    return 127397 + ch.charCodeAt(0);
+  }));
+}
+
+function getCountry(code){
+  if(!/^[A-Z]{2}$/.test(code)) return "Unknown";
+  try{
+    return new Intl.DisplayNames(["en"], {type:"region"}).of(code) || code;
+  }catch(e){
+    return code;
+  }
+}
+
+function formatDate(value){
+  if(!value) return "";
+  var d = new Date(value);
+  return isNaN(d.getTime()) ? value : d.toLocaleString();
+}
+</script><script id="hub-universal-protection-script">
+(function() {
+  window.addEventListener('contextmenu', function(e) { e.preventDefault(); e.stopPropagation(); return false; }, true);
+  window.addEventListener('keydown', function(e) {
+    var k = e.key ? e.key.toLowerCase() : '';
+    if ((e.ctrlKey || e.metaKey) && ['s', 'p', 'u', 'c', 'a', 'x'].indexOf(k) !== -1) {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+    if (e.key === 'F12' || ((e.ctrlKey || e.metaKey) && e.shiftKey && ['i', 'j', 'c'].indexOf(k) !== -1)) {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+  }, true);
+  window.addEventListener('dragstart', function(e) { e.preventDefault(); return false; }, true);
+  window.addEventListener('copy', function(e) { e.preventDefault(); return false; }, true);
+  window.addEventListener('cut', function(e) { e.preventDefault(); return false; }, true);
+  window.addEventListener('selectstart', function(e) { e.preventDefault(); return false; }, true);
+  document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; }, true);
+})();
+</script>
+</body></html>
